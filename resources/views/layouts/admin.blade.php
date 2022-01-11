@@ -24,9 +24,6 @@
     <link rel="icon" type="image/png" href="{{ asset('user_assets/images/idesign/logo.jpg') }}" />
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Datatables -->
-    <link href="{{ asset('admin_assets/vendors/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin_assets/vendors/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('admin_assets/vendors/select2/select2.min.css') }}" rel="stylesheet">
@@ -37,9 +34,12 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
         integrity="sha512-aEe/ZxePawj0+G2R+AaIxgrQuKT68I28qh+wgLrcAJOz3rxCP+TwrK5SPN+E5I+1IQjNtcfvb96HDagwrKRdBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     @stack('styles')
-
-
     @livewireStyles
 </head>
 
@@ -60,7 +60,7 @@
                         <div class="profile-pic">
                             <div class="count-indicator">
                                 <img class="img-xs rounded-circle "
-                                    src="{{ '/storage/user' }}/{{ Auth::user()->profile_photo_path }}"
+                                    src="{{ '/storage/admin' }}/{{ Auth::user()->image }}"
                                     alt="{{ Auth::user()->name }}">
                                 <span class="count bg-success"></span>
                             </div>
@@ -71,7 +71,7 @@
                         </div>
                         <a href="#" id="profile-dropdown" data-toggle="dropdown"><i
                                 class="mdi mdi-dots-vertical"></i></a>
-                        {{-- <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
+                        <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
                             aria-labelledby="profile-dropdown">
                             <a href="{{ route('admin.profile') }}" class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
@@ -94,7 +94,7 @@
                                     <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
                                 </div>
                             </a>
-                        </div> --}}
+                        </div>
                     </div>
                 </li>
                 <li class="nav-item nav-category">
@@ -108,7 +108,7 @@
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </li>
-                {{-- <li class="nav-item menu-items">
+                <li class="nav-item menu-items">
                     <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
                         aria-controls="product">
                         <span class="menu-icon">
@@ -121,12 +121,12 @@
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link"
                                     href="{{ route('admin.category') }}"> Category </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.brand') }}">
+                                    Brand </a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admin.type') }}">
                                     Type </a></li>
                             <li class="nav-item"> <a class="nav-link"
                                     href="{{ route('admin.attribute') }}"> Attribute </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.brand') }}">
-                                    Brand </a></li>
                             <li class="nav-item"> <a class="nav-link"
                                     href="{{ route('admin.product') }}"> Product </a></li>
                         </ul>
@@ -142,15 +142,76 @@
                     </a>
                 </li>
                 <li
-                    class="nav-item menu-items {{ Route::is('admin.customer') || Route::is('admin.customer.add') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('admin.customer') }}">
+                    class="nav-item menu-items {{ Route::is('admin.mall') || Route::is('admin.mall.add') || Route::is('admin.mall.edit') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.mall') }}">
                         <span class="menu-icon">
                             <i class="mdi mdi-laptop"></i>
                         </span>
-                        <span class="menu-title">Customer</span>
+                        <span class="menu-title">Shopping Mall</span>
+                    </a>
+                </li>
+                <li
+                    class="nav-item menu-items {{ Route::is('admin.eservice') || Route::is('admin.eservice.add') || Route::is('admin.eservice.edit') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.eservice') }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-laptop"></i>
+                        </span>
+                        <span class="menu-title">Eservice Provider</span>
+                    </a>
+                </li>
+                <li
+                    class="nav-item menu-items {{ Route::is('admin.gvendor') || Route::is('admin.gvendor.add') || Route::is('admin.gvendor.edit') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.gvendor') }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-laptop"></i>
+                        </span>
+                        <span class="menu-title">General Vendor</span>
+                    </a>
+                </li>
+                <li
+                    class="nav-item menu-items {{ Route::is('admin.vcategory') || Route::is('admin.vcategory.add') || Route::is('admin.vcategory.edit') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.vcategory') }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-laptop"></i>
+                        </span>
+                        <span class="menu-title">Vendor Category</span>
                     </a>
                 </li>
                 <li class="nav-item menu-items">
+                    <a class="nav-link" data-toggle="collapse" href="#front" aria-expanded="false"
+                        aria-controls="front">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-security"></i>
+                        </span>
+                        <span class="menu-title">Frontend Setting</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="front">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link"
+                                    href="{{ route('admin.logo') }}"> Logo </a></li>
+                            <li class="nav-item"> <a class="nav-link"
+                                    href="{{ route('admin.payment') }}"> Payment Method</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" data-toggle="collapse" href="#blog" aria-expanded="false"
+                        aria-controls="blog">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-security"></i>
+                        </span>
+                        <span class="menu-title">Blog</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="blog">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link"
+                                    href="{{ route('admin.bcategory') }}"> Blog Category </a></li>
+                        </ul>
+                    </div>
+                </li>
+                {{-- <li class="nav-item menu-items">
                     <a class="nav-link" data-toggle="collapse" href="#vendor" aria-expanded="false"
                         aria-controls="vendor">
                         <span class="menu-icon">
@@ -233,7 +294,7 @@
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_navbar.html -->
-            {{-- @livewire('admin.includes.admin-header-component') --}}
+            @livewire('admin.components.admin-header-component')
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
@@ -276,53 +337,6 @@
     <!-- Custom js for this page -->
     <script src="{{ asset('admin_assets/js/dashboard.js') }}"></script>
     <!-- End custom js for this page -->
-    <!-- datatables plugins -->
-    <!-- DataTables  & Plugins -->
-    <script src="{{ asset('admin_assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-    {{-- sweet alert --}}
-    <script src="{{ asset('admin_assets/js/sweetalert.js') }}"></script>
-    <script>
-        window.addEventListener('swal:model', event => {
-            swal({
-                icon: event.detail.statuscode,
-                text: event.detail.text,
-                title: event.detail.title,
-            });
-        });
-        window.addEventListener('swal:confirm', event => {
-            swal({
-                    title: event.detail.title,
-                    text: event.detail.text,
-                    icon: event.detail.statuscode,
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        window.livewire.emit('delete', event.detail.id);
-                    }
-                });
-        });
-        window.addEventListener('swal:confirmstatus', event => {
-            swal({
-                    title: event.detail.title,
-                    text: event.detail.text,
-                    icon: event.detail.statuscode,
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willUpdate) => {
-                    if (willUpdate) {
-                        window.livewire.emit('statusupdate', event.detail.id, event.detail.status);
-                    }
-                });
-        });
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -332,12 +346,21 @@
     <script src="https://cdn.tiny.cloud/1/kntejrprjs5hetwm4fh98wy0isd70b1bw75id5v6ncrxugab/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script>
 
+    <script>
+        window.addEventListener('alert', event => {
+            toastr[event.detail.type](event.detail.message,
+                event.detail.title ?? ''), toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+            }
+        });
+    </script>
+
     {{-- <script src="{{ asset('js/app.js') }}"></script>
     <script>
         Echo.channel('events')
             .listen('RealTimeMessage', (e) => console.log('RealTimeMessage: ' + e.message));
-    </script> --}}
-
+  </script> --}}
     @stack('scripts')
 
     @livewireScripts

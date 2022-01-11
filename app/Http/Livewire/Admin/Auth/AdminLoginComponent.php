@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Auth;
 
+use App\Models\Admin;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -10,7 +11,7 @@ class AdminLoginComponent extends Component
 {
     public $email;
     public $password;
-    public $remember;
+    public $remember_me;
 
     public function Login()
     {
@@ -21,14 +22,21 @@ class AdminLoginComponent extends Component
             'email.exists' => 'This email does not exists.'
         ]);
 
-        if (Auth::guard('admin')->attempt(['email'=>$this->email,'password'=>$this->password])) {
+        if (Auth::guard('admin')->attempt(['email' => $this->email, 'password' => $this->password])) {
+            $admin = Admin::where('email', $this->email)->firstOrFail();
+            if ($this->remember_me === true) {
+                $admin->createToken('remember_token')->plainTextToken;
+            }
+            $this->dispatchBrowserEvent(
+                'alert',
+                ['type' => 'success',  'message' => 'Logged In Successfully!']
+            );
             return redirect('/admin/dashboard');
         } else {
-            $this->dispatchBrowserEvent('swal:model', [
-                'statuscode' => 'error',
-                'title' => 'Error',
-                'text' => 'Invalid credentials',
-            ]);
+            $this->dispatchBrowserEvent(
+                'alert',
+                ['type' => 'error',  'message' => 'Invalid Credentials!!!']
+            );
         }
     }
 

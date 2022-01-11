@@ -19,11 +19,9 @@ class SubCategory extends Model
         return $this->belongsTo(Category::class,'category_id','id');
     }
 
-    protected static function boot() {
-        parent::boot();
-
-        static::creating(function ($question) {
-            $question->slug = Str::slug($question->name);
-        });
+    public function Product()
+    {
+        return $this->hasMany(Product::class);
     }
+
 }

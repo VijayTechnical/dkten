@@ -15,22 +15,15 @@ class Category extends Model
     protected $fillable = ['name','slug','image','status'];
 
 
-    public function SubCategories()
+    public function SubCategory()
     {
         return $this->hasMany(SubCategory::class);
     }
 
-    public function products()
+    public function Product()
     {
         return $this->hasMany(Product::class)->where('status', 1)->where('is_sold', 0);
     }
 
-    protected static function boot() {
-        parent::boot();
-
-        static::creating(function ($question) {
-            $question->slug = Str::slug($question->name);
-        });
-    }
 
 }
