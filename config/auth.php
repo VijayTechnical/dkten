@@ -23,7 +23,7 @@ return [
     ],
     'vendor' => [
         'guard' => 'vendor',
-        'passwords' => 'vedors',
+        'passwords' => 'vendors',
     ],
 
     /*

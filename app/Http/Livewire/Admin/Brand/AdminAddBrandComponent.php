@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin\Brand;
 use Carbon\Carbon;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Traits\RoleAndPermissionTrait;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
@@ -12,11 +13,17 @@ use Livewire\WithFileUploads;
 class AdminAddBrandComponent extends Component
 {
     use WithFileUploads;
+    use RoleAndPermissionTrait;
 
     public $name;
     public $slug;
     public $image;
     public $status;
+
+    public function mount()
+    {
+        $this->authorizeRoleOrPermission('master|add-brand');
+    }
 
     public function generateslug()
     {

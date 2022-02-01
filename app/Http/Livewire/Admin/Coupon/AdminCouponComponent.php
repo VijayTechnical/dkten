@@ -3,14 +3,14 @@
 namespace App\Http\Livewire\Admin\Coupon;
 
 use App\Models\Coupon;
+use App\Traits\RoleAndPermissionTrait;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class AdminCouponComponent extends Component
 {
     use WithPagination;
-
-    protected $listeners = ['delete'];
+    use RoleAndPermissionTrait;
 
     public $searchTerm;
     public $paginate;
@@ -20,19 +20,9 @@ class AdminCouponComponent extends Component
         $this->paginate = 10;
     }
 
-
-    public function deleteConfirm($id)
+    public function deleteCoupon($id)
     {
-        $this->dispatchBrowserEvent('swal:confirm',[
-            'statuscode' => 'warning',
-            'title' => '',
-            'text' => 'Are you sure, you want to delete?',
-            'id' => $id,
-        ]);
-    }
-
-    public function delete($id)
-    {
+        $this->authorizeRoleOrPermission('master|delete-coupon');
         $coupon = Coupon::find($id);
         $coupon->delete();
         $this->dispatchBrowserEvent('alert',

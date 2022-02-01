@@ -4,12 +4,14 @@ namespace App\Http\Livewire\Admin\Payment;
 
 use Carbon\Carbon;
 use App\Models\Payment;
+use App\Traits\RoleAndPermissionTrait;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class AdminEditPaymentComponent extends Component
 {
     use WithFileUploads;
+    use RoleAndPermissionTrait;
 
     public $name;
     public $image;
@@ -18,6 +20,7 @@ class AdminEditPaymentComponent extends Component
 
     public function mount($payment_id)
     {
+        $this->authorizeRoleOrPermission('master|edit-payment-method');
         $payment = Payment::where('id', $payment_id)->first();
         $this->payment_id = $payment->id;
         $this->name = $payment->name;

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Attribute;
 
 use Livewire\Component;
 use App\Models\Attribute;
+use App\Traits\RoleAndPermissionTrait;
 
 class AdminEditAttributeComponent extends Component
 {
@@ -11,8 +12,11 @@ class AdminEditAttributeComponent extends Component
     public $attribute_name;
     public $attribute_id;
 
+    use RoleAndPermissionTrait;
+
     public function mount($attribute_name)
     {
+        $this->authorizeRoleOrPermission('master|edit-attribute');
         $this->attribute_name = $attribute_name;
         $attribute = Attribute::where('name',$this->attribute_name)->first();
         $this->name = $attribute->name;

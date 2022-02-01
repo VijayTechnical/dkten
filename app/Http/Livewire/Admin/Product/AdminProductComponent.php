@@ -3,12 +3,14 @@
 namespace App\Http\Livewire\Admin\Product;
 
 use App\Models\Product;
+use App\Traits\RoleAndPermissionTrait;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class AdminProductComponent extends Component
 {
     use WithPagination;
+    use RoleAndPermissionTrait;
 
     public $paginate;
     public $searchTerm;
@@ -20,6 +22,7 @@ class AdminProductComponent extends Component
 
     public function editPublish($id)
     {
+        $this->authorizeRoleOrPermission('master|change-product-status');
         $product = Product::find($id);
         $product->status = !$product->status;
         $product->save();
@@ -27,6 +30,7 @@ class AdminProductComponent extends Component
 
     public function editDeal($id)
     {
+        $this->authorizeRoleOrPermission('master|change-product-deal');
         $product = Product::find($id);
         $product->t_deal = !$product->t_deal;
         $product->save();
@@ -34,6 +38,7 @@ class AdminProductComponent extends Component
 
     public function editFeatured($id)
     {
+        $this->authorizeRoleOrPermission('master|change-product-featured');
         $product = Product::find($id);
         $product->featured = !$product->featured;
         $product->save();
@@ -41,6 +46,7 @@ class AdminProductComponent extends Component
 
     public function deleteProduct($id)
     {
+        $this->authorizeRoleOrPermission('master|delete-product');
         $product = Product::find($id);
         if($product->images)
         {

@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Coupon Table
                         <a href="{{ route('admin.coupon.add') }}"
-                            class="btn btn-success create-new-button float-right">+ Add Coupon</a>
+                            class="btn btn-light create-new-button float-right">+ Add Coupon</a>
                     </h4>
                     <div class="table-header">
                         <form action="#" class="mt-1">
@@ -72,7 +72,7 @@
                                         <td>
                                             <a href="{{ route('admin.coupon.edit', ['coupon_id' => $coupon->id]) }}"
                                                 class="btn btn-primary"><i class="mdi mdi-briefcase-edit"></i></a>
-                                            <a href="#" wire:click.prevent="deleteConfirm({{ $coupon->id }})"
+                                            <a href="#" onclick="confirm('Are you sure you want to delete the coupon?') || event.stopImmediatePropagation()" wire:click.prevent="deleteCoupon({{ $coupon->id }})"
                                                 class="btn btn-danger"><i class="mdi mdi-delete"></i></a>
                                         </td>
                                     </tr>

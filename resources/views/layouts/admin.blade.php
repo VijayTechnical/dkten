@@ -2,33 +2,34 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
+         <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>DK10 | Admin</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ asset('admin_assets/vendors/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin_assets/vendors/css/vendor.bundle.base.css') }}">
+    <link rel="stylesheet" href="{{ asset('dk10_master_assets/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dk10_master_assets/vendors/css/vendor.bundle.base.css') }}">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{{ asset('admin_assets/vendors/jvectormap/jquery-jvectormap.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin_assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin_assets/vendors/owl-carousel-2/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin_assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dk10_master_assets/vendors/jvectormap/jquery-jvectormap.css') }}">
+    <link rel="stylesheet" href="{{ asset('dk10_master_assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dk10_master_assets/vendors/owl-carousel-2/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dk10_master_assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ asset('admin_assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('dk10_master_assets/css/style.css') }}">
     <!-- End layout styles -->
-    <link rel="icon" type="image/png" href="{{ asset('user_assets/images/idesign/logo.jpg') }}" />
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- ckeeditor -->
+    <script src="{{ asset('dk10_master_assets/ckeditor/ckeditor.js') }}"></script>
+
     <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('admin_assets/vendors/select2/select2.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('dk10_master_assets/vendors/select2/select2.min.css') }}" rel="stylesheet">
     <link rel="stylesheet"
-        href="{{ asset('admin_assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}"
+        href="{{ asset('dk10_master_assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}"
         rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
@@ -38,7 +39,15 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <!-- Favicon Image -->
+    <link rel="icon" type="image/png" href="{{ asset('favicon/logo.png') }}" />
+
+    @livewire('admin.components.admin-head-component')
+
+
+
     @stack('styles')
     @livewireStyles
 </head>
@@ -48,25 +57,23 @@
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-                <a class="sidebar-brand brand-logo" href="{{ route('admin.dashboard') }}"><img
-                        src="{{ asset('user_assets/images/idesign/logo.jpg') }}" alt="logo"
-                        class="px-10 py-10"></a>
-                <a class="sidebar-brand brand-logo-mini" href="{{ route('admin.dashboard') }}"><img
-                        src="{{ asset('user_assets/images/idesign/logo.jpg') }}" alt="logo" /></a>
+                @livewire('admin.components.admin-header-logo-component')
             </div>
             <ul class="nav">
                 <li class="nav-item profile">
                     <div class="profile-desc">
                         <div class="profile-pic">
                             <div class="count-indicator">
+                                @php
+                                $admin_user = Auth::guard('admin')->user();
+                                @endphp
                                 <img class="img-xs rounded-circle "
-                                    src="{{ '/storage/admin' }}/{{ Auth::user()->image }}"
-                                    alt="{{ Auth::user()->name }}">
+                                    src="{{ '/storage/admin' }}/{{ $admin_user->image }}" alt="{{ $admin_user->name }}">
                                 <span class="count bg-success"></span>
                             </div>
                             <div class="profile-name">
-                                <h5 class="mb-0 font-weight-normal">{{ Auth::user()->name }}</h5>
-                                <span>Admin</span>
+                                <h5 class="mb-0 font-weight-normal">{{ $admin_user->name }}</h5>
+                                <span>{{ $admin_user->roles->pluck('name')[0] ?? '' }}</span>
                             </div>
                         </div>
                         <a href="#" id="profile-dropdown" data-toggle="dropdown"><i
@@ -119,16 +126,19 @@
                     </a>
                     <div class="collapse" id="product">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link"
-                                    href="{{ route('admin.category') }}"> Category </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.category') }}"> Category
+                                </a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admin.brand') }}">
                                     Brand </a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admin.type') }}">
                                     Type </a></li>
-                            <li class="nav-item"> <a class="nav-link"
-                                    href="{{ route('admin.attribute') }}"> Attribute </a></li>
-                            <li class="nav-item"> <a class="nav-link"
-                                    href="{{ route('admin.product') }}"> Product </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.attribute') }}"> Attribute
+                                </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.product') }}"> Product </a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.stock') }}"> Product Stock
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -142,31 +152,77 @@
                     </a>
                 </li>
                 <li
-                    class="nav-item menu-items {{ Route::is('admin.mall') || Route::is('admin.mall.add') || Route::is('admin.mall.edit') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('admin.mall') }}">
+                    class="nav-item menu-items {{ Route::is('admin.sale') || Route::is('admin.sale.view') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.sale') }}">
                         <span class="menu-icon">
                             <i class="mdi mdi-laptop"></i>
                         </span>
-                        <span class="menu-title">Shopping Mall</span>
+                        <span class="menu-title">Sales</span>
                     </a>
                 </li>
                 <li
-                    class="nav-item menu-items {{ Route::is('admin.eservice') || Route::is('admin.eservice.add') || Route::is('admin.eservice.edit') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('admin.eservice') }}">
+                    class="nav-item menu-items {{ Route::is('admin.ticket') || Route::is('admin.ticket.show') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.ticket') }}">
                         <span class="menu-icon">
-                            <i class="mdi mdi-laptop"></i>
+                            <i class="mdi mdi-speedometer"></i>
                         </span>
-                        <span class="menu-title">Eservice Provider</span>
+                        <span class="menu-title">Tickets</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items {{ Route::is('admin.report') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.report') }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-speedometer"></i>
+                        </span>
+                        <span class="menu-title">Stock Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" data-toggle="collapse" href="#vendor" aria-expanded="false"
+                        aria-controls="vendor">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-security"></i>
+                        </span>
+                        <span class="menu-title">Vendor</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="vendor">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.vendor') }}"> Vendor List
+                                </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.vendor.commision') }}">
+                                    Vendor Commision
+                                </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.vendor.slider') }}"> Vendor
+                                    Slider List
+                                </a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item menu-items {{ Route::is('admin.customer') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.customer') }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-speedometer"></i>
+                        </span>
+                        <span class="menu-title">Customers</span>
                     </a>
                 </li>
                 <li
-                    class="nav-item menu-items {{ Route::is('admin.gvendor') || Route::is('admin.gvendor.add') || Route::is('admin.gvendor.edit') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('admin.gvendor') }}">
+                    class="nav-item menu-items  {{ Route::is('admin.bcategory') || Route::is('admin.bcategory.add') || Route::is('admin.bcategory.edit') || Route::is('admin.blog') || Route::is('admin.blog.add') || Route::is('admin.blog.edit') ? 'active' : '' }}">
+                    <a class="nav-link" data-toggle="collapse" href="#blog" aria-expanded="false" aria-controls="blog">
                         <span class="menu-icon">
-                            <i class="mdi mdi-laptop"></i>
+                            <i class="mdi mdi-security"></i>
                         </span>
-                        <span class="menu-title">General Vendor</span>
+                        <span class="menu-title">Blog</span>
+                        <i class="menu-arrow"></i>
                     </a>
+                    <div class="collapse" id="blog">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.bcategory') }}"> Blog
+                                    Category </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.blog') }}"> Blog</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li
                     class="nav-item menu-items {{ Route::is('admin.vcategory') || Route::is('admin.vcategory.add') || Route::is('admin.vcategory.edit') ? 'active' : '' }}">
@@ -175,6 +231,15 @@
                             <i class="mdi mdi-laptop"></i>
                         </span>
                         <span class="menu-title">Vendor Category</span>
+                    </a>
+                </li>
+                <li
+                    class="nav-item menu-items {{ Route::is('admin.vtype') || Route::is('admin.vtype.add') || Route::is('admin.vtype.edit') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.vtype') }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-laptop"></i>
+                        </span>
+                        <span class="menu-title">Vendor Type</span>
                     </a>
                 </li>
                 <li class="nav-item menu-items">
@@ -188,107 +253,46 @@
                     </a>
                     <div class="collapse" id="front">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link"
-                                    href="{{ route('admin.logo') }}"> Logo </a></li>
-                            <li class="nav-item"> <a class="nav-link"
-                                    href="{{ route('admin.payment') }}"> Payment Method</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.gsetting') }}"> General
+                                    Setting </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.ssetting') }}"> Social
+                                    Setting </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.logo') }}"> Logo </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.payment') }}"> Payment
+                                    Method</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.legality') }}">Legality</a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.faq') }}">Faq's</a></li>
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" data-toggle="collapse" href="#blog" aria-expanded="false"
-                        aria-controls="blog">
+                @role('master')
+                <li
+                    class="nav-item menu-items
+                    {{ Route::is('admin.staff') || Route::is('admin.staff.add') || Route::is('admin.staff.edit') || Route::is('admin.role') || Route::is('admin.role.add') || Route::is('admin.role.edit') || Route::is('admin.permission') || Route::is('admin.permission.add') || Route::is('admin.permission.edit') ? 'active' : '' }}">
+                    <a class="nav-link" data-toggle="collapse" href="#staff" aria-expanded="false"
+                        aria-controls="staff">
                         <span class="menu-icon">
                             <i class="mdi mdi-security"></i>
                         </span>
-                        <span class="menu-title">Blog</span>
+                        <span class="menu-title">Staff Pages</span>
                         <i class="menu-arrow"></i>
                     </a>
-                    <div class="collapse" id="blog">
+                    <div class="collapse" id="staff">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link"
-                                    href="{{ route('admin.bcategory') }}"> Blog Category </a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.staff') }}">Staff</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.role') }}">Role</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.permission') }}">Permission</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
-                {{-- <li class="nav-item menu-items">
-                    <a class="nav-link" data-toggle="collapse" href="#vendor" aria-expanded="false"
-                        aria-controls="vendor">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-security"></i>
-                        </span>
-                        <span class="menu-title">Vendor</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="vendor">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link"
-                                    href="{{ route('admin.vendor') }}"> Vendor </a></li>
-                        </ul>
-                    </div>
-                </li> --}}
-                {{-- <li
-                    class="nav-item menu-items {{ Route::is('admin.slider') || Route::is('admin.slider.add') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('admin.slider') }}">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-speedometer"></i>
-                        </span>
-                        <span class="menu-title">Sliders</span>
-                    </a>
-                </li>
-                <li class="nav-item menu-items {{ Route::is('admin.about') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('admin.about') }}">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-speedometer"></i>
-                        </span>
-                        <span class="menu-title">About Us</span>
-                    </a>
-                </li>
-                <li
-                    class="nav-item menu-items {{ Route::is('admin.category') || Route::is('admin.category.add') || Route::is('admin.category.edit') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('admin.category') }}">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-playlist-play"></i>
-                        </span>
-                        <span class="menu-title">Category</span>
-                    </a>
-                </li>
-                <li
-                    class="nav-item menu-items {{ Route::is('admin.tag') || Route::is('admin.tag.add') || Route::is('admin.tag.edit') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('admin.tag') }}">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-contacts"></i>
-                        </span>
-                        <span class="menu-title">Tag</span>
-                    </a>
-                </li>
-                <li
-                    class="nav-item menu-items {{ Route::is('admin.attribute') || Route::is('admin.attribute.add') || Route::is('admin.attribute.edit') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('admin.attribute') }}">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-contacts"></i>
-                        </span>
-                        <span class="menu-title">Product Attribute</span>
-                    </a>
-                </li>
-                <li
-                    class="nav-item menu-items {{ Route::is('admin.product') || Route::is('admin.product.add') || Route::is('admin.product.edit') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('admin.product') }}">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-laptop"></i>
-                        </span>
-                        <span class="menu-title">Product</span>
-                    </a>
-                </li>
-                <li
-                    class="nav-item menu-items {{ Route::is('admin.orders') || Route::is('admin.orders.show') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('admin.orders') }}">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-chart-bar"></i>
-                        </span>
-                        <span class="menu-title">Product Orders</span>
-                    </a>
-                </li> --}}
+                @endrole
             </ul>
         </nav>
         <!-- partial -->
@@ -318,29 +322,30 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="{{ asset('admin_assets/vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ asset('dk10_master_assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="{{ asset('admin_assets/vendors/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/vendors/progressbar.js/progressbar.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <script src="{{ asset('admin_assets/vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('dk10_master_assets/vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('dk10_master_assets/vendors/progressbar.js/progressbar.min.js') }}"></script>
+    <script src="{{ asset('dk10_master_assets/vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
+    <script src="{{ asset('dk10_master_assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ asset('dk10_master_assets/vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="{{ asset('admin_assets/js/off-canvas.js') }}"></script>
-    <script src="{{ asset('admin_assets/js/hoverable-collapse.js') }}"></script>
-    <script src="{{ asset('admin_assets/js/misc.js') }}"></script>
-    <script src="{{ asset('admin_assets/js/settings.js') }}"></script>
-    <script src="{{ asset('admin_assets/js/todolist.js') }}"></script>
+    <script src="{{ asset('dk10_master_assets/js/off-canvas.js') }}"></script>
+    <script src="{{ asset('dk10_master_assets/js/hoverable-collapse.js') }}"></script>
+    <script src="{{ asset('dk10_master_assets/js/misc.js') }}"></script>
+    <script src="{{ asset('dk10_master_assets/js/settings.js') }}"></script>
+    <script src="{{ asset('dk10_master_assets/js/todolist.js') }}"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="{{ asset('admin_assets/js/dashboard.js') }}"></script>
+    <script src="{{ asset('dk10_master_assets/js/dashboard.js') }}"></script>
     <!-- End custom js for this page -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"
         integrity="sha512-GDey37RZAxFkpFeJorEUwNoIbkTwsyC736KNSYucu1WJWFK9qTdzYub8ATxktr6Dwke7nbFaioypzbDOQykoRg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.tiny.cloud/1/kntejrprjs5hetwm4fh98wy0isd70b1bw75id5v6ncrxugab/tinymce/5/tinymce.min.js"
@@ -355,12 +360,30 @@
             }
         });
     </script>
+    <script type="text/javascript">
+        var options = {
+            "backdrop": "static",
+            "show": true
+        }
+        window.addEventListener('showVendor', function(event) {
+            $('#vendorView').modal(options);
+        });
+    </script>
+    <script type="text/javascript">
+        var options = {
+            "backdrop": "static",
+            "show": true
+        }
+        window.addEventListener('showCustomer', function(event) {
+            $('#customerView').modal(options);
+        });
+    </script>
 
     {{-- <script src="{{ asset('js/app.js') }}"></script>
     <script>
         Echo.channel('events')
             .listen('RealTimeMessage', (e) => console.log('RealTimeMessage: ' + e.message));
-  </script> --}}
+    </script> --}}
     @stack('scripts')
 
     @livewireScripts

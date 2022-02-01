@@ -5,12 +5,14 @@ namespace App\Http\Livewire\Admin\Vcategory;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\Vcategory;
+use App\Traits\RoleAndPermissionTrait;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 
 class AdminEditVcategoryComponent extends Component
 {
     use WithFileUploads;
+    use RoleAndPermissionTrait;
 
     public $name;
     public $slug;
@@ -21,6 +23,7 @@ class AdminEditVcategoryComponent extends Component
 
     public function mount($vcategory_slug)
     {
+        $this->authorizeRoleOrPermission('master|edit-vcategory');
         $vcategory = Vcategory::where('slug', $vcategory_slug)->first();
         $this->vcategory_id = $vcategory->id;
         $this->name = $vcategory->name;

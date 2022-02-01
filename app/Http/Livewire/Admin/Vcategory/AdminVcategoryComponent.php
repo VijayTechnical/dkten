@@ -4,11 +4,13 @@ namespace App\Http\Livewire\Admin\Vcategory;
 
 use Livewire\Component;
 use App\Models\Vcategory;
+use App\Traits\RoleAndPermissionTrait;
 use Livewire\WithPagination;
 
 class AdminVcategoryComponent extends Component
 {
     use WithPagination;
+    use RoleAndPermissionTrait;
 
     public $searchTerm;
     public $paginate;
@@ -20,6 +22,7 @@ class AdminVcategoryComponent extends Component
 
     public function deleteVcategory($id)
     {
+        $this->authorizeRoleOrPermission('master|delete-vcategory');
         $vcategory = Vcategory::find($id);
         if ($vcategory->image) {
             unlink(storage_path('app/public/vcategory/' . $vcategory->image));

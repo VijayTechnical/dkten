@@ -5,10 +5,12 @@ namespace App\Http\Livewire\Admin\Bcategory;
 use Livewire\Component;
 use App\Models\Bcategory;
 use Livewire\WithPagination;
+use App\Traits\RoleAndPermissionTrait;
 
 class AdminBcategoryComponent extends Component
 {
     use WithPagination;
+    use RoleAndPermissionTrait;
 
     public $searchTerm;
     public $paginate;
@@ -20,6 +22,7 @@ class AdminBcategoryComponent extends Component
 
     public function deleteBcategory($id)
     {
+        $this->authorizeRoleOrPermission('master|delete-blog-attribute');
         $vcategory = Bcategory::find($id);
         $vcategory->delete();
         $this->dispatchBrowserEvent(

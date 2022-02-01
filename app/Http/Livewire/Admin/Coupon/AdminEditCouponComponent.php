@@ -3,11 +3,14 @@
 namespace App\Http\Livewire\Admin\Coupon;
 
 use App\Models\Coupon;
+use App\Traits\RoleAndPermissionTrait;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
 class AdminEditCouponComponent extends Component
 {
+    use RoleAndPermissionTrait;
+
     public $code;
     public $type;
     public $value;
@@ -17,6 +20,7 @@ class AdminEditCouponComponent extends Component
 
     public function mount($coupon_id)
     {
+        $this->authorizeRoleOrPermission('master|edit-coupon');
         $this->$coupon_id = $coupon_id;
         $coupon = Coupon::find($this->coupon_id);
         $this->code = $coupon->code;

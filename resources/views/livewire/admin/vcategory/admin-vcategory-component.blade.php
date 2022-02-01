@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Vendor Category Table
                         <a href="{{ route('admin.vcategory.add') }}"
-                            class="btn btn-success create-new-button float-right">+ Add Vendor Category</a>
+                            class="btn btn-light create-new-button float-right">+ Add Vendor Category</a>
                     </h4>
                     <div class="table-header">
                         <form action="#" class="mt-1">

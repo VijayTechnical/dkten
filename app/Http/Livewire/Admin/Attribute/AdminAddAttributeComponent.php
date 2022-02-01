@@ -3,12 +3,20 @@
 namespace App\Http\Livewire\Admin\Attribute;
 
 use App\Models\Attribute;
+use App\Traits\RoleAndPermissionTrait;
+use GuzzleHttp\Middleware;
 use Livewire\Component;
 
 class AdminAddAttributeComponent extends Component
 {
-
     public $name;
+
+    use RoleAndPermissionTrait;
+
+    public function mount()
+    {
+        $this->authorizeRoleOrPermission('master|add-attribute');
+    }
 
     public function updated($fields)
     {

@@ -4,11 +4,14 @@ namespace App\Http\Livewire\Admin\Category;
 
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\SubCategory;
 use Livewire\WithPagination;
+use App\Traits\RoleAndPermissionTrait;
 
 class AdminCategoryComponent extends Component
 {
     use WithPagination;
+    use RoleAndPermissionTrait;
 
     public $paginate;
     public $searchTerm;
@@ -18,8 +21,9 @@ class AdminCategoryComponent extends Component
         $this->paginate = 10;
     }
 
-    public function statusUpdate($id)
+    public function changeStatus($id)
     {
+        $this->authorizeRoleOrPermission('master|change-category-status');
         $category = Category::findOrFail($id);
         $category->status = !$category->status;
         $category->save();
@@ -28,6 +32,7 @@ class AdminCategoryComponent extends Component
 
     public function deleteCategory($id)
     {
+        $this->authorizeRoleOrPermission('master|delete-category');
         $category = Category::find($id);
         if ($category->image) {
             unlink(storage_path('app/public/category/' . $category->image));
@@ -35,6 +40,18 @@ class AdminCategoryComponent extends Component
         $category->delete();
         $this->dispatchBrowserEvent('alert',
         ['type' => 'success',  'message' => 'Category Deleted Successfully!']);
+    }
+
+    public function deleteSubCategory($id)
+    {
+        $this->authorizeRoleOrPermission('master|delete-sub-category');
+        $subcategory = SubCategory::find($id);
+        if ($subcategory->image) {
+            unlink(storage_path('app/public/category/' . $subcategory->image));
+        }
+        $subcategory->delete();
+        $this->dispatchBrowserEvent('alert',
+        ['type' => 'success',  'message' => 'subcategory Deleted Successfully!']);
     }
 
 

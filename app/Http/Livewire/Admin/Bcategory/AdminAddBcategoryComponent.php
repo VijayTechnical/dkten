@@ -5,11 +5,18 @@ namespace App\Http\Livewire\Admin\Bcategory;
 use Livewire\Component;
 use App\Models\Bcategory;
 use Illuminate\Support\Str;
+use App\Traits\RoleAndPermissionTrait;
 
 class AdminAddBcategoryComponent extends Component
 {
+    use RoleAndPermissionTrait;
     public $name;
     public $slug;
+
+    public function mount()
+    {
+        $this->authorizeRoleOrPermission('master|add-blog-attribute');
+    }
 
     public function generateSlug()
     {

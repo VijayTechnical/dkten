@@ -5,11 +5,13 @@ namespace App\Http\Livewire\Admin\Attribute;
 use Livewire\Component;
 use App\Models\Attribute;
 use Livewire\WithPagination;
+use App\Traits\RoleAndPermissionTrait;
 
 class AdminAttributeComponent extends Component
 {
 
     use WithPagination;
+    use RoleAndPermissionTrait;
 
     public $paginate;
     public $searchTerm;
@@ -20,6 +22,7 @@ class AdminAttributeComponent extends Component
     }
     public function deleteAttribute($id)
     {
+        $this->authorizeRoleOrPermission('master|delete-attribute');
         $attribute = Attribute::find($id);
         $attribute->delete();
         $this->dispatchBrowserEvent('alert',

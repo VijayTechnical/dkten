@@ -5,16 +5,20 @@ namespace App\Http\Livewire\Admin\Bcategory;
 use Livewire\Component;
 use App\Models\Bcategory;
 use Illuminate\Support\Str;
+use App\Traits\RoleAndPermissionTrait;
 
 class AdminEditBcategoryComponent extends Component
 {
+    use RoleAndPermissionTrait;
 
     public $name;
     public $slug;
     public $bcategory_id;
 
+
     public function mount($bcategory_slug)
     {
+        $this->authorizeRoleOrPermission('master|edit-blog-attribute');
         $vcategory = Bcategory::where('slug', $bcategory_slug)->first();
         $this->bcategory_id = $vcategory->id;
         $this->name = $vcategory->name;

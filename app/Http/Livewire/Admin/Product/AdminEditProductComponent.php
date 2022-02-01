@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Product;
 
 use Carbon\Carbon;
 use App\Models\Type;
+use App\Models\Brand;
 use App\Models\Product;
 use App\Models\SubType;
 use Livewire\Component;
@@ -13,15 +14,16 @@ use App\Models\SubCategory;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use App\Models\AttributeValue;
+use App\Traits\RoleAndPermissionTrait;
 use Illuminate\Support\Facades\Auth;
 
 class AdminEditProductComponent extends Component
 {
     use WithFileUploads;
+    use RoleAndPermissionTrait;
 
     public $title;
     public $slug;
-    public $user_id;
     public $category_id;
     public $sub_category_id;
     public $type_id;
@@ -51,6 +53,7 @@ class AdminEditProductComponent extends Component
 
     public function mount($slug)
     {
+        $this->authorizeRoleOrPermission('master|add-product');
         $product = Product::where('slug', $slug)->first();
         $this->product_id = $product->id;
         $this->title = $product->title;
@@ -63,6 +66,7 @@ class AdminEditProductComponent extends Component
         $this->sub_type_id = $product->sub_type_id;
         $this->unit = $product->unit;
         $this->tags = $product->tags;
+        $this->images = all_product_image($this->product_id);
         $this->images = $product->images;
         $this->description = $product->description;
         $this->seo_title = $product->seo_title;
@@ -75,8 +79,8 @@ class AdminEditProductComponent extends Component
         $this->status = $product->status;
         $this->t_deal = $product->t_deal;
         $this->featured = $product->featured;
-        $this->inputs = $product->AttributeValues->where('product_id')->unique('attribute_id')->pluck('attribute_id');
-        $this->attribute_arr = $product->AttributeValues->where('product_id')->unique('attribute_id')->pluck('attribute_id');
+        $this->inputs = $product->AttributeValue->where('product_id')->unique('attribute_id')->pluck('attribute_id');
+        $this->attribute_arr = $product->AttributeValue->where('product_id')->unique('attribute_id')->pluck('attribute_id');
 
         foreach ($this->attribute_arr as $a_arr) {
             $allattributeValue = AttributeValue::where('product_id', $product->id)->where('attribute_id', $a_arr)->get()->pluck('value');
@@ -115,7 +119,6 @@ class AdminEditProductComponent extends Component
             'category_id' => 'required|integer',
             'sub_category_id' => 'required|integer',
             'type_id' => 'required|integer',
-            'sub_type_id' => 'required|integer',
             'unit' => 'required',
             'tags' => 'required',
             'images' => 'required',
@@ -139,7 +142,6 @@ class AdminEditProductComponent extends Component
             'category_id' => 'required|integer',
             'sub_category_id' => 'required|integer',
             'type_id' => 'required|integer',
-            'sub_type_id' => 'required|integer',
             'unit' => 'required',
             'tags' => 'required',
             'images' => 'required',
@@ -157,12 +159,15 @@ class AdminEditProductComponent extends Component
         $product = Product::find($this->product_id);
         $product->title = $this->title;
         $product->slug = $this->slug;
-        $product->user_id = Auth::guard('admin')->user()->id;
+        $product->admin_id = Auth::guard('admin')->user()->id;
         $product->category_id = $this->category_id;
         $product->sub_category_id = $this->sub_category_id;
         $product->type_id = $this->type_id;
         $product->brand_id = $this->brand_id;
-        $product->sub_type_id = $this->sub_type_id;
+        if($this->sub_type_id)
+        {
+            $product->sub_type_id = $this->sub_type_id;
+        }
         $product->unit = $this->unit;
         $product->tags = $this->tags;
         if ($this->newimages) {
@@ -218,11 +223,12 @@ class AdminEditProductComponent extends Component
 
     public function render()
     {
-        $categories = Category::where('status','active')->orderBy('created_at','DESC')->get();
-        $sub_categories = SubCategory::where('status','active')->where('category_id',$this->category_id)->orderBy('created_at','DESC')->get();
-        $types = Type::where('status','active')->where('category_id',$this->category_id)->where('sub_category_id',$this->sub_category_id)->orderBy('created_at','DESC')->get();
-        $sub_types = SubType::where('status','active')->where('type_id',$this->type_id)->orderBy('created_at','DESC')->get();
+        $categories = Category::where('status',true)->orderBy('created_at','DESC')->get();
+        $sub_categories = SubCategory::where('status',true)->where('category_id',$this->category_id)->orderBy('created_at','DESC')->get();
+        $types = Type::where('status',true)->where('category_id',$this->category_id)->where('sub_category_id',$this->sub_category_id)->orderBy('created_at','DESC')->get();
+        $sub_types = SubType::where('status',true)->where('type_id',$this->type_id)->orderBy('created_at','DESC')->get();
         $parrributes = Attribute::all();
-        return view('livewire.admin.product.admin-edit-product-component',['categories'=>$categories,'sub_categories'=>$sub_categories,'types'=>$types,'sub_types'=>$sub_types,'pattributes'=>$parrributes])->layout('layouts.admin');
+        $brands = Brand::where('status',true)->orderBy('created_at','DESC')->get();
+        return view('livewire.admin.product.admin-edit-product-component',['categories'=>$categories,'sub_categories'=>$sub_categories,'types'=>$types,'sub_types'=>$sub_types,'pattributes'=>$parrributes,'brands'=>$brands])->layout('layouts.admin');
     }
 }

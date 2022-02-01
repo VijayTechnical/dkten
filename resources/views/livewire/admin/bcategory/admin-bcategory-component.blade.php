@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Blog Category Table
                         <a href="{{ route('admin.bcategory.add') }}"
-                            class="btn btn-success create-new-button float-right">+ Add Blog Category</a>
+                            class="btn btn-light create-new-button float-right">+ Add Blog Category</a>
                     </h4>
                     <div class="table-header">
                         <form action="#" class="mt-1">

@@ -24,4 +24,9 @@ class SubCategory extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function Type()
+    {
+        return $this->hasMany(Type::class);
+    }
+
 }

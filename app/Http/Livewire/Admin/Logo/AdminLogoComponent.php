@@ -4,12 +4,14 @@ namespace App\Http\Livewire\Admin\Logo;
 
 use Carbon\Carbon;
 use App\Models\Logo;
+use App\Traits\RoleAndPermissionTrait;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class AdminLogoComponent extends Component
 {
     use WithFileUploads;
+    use RoleAndPermissionTrait;
 
     public $admin_logo;
     public $home_header_logo;
@@ -23,6 +25,7 @@ class AdminLogoComponent extends Component
 
     public function mount()
     {
+        $this->authorizeRoleOrPermission('master|update-logo');
         $logo = Logo::find(1);
         if ($logo) {
             $this->admin_logo = $logo->admin_logo;

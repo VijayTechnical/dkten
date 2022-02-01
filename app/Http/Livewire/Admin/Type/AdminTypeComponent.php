@@ -3,12 +3,14 @@
 namespace App\Http\Livewire\Admin\Type;
 
 use App\Models\Type;
+use App\Traits\RoleAndPermissionTrait;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class AdminTypeComponent extends Component
 {
     use WithPagination;
+    use RoleAndPermissionTrait;
 
     public $paginate;
     public $searchTerm;
@@ -18,8 +20,9 @@ class AdminTypeComponent extends Component
         $this->paginate = 10;
     }
 
-    public function statusUpdate($id)
+    public function changeStatus($id)
     {
+        $this->authorizeRoleOrPermission('master|change-type-status');
         $type = Type::findOrFail($id);
         $type->status = !$type->status;
         $type->save();
@@ -27,6 +30,7 @@ class AdminTypeComponent extends Component
 
     public function deleteType($id)
     {
+        $this->authorizeRoleOrPermission('master|delete-type');
         $type = type::find($id);
         if ($type->image) {
             unlink(storage_path('app/public/type/' . $type->image));

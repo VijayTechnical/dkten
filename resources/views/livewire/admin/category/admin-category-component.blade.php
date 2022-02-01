@@ -19,7 +19,6 @@
             margin-left: 12px;
 
         }
-
     </style>
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
@@ -27,7 +26,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Category Table
                         <a href="{{ route('admin.category.add') }}"
-                            class="btn btn-success create-new-button float-right">+ Add Category</a>
+                            class="btn btn-light create-new-button float-right">+ Add Category</a>
                     </h4>
                     <div class="table-header">
                         <form action="#" class="mt-1">
@@ -67,47 +66,51 @@
                             </thead>
                             <tbody>
                                 @foreach ($categories as $key => $category)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td class="py-1">
-                                            <img src="{{ asset('/storage/category') }}/{{ $category->image }}"
-                                                alt="{{ $category->name }}" />
-                                        </td>
-                                        <td>
-                                            {{ $category->name }}
-                                        </td>
-                                        <td>
-                                            <label wire:click.prevent="statusUpdate({{ $category->id }})"
-                                                style="cursor: pointer;"
-                                                class="badge badge-{{ $category->status ? 'success' : 'danger' }}">{{ $category->status ? 'Yes' : 'No' }}</label>
-                                        </td>
-                                        <td>
-                                            <ul class="list-star">
-                                                @foreach ($category->SubCategory as $sub_category)
-                                                    <li class="sub-category">
-                                                        {{ $sub_category->name }}
-                                                        <a class="slink"
-                                                            href="{{ route('admin.category.edit', ['category_slug' => $category->slug, 'sub_category_slug' => $sub_category->slug]) }}"><i
-                                                                class="mdi mdi-briefcase-edit"></i>
-                                                        </a>
-                                                        <a class="slink" href="#"
-                                                            onclick="confirm('Are you sure you want to delete the subcategory?') || event.stopImmediatePropagation()"
-                                                            wire:click.prevent="deleteSubCategory({{ $sub_category->id }})"><i
-                                                                class="mdi mdi-delete"></i>
-                                                        </a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        </td>
-                                        <td>{{ $category->created_at->diffForHumans() }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.category.edit', ['category_slug' => $category->slug]) }}"
-                                                class="btn btn-primary"><i class="mdi mdi-briefcase-edit"></i></a>
-                                            <a href="#"
-                                                onclick="confirm('Are you sure you want to delete the category?') || event.stopImmediatePropagation()"
-                                                wire:click.prevent="deleteCategory({{ $category->id }})"
-                                                class="btn btn-danger"><i class="mdi mdi-delete"></i></a>
-                                    </tr>
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td class="py-1">
+                                        <img src="{{ asset('/storage/category') }}/{{ $category->image }}"
+                                            alt="{{ $category->name }}" />
+                                    </td>
+                                    <td>
+                                        {{ $category->name }}
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-{{ $category->status ? 'success' : 'danger' }}">{{
+                                            $category->status ? 'Approved' : 'Pending' }}</label>
+                                    </td>
+                                    <td>
+                                        <ul class="list-star">
+                                            @foreach ($category->SubCategory as $sub_category)
+                                            <li class="sub-category">
+                                                {{ $sub_category->name }}
+                                                <a class="slink"
+                                                    href="{{ route('admin.category.edit', ['category_slug' => $category->slug, 'sub_category_slug' => $sub_category->slug]) }}"><i
+                                                        class="mdi mdi-briefcase-edit"></i>
+                                                </a>
+                                                <a class="slink" href="#"
+                                                    onclick="confirm('Are you sure you want to delete the subcategory?') || event.stopImmediatePropagation()"
+                                                    wire:click.prevent="deleteSubCategory({{ $sub_category->id }})"><i
+                                                        class="mdi mdi-delete"></i>
+                                                </a>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
+                                    <td>{{ $category->created_at->diffForHumans() }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.category.edit', ['category_slug' => $category->slug]) }}"
+                                            class="btn btn-primary"><i class="mdi mdi-briefcase-edit"></i></a>
+                                        <a href="#" class="btn btn-{{ $category->status ? 'warning' : 'success'
+                                                }}"
+                                            onclick="confirm('Are you sure you want to change the category status?') || event.stopImmediatePropagation()"
+                                            wire:click.prevent="changeStatus({{ $category->id }})"><i class="mdi mdi-{{
+                                                            $category->status ? 'minus-circle' : 'check' }}"></i></a>
+                                        <a href="#"
+                                            onclick="confirm('Are you sure you want to delete the category?') || event.stopImmediatePropagation()"
+                                            wire:click.prevent="deleteCategory({{ $category->id }})"
+                                            class="btn btn-danger"><i class="mdi mdi-delete"></i></a>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

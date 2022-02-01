@@ -3,16 +3,24 @@
 namespace App\Http\Livewire\Admin\Coupon;
 
 use App\Models\Coupon;
+use App\Traits\RoleAndPermissionTrait;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
 class AdminAddCouponComponent extends Component
 {
+    use RoleAndPermissionTrait;
+    
     public $code;
     public $type;
     public $value;
     public $cart_value;
     public $expiry_date;
+
+    public function mount()
+    {
+        $this->authorizeRoleOrPermission('master|add-coupon');
+    }
 
     public function updated($fields)
     {
@@ -36,7 +44,7 @@ class AdminAddCouponComponent extends Component
         ]);
 
         $coupon = new Coupon();
-        $coupon->user_id = Auth::guard('admin')->user()->id;
+        $coupon->admin_id = Auth::guard('admin')->user()->id;
         $coupon->code = $this->code;
         $coupon->type = $this->type;
         $coupon->value = $this->value;

@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <h4 class="card-title">attribute Table
                         <a href="{{ route('admin.attribute.add') }}"
-                            class="btn btn-success create-new-button float-right">+ Add Attribute</a>
+                            class="btn btn-light create-new-button float-right">+ Add Attribute</a>
                     </h4>
                     <div class="table-header">
                         <form action="#" class="mt-1">
@@ -51,21 +51,21 @@
                             </thead>
                             <tbody>
                                 @foreach ($attributes as $key => $attribute)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>
-                                            {{ $attribute->name }}
-                                        </td>
-                                        <td>{{ $attribute->created_at->diffForHumans() }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.attribute.edit', ['attribute_name' => $attribute->name]) }}"
-                                                class="btn btn-primary"><i class="mdi mdi-briefcase-edit"></i></a>
-                                            <a href="#"
-                                                onclick="confirm('Are you sure you want to delete the attribute?') || event.stopImmediatePropagation()"
-                                                wire:click.prevent="deleteAttribute({{ $attribute->id }})"
-                                                class="btn btn-danger"><i class="mdi mdi-delete"></i></a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>
+                                        {{ $attribute->name }}
+                                    </td>
+                                    <td>{{ $attribute->created_at->diffForHumans() }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.attribute.edit', ['attribute_name' => $attribute->name]) }}"
+                                            class="btn btn-primary"><i class="mdi mdi-briefcase-edit"></i></a>
+                                        <a href="#"
+                                            onclick="confirm('Are you sure you want to delete the attribute?') || event.stopImmediatePropagation()"
+                                            wire:click.prevent="deleteAttribute({{ $attribute->id }})"
+                                            class="btn btn-danger"><i class="mdi mdi-delete"></i></a>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

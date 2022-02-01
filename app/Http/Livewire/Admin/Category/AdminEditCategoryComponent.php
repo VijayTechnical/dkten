@@ -6,12 +6,14 @@ use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\SubCategory;
+use App\Traits\RoleAndPermissionTrait;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 
 class AdminEditCategoryComponent extends Component
 {
     use WithFileUploads;
+    use RoleAndPermissionTrait;
 
     public $name;
     public $slug;
@@ -24,6 +26,7 @@ class AdminEditCategoryComponent extends Component
 
     public function mount($category_slug, $sub_category_slug = null)
     {
+        $this->authorizeRoleOrPermission('master|edit-category');
         if ($sub_category_slug) {
             $this->sub_category_slug = $sub_category_slug;
             $category = SubCategory::where('slug', $this->sub_category_slug)->first();
@@ -54,7 +57,7 @@ class AdminEditCategoryComponent extends Component
         {
             $this->validateOnly($fields, [
                 'name' => 'required',
-                'slug' => 'required|unique:sub_categories,slug,' . $this->category_id,
+                'slug' => 'required',
                 'newimage' => 'required|mimes:png,jpg'
             ]);
         }
@@ -70,10 +73,10 @@ class AdminEditCategoryComponent extends Component
     public function editCategory()
     {
 
-        if ($this->category_id) {
+        if ($this->sub_category_slug) {
             $this->validate([
                 'name' => 'required',
-                'slug' => 'required|unique:sub_categories,slug,' . $this->category_id,
+                'slug' => 'required',
             ]);
             $category = SubCategory::find($this->category_id);
             $category->name = $this->name;
@@ -92,7 +95,7 @@ class AdminEditCategoryComponent extends Component
                 $category->image = $this->image;
             }
             $category->category_id = $this->parent_category_id;
-            $category->status = 'active';
+            $category->status = true;
             $category->save();
         } else {
             $this->validate([

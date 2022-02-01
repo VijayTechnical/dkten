@@ -4,15 +4,22 @@ namespace App\Http\Livewire\Admin\Payment;
 
 use Carbon\Carbon;
 use App\Models\Payment;
+use App\Traits\RoleAndPermissionTrait;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class AdminAddPaymentComponent extends Component
 {
     use WithFileUploads;
+    use RoleAndPermissionTrait;
 
     public $name;
     public $image;
+
+    public function mount()
+    {
+        $this->authorizeRoleOrPermission('master|add-payment-method');
+    }
 
     public function updated($fields)
     {

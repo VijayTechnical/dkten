@@ -9,11 +9,13 @@ use App\Models\SubType;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\SubCategory;
+use App\Traits\RoleAndPermissionTrait;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 
 class AdminEditTypeComponent extends Component
 {
+    use RoleAndPermissionTrait;
     use WithFileUploads;
 
     public $name;
@@ -31,6 +33,7 @@ class AdminEditTypeComponent extends Component
 
     public function mount($type_slug, $sub_type_slug = null,)
     {
+        $this->authorizeRoleOrPermission('master|edit-type');
         if ($sub_type_slug) {
             $this->sub_type_slug = $sub_type_slug;
             $type = SubType::where('slug', $this->sub_type_slug)->first();
@@ -80,14 +83,18 @@ class AdminEditTypeComponent extends Component
             $this->validateOnly($fields, [
                 'name' => 'required',
                 'slug' => 'required|unique:sub_types,slug,'.$this->type_id,
-                'newimage' => 'required|mimes:png,jpg'
+                'newimage' => 'required|mimes:png,jpg',
+                'sel_brands' => 'required'
             ]);
         }
         else{
             $this->validateOnly($fields, [
                 'name' => 'required',
                 'slug' => 'required|unique:types,slug,'.$this->type_id,
-                'newimage' => 'required|mimes:png,jpg'
+                'newimage' => 'required|mimes:png,jpg',
+                'category_id' => 'required',
+                'sub_category_id' => 'required',
+                'sel_brands' => 'required'
             ]);
         }
     }
@@ -95,10 +102,11 @@ class AdminEditTypeComponent extends Component
     public function editType()
     {
 
-        if ($this->type_id) {
+        if ($this->sub_type_slug) {
             $this->validate([
                 'name' => 'required',
                 'slug' => 'required|unique:sub_types,slug,'.$this->type_id,
+                'sel_brands' => 'required'
             ]);
             $type = SubType::find($this->type_id);
             $type->name = $this->name;
@@ -125,6 +133,9 @@ class AdminEditTypeComponent extends Component
             $this->validate([
                 'name' => 'required',
                 'slug' => 'required|unique:types,slug,'.$this->type_id,
+                'category_id' => 'required',
+                'sub_category_id' => 'required',
+                'sel_brands' => 'required'
             ]);
             $type = Type::find($this->type_id);
             $type->name = $this->name;

@@ -5,17 +5,24 @@ namespace App\Http\Livewire\Admin\Vcategory;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\Vcategory;
+use App\Traits\RoleAndPermissionTrait;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 
 class AdminAddVcategoryComponent extends Component
 {
+    use RoleAndPermissionTrait;
     use WithFileUploads;
 
     public $name;
     public $slug;
     public $image;
     public $description;
+
+    public function mount()
+    {
+        $this->authorizeRoleOrPermission('master|add-vcategory');
+    }
 
     public function generateSlug()
     {

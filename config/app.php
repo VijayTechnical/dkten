@@ -14,6 +14,9 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'esewa_merchent' => env('ESEWA_MERCHENT'),
+    'khalti_public_key' => env('KHALTI_PUBLIC_KEY'),
+    'khalti_secret_key' => env('KHALTI_SECRET_KEY'),
 
     /*
     |--------------------------------------------------------------------------
@@ -174,6 +177,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class, 
 
     ],
 
@@ -229,7 +235,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
     ],
 
 ];
+
+

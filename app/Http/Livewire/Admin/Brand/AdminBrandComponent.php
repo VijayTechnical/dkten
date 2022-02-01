@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Brand;
 
 use App\Models\Brand;
+use App\Traits\RoleAndPermissionTrait;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -10,6 +11,7 @@ class AdminBrandComponent extends Component
 {
 
     use WithPagination;
+    use RoleAndPermissionTrait;
 
     public $paginate;
     public $searchTerm;
@@ -19,8 +21,9 @@ class AdminBrandComponent extends Component
         $this->paginate = 10;
     }
 
-    public function statusUpdate($id)
+    public function changeStatus($id)
     {
+        $this->authorizeRoleOrPermission('master|change-brand-status');
         $brand = Brand::findOrFail($id);
         $brand->status = !$brand->status;
         $brand->save();
@@ -28,6 +31,7 @@ class AdminBrandComponent extends Component
 
     public function deleteBrand($id)
     {
+        $this->authorizeRoleOrPermission('master|delete-brand');
         $brand = Brand::find($id);
         if ($brand->image) {
             unlink(storage_path('app/public/brand/' . $brand->image));

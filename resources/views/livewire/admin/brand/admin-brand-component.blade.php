@@ -13,8 +13,8 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Brand Table
-                        <a href="{{ route('admin.brand.add') }}"
-                            class="btn btn-success create-new-button float-right">+ Add brand</a>
+                        <a href="{{ route('admin.brand.add') }}" class="btn btn-light create-new-button float-right">+
+                            Add brand</a>
                     </h4>
                     <div class="table-header">
                         <form action="#" class="mt-1">
@@ -53,29 +53,33 @@
                             </thead>
                             <tbody>
                                 @foreach ($brands as $key => $brand)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td class="py-1">
-                                            <img src="{{ asset('/storage/brand') }}/{{ $brand->image }}"
-                                                alt="{{ $brand->name }}" />
-                                        </td>
-                                        <td>
-                                            {{ $brand->name }}
-                                        </td>
-                                        <td>
-                                            <label wire:click.prevent="statusUpdate({{ $brand->id }})"
-                                                style="cursor: pointer;"
-                                                class="badge badge-{{ $brand->status ? 'success' : 'danger' }}">{{ $brand->status ? 'Yes' : 'No' }}</label>
-                                        </td>
-                                        <td>{{ $brand->created_at->diffForHumans() }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.brand.edit', ['slug' => $brand->slug]) }}"
-                                                class="btn btn-primary"><i class="mdi mdi-briefcase-edit"></i></a>
-                                            <a href="#"
-                                                onclick="confirm('Are you sure you want to delete the brand?') || event.stopImmediatePropagation()"
-                                                wire:click.prevent="deleteBrand({{ $brand->id }})"
-                                                class="btn btn-danger"><i class="mdi mdi-delete"></i></a>
-                                    </tr>
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td class="py-1">
+                                        <img src="{{ asset('/storage/brand') }}/{{ $brand->image }}"
+                                            alt="{{ $brand->name }}" />
+                                    </td>
+                                    <td>
+                                        {{ $brand->name }}
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-{{ $brand->status ? 'success' : 'danger' }}">{{
+                                            $brand->status ? 'Approved' : 'Pending' }}</label>
+                                    </td>
+                                    <td>{{ $brand->created_at->diffForHumans() }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.brand.edit', ['slug' => $brand->slug]) }}"
+                                            class="btn btn-primary"><i class="mdi mdi-briefcase-edit"></i></a>
+                                        <a href="#" class="btn btn-{{ $brand->status ? 'warning' : 'success'
+                                                }}"
+                                            onclick="confirm('Are you sure you want to change the brand status?') || event.stopImmediatePropagation()"
+                                            wire:click.prevent="changeStatus({{ $brand->id }})"><i class="mdi mdi-{{
+                                                            $brand->status ? 'minus-circle' : 'check' }}"></i></a>
+                                        <a href="#"
+                                            onclick="confirm('Are you sure you want to delete the brand?') || event.stopImmediatePropagation()"
+                                            wire:click.prevent="deleteBrand({{ $brand->id }})" class="btn btn-danger"><i
+                                                class="mdi mdi-delete"></i></a>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

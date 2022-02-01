@@ -58,7 +58,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button type="submit" id="submit" class="btn btn-primary mr-2">Submit</button>
                         <a href="{{ route('admin.vcategory') }}" class="btn btn-dark">Back</a>
                     </form>
                 </div>
@@ -67,18 +67,12 @@
     </div>
 </div>
 @push('scripts')
-    <script>
-        $(function() {
-            tinymce.init({
-                selector: '#description',
-                setup: function(editor) {
-                    editor.on('Change', function(e) {
-                        tinyMCE.triggerSave();
-                        var d_data = $('#description').val();
-                        @this.set('description', d_data);
-                    });
-                }
+<script>
+    $(document).ready(function() {
+            const editor1 = CKEDITOR.replace('description');
+            document.querySelector("#submit").addEventListener("click", () => {
+                @this.set('description', editor1.getData());
             });
         });
-    </script>
+</script>
 @endpush

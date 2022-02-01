@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Brand;
 use Livewire\Component;
 use App\Models\Category;
+use App\Traits\RoleAndPermissionTrait;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 
@@ -13,6 +14,7 @@ class AdminEditBrandComponent extends Component
 {
 
     use WithFileUploads;
+    use RoleAndPermissionTrait;
 
     public $name;
     public $slug;
@@ -23,6 +25,7 @@ class AdminEditBrandComponent extends Component
 
     public function mount($slug)
     {
+        $this->authorizeRoleOrPermission('master|edit-brand');
         $brand = Brand::where('slug', $slug)->first();
         $this->brand_id = $brand->id;
         $this->name = $brand->name;

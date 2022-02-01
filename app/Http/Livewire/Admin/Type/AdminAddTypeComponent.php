@@ -9,11 +9,13 @@ use App\Models\SubType;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\SubCategory;
+use App\Traits\RoleAndPermissionTrait;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 
 class AdminAddTypeComponent extends Component
 {
+    use RoleAndPermissionTrait;
     use WithFileUploads;
 
     public $name;
@@ -25,6 +27,11 @@ class AdminAddTypeComponent extends Component
     public $sub_category_id;
     public $sel_brands = [];
 
+    public function mount()
+    {
+        $this->authorizeRoleOrPermission('master|add-type');
+    }
+
     public function generateslug()
     {
         $this->slug = Str::slug($this->name);
@@ -35,7 +42,10 @@ class AdminAddTypeComponent extends Component
         $this->validateOnly($fields, [
             'name' => 'required',
             'slug' => 'required|unique:categories',
-            'image' => 'required|mimes:png,jpg'
+            'image' => 'required|mimes:png,jpg',
+            'sel_brands' => 'required',
+            'category_id' => 'required',
+            'sub_category_id' => 'required'
         ]);
     }
 
@@ -44,6 +54,7 @@ class AdminAddTypeComponent extends Component
         $this->validate([
             'name' => 'required',
             'slug' => 'required|unique:categories',
+            'sel_brands' => 'required'
         ]);
 
         if ($this->type_id) {
@@ -71,6 +82,10 @@ class AdminAddTypeComponent extends Component
             $type->status = true;
             $type->save();
         } else {
+            $this->validate([
+                'category_id' => 'required',
+                'sub_category_id' => 'required'
+            ]);
             $type = new Type();
             $type->name = $this->name;
             $type->slug = $this->slug;

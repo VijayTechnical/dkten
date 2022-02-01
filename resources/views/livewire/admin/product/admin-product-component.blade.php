@@ -13,8 +13,8 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title"> Products Table
-                        <a href="{{ route('admin.product.add') }}"
-                            class="btn btn-success create-new-button float-right">+ Add Products</a>
+                        <a href="{{ route('admin.product.add') }}" class="btn btn-light create-new-button float-right">+
+                            Add Products</a>
                     </h4>
                     <div class="table-header">
                         <form action="#" class="mt-1">
@@ -56,48 +56,60 @@
                             </thead>
                             <tbody>
                                 @foreach ($products as $key => $product)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        @php
-                                            $images = explode(',', $product->images);
-                                        @endphp
-                                        <td class="py-1">
-                                            @foreach ($images as $key => $image)
-                                                @if ($key === 1)
-                                                    <img src="{{ asset('/storage/product') }}/{{ $image }}"
-                                                        alt="{{ $product->title }}" />
-                                                @endif
-                                            @endforeach
-                                        </td>
-                                        <td>{{ $product->title }}</td>
-                                        <td>{{ $product->Vendor->name }}</td>
-                                        <td>{{ $product->unit }}</td>
-                                        <td>
-                                            <label wire:click.prevent="editDeal({{ $product->id }})"
-                                                style="cursor: pointer;"
-                                                class="badge badge-{{ $product->t_deal ? 'success' : 'danger' }}">{{ $product->t_deal ? 'Yes' : 'No' }}</label>
-                                        </td>
-                                        <td>
-                                            <label wire:click.prevent="editPublish({{ $product->id }})"
-                                                style="cursor: pointer;"
-                                                class="badge badge-{{ $product->status ? 'success' : 'danger' }}">{{ $product->status ? 'Yes' : 'No' }}</label>
-                                        </td>
-                                        <td>
-                                            <label wire:click.prevent="editFeatured({{ $product->id }})"
-                                                style="cursor: pointer;"
-                                                class="badge badge-{{ $product->featured ? 'success' : 'danger' }}">{{ $product->featured ? 'Yes' : 'No' }}</label>
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('admin.product.show', ['slug' => $product->slug]) }}"
-                                                class="btn btn-primary"><i class="mdi mdi-eye"></i></a>
-                                            <a href="{{ route('admin.product.edit', ['slug' => $product->slug]) }}"
-                                                class="btn btn-primary"><i class="mdi mdi-briefcase-edit"></i></a>
-                                            <a href="#"
-                                                onclick="confirm('Are you sure you want to delete the product?') || event.stopImmediatePropagation()"
-                                                wire:click.prevent="deleteProduct({{ $product->id }})"
-                                                class="btn btn-danger"><i class="mdi mdi-delete"></i></a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    @php
+                                    $product_image = product_image($product->id)
+                                    @endphp
+                                    <td class="py-1">
+                                        <img src="{{ asset('/storage/product') }}/{{ $product_image }}"
+                                            alt="{{ $product->title }}" />
+                                    </td>
+                                    <td>{{ $product->title }}</td>
+                                    @if($product->admin_id)
+                                    <td>{{ $product->Admin->name }}</td>
+                                    @else
+                                    <td>{{ $product->Vendor->name }}</td>
+                                    @endif
+                                    @php
+                                    $current_status = product_status($product->id);
+                                    @endphp
+                                    <td>
+                                        @if($current_status['status'] == 'In-Stock')
+                                        {{ $current_status['quantity'] }} {{ $product->unit }}
+                                        @else
+                                        <label class="badge badge-danger">{{ $current_status['status'] }}</label>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <label wire:click.prevent="editDeal({{ $product->id }})"
+                                            style="cursor: pointer;"
+                                            class="badge badge-{{ $product->t_deal ? 'success' : 'danger' }}">{{
+                                            $product->t_deal ? 'Yes' : 'No' }}</label>
+                                    </td>
+                                    <td>
+                                        <label wire:click.prevent="editPublish({{ $product->id }})"
+                                            style="cursor: pointer;"
+                                            class="badge badge-{{ $product->status ? 'success' : 'danger' }}">{{
+                                            $product->status ? 'Yes' : 'No' }}</label>
+                                    </td>
+                                    <td>
+                                        <label wire:click.prevent="editFeatured({{ $product->id }})"
+                                            style="cursor: pointer;"
+                                            class="badge badge-{{ $product->featured ? 'success' : 'danger' }}">{{
+                                            $product->featured ? 'Yes' : 'No' }}</label>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('admin.product.show', ['slug' => $product->slug]) }}"
+                                            class="btn btn-info"><i class="mdi mdi-eye"></i></a>
+                                        <a href="{{ route('admin.product.edit', ['slug' => $product->slug]) }}"
+                                            class="btn btn-primary"><i class="mdi mdi-briefcase-edit"></i></a>
+                                        <a href="#"
+                                            onclick="confirm('Are you sure you want to delete the product?') || event.stopImmediatePropagation()"
+                                            wire:click.prevent="deleteProduct({{ $product->id }})"
+                                            class="btn btn-danger"><i class="mdi mdi-delete"></i></a>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

@@ -3,12 +3,14 @@
 namespace App\Http\Livewire\Admin\Payment;
 
 use App\Models\Payment;
+use App\Traits\RoleAndPermissionTrait;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class AdminPaymentComponent extends Component
 {
     use WithPagination;
+    use RoleAndPermissionTrait;
 
     public $paginate;
     public $searchTerm;
@@ -20,6 +22,7 @@ class AdminPaymentComponent extends Component
 
     public function deletePayment($id)
     {
+        $this->authorizeRoleOrPermission('master|delete-payment-method');
         $payment = Payment::find($id);
         if ($payment->image) {
             unlink(storage_path('app/public/payment/' . $payment->image));
