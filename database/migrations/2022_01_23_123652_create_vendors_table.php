@@ -29,6 +29,7 @@ class CreateVendorsTable extends Migration
             $table->string('state');
             $table->string('country');
             $table->string('zip');
+            $table->string('merchant_code')->nullable();
             $table->boolean('status')->default(false);
             $table->longText('about')->nullable();
             $table->longText('description')->nullable();
