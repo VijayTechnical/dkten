@@ -16,8 +16,7 @@
                             style="transform: translate3d(-1400px, 0px, 0px); transition: all 0.25s ease 0s; width: 7000px;">
                             @foreach ($hot_deal_products as $product)
                             <div class="owl-item cloned" style="width: 250px; margin-right: 30px;">
-                                <div class="thumbnail box-style-1 no-padding" itemscope=""
-                                    itemtype="http://schema.org/Product">
+                                <div class="thumbnail box-style-1 no-padding">
                                     @php
                                     $product_image = product_image($product->id)
                                     @endphp
@@ -41,13 +40,8 @@
                                             </a>
                                         </h4>
                                         @php
-                                        $avgrating = 0;
+                                        $avgrating = get_product_rating($product->id);
                                         @endphp
-                                        @foreach ($product->OrderItem->where('rstatus', 1) as $orderItem)
-                                        @php
-                                        $avgrating = $avgrating + $orderItem->Review->rating;
-                                        @endphp
-                                        @endforeach
                                         @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating)<i
                                             class="fa fa-star text-warning"></i>
                                             @else
@@ -59,7 +53,7 @@
                                                 <del itemprop="price">NPR{{ $product->purchase_price }}</del>
                                             </div>
                                             <div class="button">
-                                                <span class="icon-view left">
+                                                <span class="icon-view left" wire:click.prevent="addToCompare()">
                                                     <strong><i class="fa fa-exchange"></i></strong>
                                                 </span>
                                                 <span class="icon-view middle"
@@ -101,8 +95,7 @@
                             style="transform: translate3d(-3640px, 0px, 0px); transition: all 0.25s ease 0s; width: 7000px;">
                             @foreach ($featured_products as $product)
                             <div class="owl-item cloned" style="width: 250px; margin-right: 30px;">
-                                <div class="thumbnail box-style-1 no-padding" itemscope=""
-                                    itemtype="http://schema.org/Product">
+                                <div class="thumbnail box-style-1 no-padding">
                                     @php
                                     $product_image = product_image($product->id)
                                     @endphp
@@ -126,13 +119,8 @@
                                             </a>
                                         </h4>
                                         @php
-                                        $avgrating = 0;
+                                        $avgrating = get_product_rating($product->id);
                                         @endphp
-                                        @foreach ($product->OrderItem->where('rstatus', 1) as $orderItem)
-                                        @php
-                                        $avgrating = $avgrating + $orderItem->Review->rating;
-                                        @endphp
-                                        @endforeach
                                         @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating)<i
                                             class="fa fa-star text-warning"></i>
                                             @else
@@ -144,7 +132,7 @@
                                                 <del itemprop="price">NPR{{ $product->purchase_price }}</del>
                                             </div>
                                             <div class="button">
-                                                <span class="icon-view left">
+                                                <span class="icon-view left" wire:click.prevent="addToCompare()">
                                                     <strong><i class="fa fa-exchange"></i></strong>
                                                 </span>
                                                 <span class="icon-view middle"
@@ -186,8 +174,7 @@
                             style="transform: translate3d(-3640px, 0px, 0px); transition: all 0.25s ease 0s; width: 7000px;">
                             @foreach ($men_collection_products as $product)
                             <div class="owl-item cloned" style="width: 250px; margin-right: 30px;">
-                                <div class="thumbnail box-style-1 no-padding" itemscope=""
-                                    itemtype="http://schema.org/Product">
+                                <div class="thumbnail box-style-1 no-padding">
                                     @php
                                     $product_image = product_image($product->id)
                                     @endphp
@@ -211,13 +198,8 @@
                                             </a>
                                         </h4>
                                         @php
-                                        $avgrating = 0;
+                                        $avgrating = get_product_rating($product->id);
                                         @endphp
-                                        @foreach ($product->OrderItem->where('rstatus', 1) as $orderItem)
-                                        @php
-                                        $avgrating = $avgrating + $orderItem->Review->rating;
-                                        @endphp
-                                        @endforeach
                                         @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating)<i
                                             class="fa fa-star text-warning"></i>
                                             @else
@@ -230,7 +212,7 @@
                                                     }}</del>
                                             </div>
                                             <div class="button">
-                                                <span class="icon-view left">
+                                                <span class="icon-view left" wire:click.prevent="addToCompare()">
                                                     <strong><i class="fa fa-exchange"></i></strong>
                                                 </span>
                                                 <span class="icon-view middle"
@@ -272,8 +254,7 @@
                             style="transform: translate3d(-3640px, 0px, 0px); transition: all 0.25s ease 0s; width: 7000px;">
                             @foreach ($women_collection_products as $product)
                             <div class="owl-item cloned" style="width: 250px; margin-right: 30px;">
-                                <div class="thumbnail box-style-1 no-padding" itemscope=""
-                                    itemtype="http://schema.org/Product">
+                                <div class="thumbnail box-style-1 no-padding">
                                     @php
                                     $product_image = product_image($product->id)
                                     @endphp
@@ -297,14 +278,8 @@
                                             </a>
                                         </h4>
                                         @php
-                                        $avgrating = 0;
+                                        $avgrating = get_product_rating($product->id);
                                         @endphp
-                                        @foreach ($product->OrderItem->where('rstatus', 1) as
-                                        $orderItem)
-                                        @php
-                                        $avgrating = $avgrating + $orderItem->Review->rating;
-                                        @endphp
-                                        @endforeach
                                         @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating)<i
                                             class="fa fa-star text-warning"></i>
                                             @else
@@ -317,7 +292,7 @@
                                                     }}</del>
                                             </div>
                                             <div class="button">
-                                                <span class="icon-view left">
+                                                <span class="icon-view left" wire:click.prevent="addToCompare()">
                                                     <strong><i class="fa fa-exchange"></i></strong>
                                                 </span>
                                                 <span class="icon-view middle"
@@ -359,8 +334,7 @@
                             style="transform: translate3d(-3640px, 0px, 0px); transition: all 0.25s ease 0s; width: 7000px;">
                             @foreach ($bags_and_laugage_products as $product)
                             <div class="owl-item cloned" style="width: 250px; margin-right: 30px;">
-                                <div class="thumbnail box-style-1 no-padding" itemscope=""
-                                    itemtype="http://schema.org/Product">
+                                <div class="thumbnail box-style-1 no-padding">
                                     <a itemprop="url"
                                         href="{{ route('product.detail',['product_slug'=>$product->slug]) }}">
                                         <div class="media">
@@ -384,14 +358,8 @@
                                             </a>
                                         </h4>
                                         @php
-                                        $avgrating = 0;
+                                        $avgrating = get_product_rating($product->id);
                                         @endphp
-                                        @foreach ($product->OrderItem->where('rstatus', 1) as
-                                        $orderItem)
-                                        @php
-                                        $avgrating = $avgrating + $orderItem->Review->rating;
-                                        @endphp
-                                        @endforeach
                                         @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating)<i
                                             class="fa fa-star text-warning"></i>
                                             @else
@@ -404,7 +372,7 @@
                                                     }}</del>
                                             </div>
                                             <div class="button">
-                                                <span class="icon-view left">
+                                                <span class="icon-view left" wire:click.prevent="addToCompare()">
                                                     <strong><i class="fa fa-exchange"></i></strong>
                                                 </span>
                                                 <span class="icon-view middle"
@@ -436,7 +404,7 @@
                 <div class="col-md-4 col-sm-12 col-xs-12">
                     <h2 class="category_title" style="background-color:rgba(201,39,49,1);">
                         <span>
-                            <a href="{{ route('product.type',['category_slug'=>$women_category->slug]) }}"
+                            <a href="{{ route('product.type',['category_id'=>$women_category->id]) }}"
                                 style="color:rgba(255,255,255,1)">
                                 {{ $women_category->name }} </a>
                         </span>
@@ -457,7 +425,7 @@
                                     @if(count($women_category->SubCategory) > 0)
                                     @foreach ($women_category->SubCategory as $key=>$women_sub_category)
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ route('product.type',['category_id'=>$women_category->id,'sub_category_id'=>$women_sub_category->id]) }}">
                                             <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
                                             {{ $women_sub_category->name }} </a>
                                     </li>
@@ -481,7 +449,7 @@
                                                         <span>{{ $women_category->name }}</span>
                                                         <div class="p-line"></div>
                                                         <div class="p-btn">
-                                                            <a href="{{ route('product.type',['category_slug'=>$women_category->slug]) }}"
+                                                            <a href="{{ route('product.type',['category_id'=>$women_category->id]) }}"
                                                                 class="btn  btn-theme-transparent btn-theme-xs">Browse</a>
                                                         </div>
                                                     </div>
@@ -508,7 +476,7 @@
                                                                 <span>{{ $women_sub_category->name }}</span>
                                                                 <div class="p-line"></div>
                                                                 <div class="p-btn">
-                                                                    <a href="{{ route('product.type',['category_slug'=>$women_category->slug,'sub_category_slug'=>$women_sub_category->slug]) }}"
+                                                                    <a href="{{ route('product.type',['category_id'=>$women_category->id,'sub_category_id'=>$women_sub_category->id]) }}"
                                                                         class="btn  btn-theme-transparent btn-theme-xs">Browse</a>
                                                                 </div>
                                                             </div>
@@ -564,18 +532,13 @@
                                     </h4>
                                     <p>
                                         <a
-                                            href="{{ route('product.type',['category_slug'=>$product->Category->slug]) }}">
+                                            href="{{ route('product.type',['category_id'=>$product->Category->id]) }}">
                                             {{ $product->Category->name }} </a>
                                     </p>
                                 </div>
                                 @php
-                                $avgrating = 0;
+                                $avgrating = get_product_rating($product->id);
                                 @endphp
-                                @foreach ($product->OrderItem->where('rstatus', 1) as $orderItem)
-                                @php
-                                $avgrating = $avgrating + $orderItem->Review->rating;
-                                @endphp
-                                @endforeach
                                 @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating)<i class="fa fa-star text-warning">
                                     </i>
                                     @else
@@ -636,18 +599,13 @@
                                     </h4>
                                     <p>
                                         <a
-                                            href="{{ route('product.type',['category_slug'=>$product->Category->slug]) }}">
+                                            href="{{ route('product.type',['category_id'=>$product->Category->id]) }}">
                                             {{ $product->Category->name }} </a>
                                     </p>
                                 </div>
                                 @php
-                                $avgrating = 0;
+                                $avgrating = get_product_rating($product->id);
                                 @endphp
-                                @foreach ($product->OrderItem->where('rstatus', 1) as $orderItem)
-                                @php
-                                $avgrating = $avgrating + $orderItem->Review->rating;
-                                @endphp
-                                @endforeach
                                 @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating)<i class="fa fa-star text-warning">
                                     </i>
                                     @else
@@ -705,18 +663,13 @@
                                     </h4>
                                     <p>
                                         <a
-                                            href="{{ route('product.type',['category_slug'=>$product->Category->slug]) }}">
+                                            href="{{ route('product.type',['category_id'=>$product->Category->id]) }}">
                                             {{ $product->Category->name }} </a>
                                     </p>
                                 </div>
                                 @php
-                                $avgrating = 0;
+                                $avgrating = get_product_rating($product->id);
                                 @endphp
-                                @foreach ($product->OrderItem->where('rstatus', 1) as $orderItem)
-                                @php
-                                $avgrating = $avgrating + $orderItem->Review->rating;
-                                @endphp
-                                @endforeach
                                 @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating)<i class="fa fa-star text-warning">
                                     </i>
                                     @else

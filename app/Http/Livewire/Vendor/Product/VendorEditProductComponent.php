@@ -55,7 +55,6 @@ class VendorEditProductComponent extends Component
         $this->product_id = $product->id;
         $this->title = $product->title;
         $this->slug = $product->slug;
-        $this->user_id = $product->user_id;
         $this->category_id = $product->category_id;
         $this->sub_category_id = $product->sub_category_id;
         $this->type_id = $product->type_id;
@@ -64,6 +63,7 @@ class VendorEditProductComponent extends Component
         $this->unit = $product->unit;
         $this->tags = $product->tags;
         $this->images = all_product_image($this->product_id);
+        $this->images = $product->images;
         $this->description = $product->description;
         $this->seo_title = $product->seo_title;
         $this->seo_description = $product->seo_description;
@@ -75,8 +75,8 @@ class VendorEditProductComponent extends Component
         $this->status = $product->status;
         $this->t_deal = $product->t_deal;
         $this->featured = $product->featured;
-        $this->inputs = $product->AttributeValues->where('product_id')->unique('attribute_id')->pluck('attribute_id');
-        $this->attribute_arr = $product->AttributeValues->where('product_id')->unique('attribute_id')->pluck('attribute_id');
+        $this->inputs = $product->AttributeValue->where('product_id')->unique('attribute_id')->pluck('attribute_id');
+        $this->attribute_arr = $product->AttributeValue->where('product_id')->unique('attribute_id')->pluck('attribute_id');
 
         foreach ($this->attribute_arr as $a_arr) {
             $allattributeValue = AttributeValue::where('product_id', $product->id)->where('attribute_id', $a_arr)->get()->pluck('value');

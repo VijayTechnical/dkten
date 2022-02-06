@@ -25,37 +25,37 @@
                                         <span class="arrow search_cat search_cat_click">
                                             <i class="fa fa-angle-down"></i>
                                         </span>
-                                        <a href="{{ route('product.type',['category_slug'=>$category->slug]) }}"
+                                        <a href="{{ route('product.type',['category_id'=>$category->id]) }}"
                                             class="search_cat">
                                             {{ $category->name }}
                                         </a>
                                         @if(count($category->SubCategory) > 0)
                                         <ul class="children"
-                                            style="margin-left: 10px; display:{{ $category->slug === $category_slug ? '' : 'none' }};">
+                                            style="margin-left: 10px; display:{{ $category->id == $category_id ? '' : 'none' }};">
                                             @foreach ($category->SubCategory as $key=>$sub_category)
                                             <li>
                                                 <a
-                                                    href="{{ route('product.type',['category_slug'=>$category->slug,'sub_category_slug'=>$sub_category->slug]) }}">
+                                                    href="{{ route('product.type',['category_id'=>$category->id,'sub_category_id'=>$sub_category->id]) }}">
                                                     {{ $sub_category->name }}
                                                     <span class="count"> {{ $sub_category->Product->count() }} </span>
                                                 </a>
                                                 @if (count($sub_category->Type) > 0)
                                                 <ul class="children"
-                                                    style="margin-left: 10px; display:{{ $category->slug === $category_slug ? '' : 'none' }};">
+                                                    style="margin-left: 10px; display:{{ $category->id == $category_id ? '' : 'none' }};">
                                                     @foreach ($sub_category->Type as $type)
                                                     <li>
                                                         <a
-                                                            href="{{ route('product.type',['category_slug'=>$category->slug,'sub_category_slug'=>$sub_category->slug,'type_slug'=>$type->slug]) }}">
+                                                            href="{{ route('product.type',['category_id'=>$category->id,'sub_category_id'=>$sub_category->id,'type_id'=>$type->id]) }}">
                                                             {{ $type->name }}
                                                             <span class="count"> 1 </span>
                                                         </a>
                                                         @if(count($type->SubType) > 0)
                                                         <ul class="children"
-                                                            style="margin-left: 10px; display:{{ $category->slug === $category_slug ? '' : 'none' }};">
+                                                            style="margin-left: 10px; display:{{ $category->id == $category_id ? '' : 'none' }};">
                                                             @foreach ($type->SubType as $key=>$sub_type)
                                                             <li>
                                                                 <a
-                                                                    href="{{ route('product.type',['category_slug'=>$category->slug,'sub_category_slug'=>$sub_category->slug,'type_slug'=>$type->slug,'sub_type_slug'=>$sub_type->slug]) }}">
+                                                                    href="{{ route('product.type',['category_id'=>$category->id,'sub_category_id'=>$sub_category->id,'type_id'=>$type->id,'sub_type_id'=>$sub_type->id]) }}">
                                                                     {{ $sub_type->name }}
                                                                 </a>
                                                             </li>
@@ -115,644 +115,140 @@
                                             <!-- tab 1 -->
                                             <div class="tab-pane fade" id="tab-s1">
                                                 <div class="product-list">
+                                                    @if($popular_products->count() > 0)
+                                                    @foreach ($popular_products as $product)
                                                     <div class="media">
+                                                        @php
+                                                        $product_image = product_image($product->id)
+                                                        @endphp
                                                         <a class="pull-left media-link"
-                                                            href="https://dkten.com/home/product_view/369/Half-Cup-Padded-wired-Bra">
+                                                            href="{{ route('product.detail',['product_slug'=>$product->slug]) }}">
                                                             <img class="media-object img-responsive"
-                                                                src="https://dkten.com/uploads/product_image/product_369_1_thumb.jpg"
-                                                                alt="">
+                                                                src="{{ asset('/storage/product') }}/{{ $product_image }}"
+                                                                alt="{{ $product->title }}">
                                                             <i class="fa fa-eye"></i>
                                                         </a>
                                                         <div class="media-body">
                                                             <h4 class="media-heading">
                                                                 <a
-                                                                    href="https://dkten.com/home/product_view/369/Half-Cup-Padded-wired-Bra">
-                                                                    Half Cup Padded wired Bra </a>
+                                                                    href="{{ route('product.detail',['product_slug'=>$product->slug]) }}">
+                                                                    {{ $product->title }} </a>
                                                             </h4>
-                                                            <div class="rateit rateit-bg" data-rateit-value="0"
-                                                                data-rateit-ispreset="true" data-rateit-readonly="true">
-                                                                <button id="rateit-reset-2" type="button"
-                                                                    data-role="none" class="rateit-reset"
-                                                                    aria-label="reset rating"
-                                                                    aria-controls="rateit-range-2"
-                                                                    style="display: none;"><span></span></button>
-                                                                <div id="rateit-range-2" class="rateit-range"
-                                                                    role="slider" aria-label="rating"
-                                                                    aria-owns="rateit-reset-2" aria-valuemin="0"
-                                                                    aria-valuemax="5" aria-valuenow="0"
-                                                                    style="width: 80px; height: 16px;"
-                                                                    aria-readonly="true">
-                                                                    <div class="rateit-empty"></div>
-                                                                    <div class="rateit-selected rateit-preset"
-                                                                        style="height: 16px; width: 0px;"></div>
-                                                                    <div class="rateit-hover" style="height: 16px;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                             <div class="rating">
-                                                                <div style="display: none" class="rating ratings_show"
-                                                                    data-original-title="0" data-toggle="tooltip"
-                                                                    data-placement="left">
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                </div>
+                                                                @php
+                                                                $avgrating = get_product_rating($product->id);
+                                                                @endphp
+                                                                @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating)<i
+                                                                    class="fa fa-star text-warning"></i>
+                                                                    @else
+                                                                    <i class="fa fa-star text-secondary"></i>
+                                                                    @endif
+                                                                    @endfor
                                                             </div>
                                                             <div class="price">
-
-                                                                <ins>NPR580.00 </ins>
-                                                                <del>NPR725.00</del>
+                                                                <div class="price">
+                                                                    <ins>NPR{{ $product->sale_price }} </ins>
+                                                                    <del itemprop="price">NPR{{ $product->purchase_price
+                                                                        }}</del>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="media">
-                                                        <a class="pull-left media-link"
-                                                            href="https://dkten.com/home/product_view/315/Virjeans-Stretchy-Ripped-Design-Biker-Denim-Jeans">
-                                                            <img class="media-object img-responsive"
-                                                                src="https://dkten.com/uploads/product_image/product_315_1_thumb.jpg"
-                                                                alt="">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">
-                                                                <a
-                                                                    href="https://dkten.com/home/product_view/315/Virjeans-Stretchy-Ripped-Design-Biker-Denim-Jeans">
-                                                                    Virjeans - Stretchy Ripped Design Biker Denim Jeans
-                                                                </a>
-                                                            </h4>
-                                                            <div class="rateit rateit-bg" data-rateit-value="4.50"
-                                                                data-rateit-ispreset="true" data-rateit-readonly="true">
-                                                                <button id="rateit-reset-3" type="button"
-                                                                    data-role="none" class="rateit-reset"
-                                                                    aria-label="reset rating"
-                                                                    aria-controls="rateit-range-3"
-                                                                    style="display: none;"><span></span></button>
-                                                                <div id="rateit-range-3" class="rateit-range"
-                                                                    role="slider" aria-label="rating"
-                                                                    aria-owns="rateit-reset-3" aria-valuemin="0"
-                                                                    aria-valuemax="5" aria-valuenow="4.5"
-                                                                    style="width: 80px; height: 16px;"
-                                                                    aria-readonly="true">
-                                                                    <div class="rateit-empty"></div>
-                                                                    <div class="rateit-selected rateit-preset"
-                                                                        style="height: 16px; width: 72px;"></div>
-                                                                    <div class="rateit-hover" style="height: 16px;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rating">
-                                                                <div style="display: none" class="rating ratings_show"
-                                                                    data-original-title="4.50" data-toggle="tooltip"
-                                                                    data-placement="left">
-                                                                    <span class="star "></span>
-                                                                    <span class="star active"></span>
-                                                                    <span class="star active"></span>
-                                                                    <span class="star active"></span>
-                                                                    <span class="star active"></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="price">
-
-                                                                <ins>NPR1,425.00 </ins>
-                                                                <del>NPR1,500.00</del>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="media">
-                                                        <a class="pull-left media-link"
-                                                            href="https://dkten.com/home/product_view/426/Mens-Genuine-Leather-Biker-Jacket-Brown">
-                                                            <img class="media-object img-responsive"
-                                                                src="https://dkten.com/uploads/product_image/product_426_1_thumb.jpg"
-                                                                alt="">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">
-                                                                <a
-                                                                    href="https://dkten.com/home/product_view/426/Mens-Genuine-Leather-Biker-Jacket-Brown">
-                                                                    Men's Genuine Leather Biker Jacket Brown </a>
-                                                            </h4>
-                                                            <div class="rateit rateit-bg" data-rateit-value="0"
-                                                                data-rateit-ispreset="true" data-rateit-readonly="true">
-                                                                <button id="rateit-reset-4" type="button"
-                                                                    data-role="none" class="rateit-reset"
-                                                                    aria-label="reset rating"
-                                                                    aria-controls="rateit-range-4"
-                                                                    style="display: none;"><span></span></button>
-                                                                <div id="rateit-range-4" class="rateit-range"
-                                                                    role="slider" aria-label="rating"
-                                                                    aria-owns="rateit-reset-4" aria-valuemin="0"
-                                                                    aria-valuemax="5" aria-valuenow="0"
-                                                                    style="width: 80px; height: 16px;"
-                                                                    aria-readonly="true">
-                                                                    <div class="rateit-empty"></div>
-                                                                    <div class="rateit-selected rateit-preset"
-                                                                        style="height: 16px; width: 0px;"></div>
-                                                                    <div class="rateit-hover" style="height: 16px;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rating">
-                                                                <div style="display: none" class="rating ratings_show"
-                                                                    data-original-title="0" data-toggle="tooltip"
-                                                                    data-placement="left">
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="price">
-
-                                                                <ins>NPR12,000.00 </ins>
-                                                                <del>NPR15,000.00</del>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="media">
-                                                        <a class="pull-left media-link"
-                                                            href="https://dkten.com/home/product_view/398/Straight-Long-Kurti-Set">
-                                                            <img class="media-object img-responsive"
-                                                                src="https://dkten.com/uploads/product_image/product_398_1_thumb.jpg"
-                                                                alt="">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">
-                                                                <a
-                                                                    href="https://dkten.com/home/product_view/398/Straight-Long-Kurti-Set">
-                                                                    Straight Long Kurti Set </a>
-                                                            </h4>
-                                                            <div class="rateit rateit-bg" data-rateit-value="0"
-                                                                data-rateit-ispreset="true" data-rateit-readonly="true">
-                                                                <button id="rateit-reset-5" type="button"
-                                                                    data-role="none" class="rateit-reset"
-                                                                    aria-label="reset rating"
-                                                                    aria-controls="rateit-range-5"
-                                                                    style="display: none;"><span></span></button>
-                                                                <div id="rateit-range-5" class="rateit-range"
-                                                                    role="slider" aria-label="rating"
-                                                                    aria-owns="rateit-reset-5" aria-valuemin="0"
-                                                                    aria-valuemax="5" aria-valuenow="0"
-                                                                    style="width: 80px; height: 16px;"
-                                                                    aria-readonly="true">
-                                                                    <div class="rateit-empty"></div>
-                                                                    <div class="rateit-selected rateit-preset"
-                                                                        style="height: 16px; width: 0px;"></div>
-                                                                    <div class="rateit-hover" style="height: 16px;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rating">
-                                                                <div style="display: none" class="rating ratings_show"
-                                                                    data-original-title="0" data-toggle="tooltip"
-                                                                    data-placement="left">
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="price">
-
-                                                                <ins>NPR3,500.00 </ins>
-                                                                <del>NPR4,375.00</del>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    @endforeach
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <!-- tab 2 -->
                                             <div class="tab-pane fade in active" id="tab-s2">
                                                 <div class="product-list">
+                                                    @if($latest_products->count() > 0)
+                                                    @foreach ($latest_products as $product)
                                                     <div class="media">
+                                                        @php
+                                                        $product_image = product_image($product->id)
+                                                        @endphp
                                                         <a class="pull-left media-link"
-                                                            href="https://dkten.com/home/product_view/435/Mens-Casual-Fashion-Trouser">
+                                                            href="{{ route('product.detail',['product_slug'=>$product->slug]) }}">
                                                             <img class="media-object img-responsive"
-                                                                src="https://dkten.com/uploads/product_image/product_435_1_thumb.jpg"
-                                                                alt="">
+                                                                src="{{ asset('/storage/product') }}/{{ $product_image }}"
+                                                                alt="{{ $product->title }}">
                                                             <i class="fa fa-eye"></i>
                                                         </a>
                                                         <div class="media-body">
                                                             <h4 class="media-heading">
                                                                 <a
-                                                                    href="https://dkten.com/home/product_view/435/Mens-Casual-Fashion-Trouser">
-                                                                    Men's Casual Fashion Trouser </a>
+                                                                    href="{{ route('product.detail',['product_slug'=>$product->slug]) }}">
+                                                                    {{ $product->title }} </a>
                                                             </h4>
-                                                            <div class="rateit rateit-bg" data-rateit-value="0"
-                                                                data-rateit-ispreset="true" data-rateit-readonly="true">
-                                                                <button id="rateit-reset-6" type="button"
-                                                                    data-role="none" class="rateit-reset"
-                                                                    aria-label="reset rating"
-                                                                    aria-controls="rateit-range-6"
-                                                                    style="display: none;"><span></span></button>
-                                                                <div id="rateit-range-6" class="rateit-range"
-                                                                    role="slider" aria-label="rating"
-                                                                    aria-owns="rateit-reset-6" aria-valuemin="0"
-                                                                    aria-valuemax="5" aria-valuenow="0"
-                                                                    style="width: 80px; height: 16px;"
-                                                                    aria-readonly="true">
-                                                                    <div class="rateit-empty"></div>
-                                                                    <div class="rateit-selected rateit-preset"
-                                                                        style="height: 16px; width: 0px;"></div>
-                                                                    <div class="rateit-hover" style="height: 16px;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                             <div class="rating">
-                                                                <div style="display: none" class="rating ratings_show"
-                                                                    data-original-title="0" data-toggle="tooltip"
-                                                                    data-placement="left">
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                </div>
+                                                                @php
+                                                                $avgrating = get_product_rating($product->id);
+                                                                @endphp
+                                                                @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating)<i
+                                                                    class="fa fa-star text-warning"></i>
+                                                                    @else
+                                                                    <i class="fa fa-star text-secondary"></i>
+                                                                    @endif
+                                                                    @endfor
                                                             </div>
                                                             <div class="price">
-
-                                                                <ins>NPR1,650.00 </ins>
-                                                                <del>NPR2,000.00</del>
+                                                                <div class="price">
+                                                                    <ins>NPR{{ $product->sale_price }} </ins>
+                                                                    <del itemprop="price">NPR{{ $product->purchase_price
+                                                                        }}</del>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="media">
-                                                        <a class="pull-left media-link"
-                                                            href="https://dkten.com/home/product_view/434/Baby-Canopy-handle-Tricycle">
-                                                            <img class="media-object img-responsive"
-                                                                src="https://dkten.com/uploads/product_image/product_434_1_thumb.jpg"
-                                                                alt="">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">
-                                                                <a
-                                                                    href="https://dkten.com/home/product_view/434/Baby-Canopy-handle-Tricycle">
-                                                                    Baby Canopy handle Tricycle </a>
-                                                            </h4>
-                                                            <div class="rateit rateit-bg" data-rateit-value="0"
-                                                                data-rateit-ispreset="true" data-rateit-readonly="true">
-                                                                <button id="rateit-reset-7" type="button"
-                                                                    data-role="none" class="rateit-reset"
-                                                                    aria-label="reset rating"
-                                                                    aria-controls="rateit-range-7"
-                                                                    style="display: none;"><span></span></button>
-                                                                <div id="rateit-range-7" class="rateit-range"
-                                                                    role="slider" aria-label="rating"
-                                                                    aria-owns="rateit-reset-7" aria-valuemin="0"
-                                                                    aria-valuemax="5" aria-valuenow="0"
-                                                                    style="width: 80px; height: 16px;"
-                                                                    aria-readonly="true">
-                                                                    <div class="rateit-empty"></div>
-                                                                    <div class="rateit-selected rateit-preset"
-                                                                        style="height: 16px; width: 0px;"></div>
-                                                                    <div class="rateit-hover" style="height: 16px;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rating">
-                                                                <div style="display: none" class="rating ratings_show"
-                                                                    data-original-title="0" data-toggle="tooltip"
-                                                                    data-placement="left">
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="price">
-
-                                                                <ins>NPR6,500.00 </ins>
-                                                                <del>NPR10,000.00</del>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="media">
-                                                        <a class="pull-left media-link"
-                                                            href="https://dkten.com/home/product_view/433/Squirrel-Baby-Scooter">
-                                                            <img class="media-object img-responsive"
-                                                                src="https://dkten.com/uploads/product_image/product_433_1_thumb.jpg"
-                                                                alt="">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">
-                                                                <a
-                                                                    href="https://dkten.com/home/product_view/433/Squirrel-Baby-Scooter">
-                                                                    Squirrel Baby Scooter </a>
-                                                            </h4>
-                                                            <div class="rateit rateit-bg" data-rateit-value="0"
-                                                                data-rateit-ispreset="true" data-rateit-readonly="true">
-                                                                <button id="rateit-reset-8" type="button"
-                                                                    data-role="none" class="rateit-reset"
-                                                                    aria-label="reset rating"
-                                                                    aria-controls="rateit-range-8"
-                                                                    style="display: none;"><span></span></button>
-                                                                <div id="rateit-range-8" class="rateit-range"
-                                                                    role="slider" aria-label="rating"
-                                                                    aria-owns="rateit-reset-8" aria-valuemin="0"
-                                                                    aria-valuemax="5" aria-valuenow="0"
-                                                                    style="width: 80px; height: 16px;"
-                                                                    aria-readonly="true">
-                                                                    <div class="rateit-empty"></div>
-                                                                    <div class="rateit-selected rateit-preset"
-                                                                        style="height: 16px; width: 0px;"></div>
-                                                                    <div class="rateit-hover" style="height: 16px;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rating">
-                                                                <div style="display: none" class="rating ratings_show"
-                                                                    data-original-title="0" data-toggle="tooltip"
-                                                                    data-placement="left">
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="price">
-
-                                                                <ins>NPR9,500.00 </ins>
-                                                                <del>NPR11,875.00</del>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="media">
-                                                        <a class="pull-left media-link"
-                                                            href="https://dkten.com/home/product_view/432/Indian-Fashion-Tunic-Tops-Cotton-Kurti-Pant-Set-With-Dupatta-for-Women">
-                                                            <img class="media-object img-responsive"
-                                                                src="https://dkten.com/uploads/product_image/product_432_1_thumb.jpg"
-                                                                alt="">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">
-                                                                <a
-                                                                    href="https://dkten.com/home/product_view/432/Indian-Fashion-Tunic-Tops-Cotton-Kurti-Pant-Set-With-Dupatta-for-Women">
-                                                                    Indian Fashion Tunic Tops Cotton Kurti Pant Set With
-                                                                    Dupatta for Women </a>
-                                                            </h4>
-                                                            <div class="rateit rateit-bg" data-rateit-value="0"
-                                                                data-rateit-ispreset="true" data-rateit-readonly="true">
-                                                                <button id="rateit-reset-9" type="button"
-                                                                    data-role="none" class="rateit-reset"
-                                                                    aria-label="reset rating"
-                                                                    aria-controls="rateit-range-9"
-                                                                    style="display: none;"><span></span></button>
-                                                                <div id="rateit-range-9" class="rateit-range"
-                                                                    role="slider" aria-label="rating"
-                                                                    aria-owns="rateit-reset-9" aria-valuemin="0"
-                                                                    aria-valuemax="5" aria-valuenow="0"
-                                                                    style="width: 80px; height: 16px;"
-                                                                    aria-readonly="true">
-                                                                    <div class="rateit-empty"></div>
-                                                                    <div class="rateit-selected rateit-preset"
-                                                                        style="height: 16px; width: 0px;"></div>
-                                                                    <div class="rateit-hover" style="height: 16px;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rating">
-                                                                <div style="display: none" class="rating ratings_show"
-                                                                    data-original-title="0" data-toggle="tooltip"
-                                                                    data-placement="left">
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="price">
-
-                                                                <ins>NPR3,500.00 </ins>
-                                                                <del>NPR4,375.00</del>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    @endforeach
+                                                    @endif
                                                 </div>
                                             </div>
                                             <!-- tab 3 -->
                                             <div class="tab-pane fade" id="tab-s3">
                                                 <div class="product-list">
+                                                    @if($deal_products->count() > 0)
+                                                    @foreach ($deal_products as $product)
                                                     <div class="media">
+                                                        @php
+                                                        $product_image = product_image($product->id)
+                                                        @endphp
                                                         <a class="pull-left media-link"
-                                                            href="https://dkten.com/home/product_view/434/Baby-Canopy-handle-Tricycle">
+                                                            href="{{ route('product.detail',['product_slug'=>$product->slug]) }}">
                                                             <img class="media-object img-responsive"
-                                                                src="https://dkten.com/uploads/product_image/product_434_1_thumb.jpg"
-                                                                alt="">
+                                                                src="{{ asset('/storage/product') }}/{{ $product_image }}"
+                                                                alt="{{ $product->title }}">
                                                             <i class="fa fa-eye"></i>
                                                         </a>
                                                         <div class="media-body">
                                                             <h4 class="media-heading">
                                                                 <a
-                                                                    href="https://dkten.com/home/product_view/434/Baby-Canopy-handle-Tricycle">
-                                                                    Baby Canopy handle Tricycle </a>
+                                                                    href="{{ route('product.detail',['product_slug'=>$product->slug]) }}">
+                                                                    {{ $product->title }} </a>
                                                             </h4>
-                                                            <div class="rateit rateit-bg" data-rateit-value="0"
-                                                                data-rateit-ispreset="true" data-rateit-readonly="true">
-                                                                <button id="rateit-reset-10" type="button"
-                                                                    data-role="none" class="rateit-reset"
-                                                                    aria-label="reset rating"
-                                                                    aria-controls="rateit-range-10"
-                                                                    style="display: none;"><span></span></button>
-                                                                <div id="rateit-range-10" class="rateit-range"
-                                                                    role="slider" aria-label="rating"
-                                                                    aria-owns="rateit-reset-10" aria-valuemin="0"
-                                                                    aria-valuemax="5" aria-valuenow="0"
-                                                                    style="width: 80px; height: 16px;"
-                                                                    aria-readonly="true">
-                                                                    <div class="rateit-empty"></div>
-                                                                    <div class="rateit-selected rateit-preset"
-                                                                        style="height: 16px; width: 0px;"></div>
-                                                                    <div class="rateit-hover" style="height: 16px;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                             <div class="rating">
-                                                                <div style="display: none" class="rating ratings_show"
-                                                                    data-original-title="0" data-toggle="tooltip"
-                                                                    data-placement="left">
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                </div>
+                                                                @php
+                                                                $avgrating = get_product_rating($product->id);
+                                                                @endphp
+                                                                @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating)<i
+                                                                    class="fa fa-star text-warning"></i>
+                                                                    @else
+                                                                    <i class="fa fa-star text-secondary"></i>
+                                                                    @endif
+                                                                    @endfor
                                                             </div>
                                                             <div class="price">
-
-                                                                <ins>NPR6,500.00 </ins>
-                                                                <del>NPR10,000.00</del>
+                                                                <div class="price">
+                                                                    <ins>NPR{{ $product->sale_price }} </ins>
+                                                                    <del itemprop="price">NPR{{ $product->purchase_price
+                                                                        }}</del>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="media">
-                                                        <a class="pull-left media-link"
-                                                            href="https://dkten.com/home/product_view/433/Squirrel-Baby-Scooter">
-                                                            <img class="media-object img-responsive"
-                                                                src="https://dkten.com/uploads/product_image/product_433_1_thumb.jpg"
-                                                                alt="">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">
-                                                                <a
-                                                                    href="https://dkten.com/home/product_view/433/Squirrel-Baby-Scooter">
-                                                                    Squirrel Baby Scooter </a>
-                                                            </h4>
-                                                            <div class="rateit rateit-bg" data-rateit-value="0"
-                                                                data-rateit-ispreset="true" data-rateit-readonly="true">
-                                                                <button id="rateit-reset-11" type="button"
-                                                                    data-role="none" class="rateit-reset"
-                                                                    aria-label="reset rating"
-                                                                    aria-controls="rateit-range-11"
-                                                                    style="display: none;"><span></span></button>
-                                                                <div id="rateit-range-11" class="rateit-range"
-                                                                    role="slider" aria-label="rating"
-                                                                    aria-owns="rateit-reset-11" aria-valuemin="0"
-                                                                    aria-valuemax="5" aria-valuenow="0"
-                                                                    style="width: 80px; height: 16px;"
-                                                                    aria-readonly="true">
-                                                                    <div class="rateit-empty"></div>
-                                                                    <div class="rateit-selected rateit-preset"
-                                                                        style="height: 16px; width: 0px;"></div>
-                                                                    <div class="rateit-hover" style="height: 16px;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rating">
-                                                                <div style="display: none" class="rating ratings_show"
-                                                                    data-original-title="0" data-toggle="tooltip"
-                                                                    data-placement="left">
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="price">
-
-                                                                <ins>NPR9,500.00 </ins>
-                                                                <del>NPR11,875.00</del>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="media">
-                                                        <a class="pull-left media-link"
-                                                            href="https://dkten.com/home/product_view/432/Indian-Fashion-Tunic-Tops-Cotton-Kurti-Pant-Set-With-Dupatta-for-Women">
-                                                            <img class="media-object img-responsive"
-                                                                src="https://dkten.com/uploads/product_image/product_432_1_thumb.jpg"
-                                                                alt="">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">
-                                                                <a
-                                                                    href="https://dkten.com/home/product_view/432/Indian-Fashion-Tunic-Tops-Cotton-Kurti-Pant-Set-With-Dupatta-for-Women">
-                                                                    Indian Fashion Tunic Tops Cotton Kurti Pant Set With
-                                                                    Dupatta for Women </a>
-                                                            </h4>
-                                                            <div class="rateit rateit-bg" data-rateit-value="0"
-                                                                data-rateit-ispreset="true" data-rateit-readonly="true">
-                                                                <button id="rateit-reset-12" type="button"
-                                                                    data-role="none" class="rateit-reset"
-                                                                    aria-label="reset rating"
-                                                                    aria-controls="rateit-range-12"
-                                                                    style="display: none;"><span></span></button>
-                                                                <div id="rateit-range-12" class="rateit-range"
-                                                                    role="slider" aria-label="rating"
-                                                                    aria-owns="rateit-reset-12" aria-valuemin="0"
-                                                                    aria-valuemax="5" aria-valuenow="0"
-                                                                    style="width: 80px; height: 16px;"
-                                                                    aria-readonly="true">
-                                                                    <div class="rateit-empty"></div>
-                                                                    <div class="rateit-selected rateit-preset"
-                                                                        style="height: 16px; width: 0px;"></div>
-                                                                    <div class="rateit-hover" style="height: 16px;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rating">
-                                                                <div style="display: none" class="rating ratings_show"
-                                                                    data-original-title="0" data-toggle="tooltip"
-                                                                    data-placement="left">
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="price">
-
-                                                                <ins>NPR3,500.00 </ins>
-                                                                <del>NPR4,375.00</del>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="media">
-                                                        <a class="pull-left media-link"
-                                                            href="https://dkten.com/home/product_view/430/Mens-Genuine-Long-Slim-Fit-Leather-Jacket">
-                                                            <img class="media-object img-responsive"
-                                                                src="https://dkten.com/uploads/product_image/product_430_1_thumb.jpg"
-                                                                alt="">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">
-                                                                <a
-                                                                    href="https://dkten.com/home/product_view/430/Mens-Genuine-Long-Slim-Fit-Leather-Jacket">
-                                                                    Men's Genuine Long Slim Fit Leather Jacket </a>
-                                                            </h4>
-                                                            <div class="rateit rateit-bg" data-rateit-value="0"
-                                                                data-rateit-ispreset="true" data-rateit-readonly="true">
-                                                                <button id="rateit-reset-13" type="button"
-                                                                    data-role="none" class="rateit-reset"
-                                                                    aria-label="reset rating"
-                                                                    aria-controls="rateit-range-13"
-                                                                    style="display: none;"><span></span></button>
-                                                                <div id="rateit-range-13" class="rateit-range"
-                                                                    role="slider" aria-label="rating"
-                                                                    aria-owns="rateit-reset-13" aria-valuemin="0"
-                                                                    aria-valuemax="5" aria-valuenow="0"
-                                                                    style="width: 80px; height: 16px;"
-                                                                    aria-readonly="true">
-                                                                    <div class="rateit-empty"></div>
-                                                                    <div class="rateit-selected rateit-preset"
-                                                                        style="height: 16px; width: 0px;"></div>
-                                                                    <div class="rateit-hover" style="height: 16px;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rating">
-                                                                <div style="display: none" class="rating ratings_show"
-                                                                    data-original-title="0" data-toggle="tooltip"
-                                                                    data-placement="left">
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                    <span class="star "></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="price">
-
-                                                                <ins>NPR12,000.00 </ins>
-                                                                <del>NPR12,500.00</del>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    @endforeach
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -824,7 +320,7 @@
                                 </div>
                                 <div class="col-md-2 col-sm-12 col-xs-12 text-right view_select_btn">
                                     <span class="btn btn-theme-transparent pull-left hidden-lg hidden-md"
-                                        onclick="open_sidebar();">
+                                        wire:click.prevent="addToCompare()">
                                         <i class="fa fa-bars"></i>
                                     </span>
                                     <a class="btn btn-theme-transparent btn-theme-sm grid active"
@@ -846,8 +342,7 @@
                                 @foreach ($products as $key=>$product)
                                 <div
                                     class="col-md-3 col-sm-6 col-xs-6 mb-4 sunil_type_filter sunil_type_236 sunil_subaaa_type_0">
-                                    <div class="thumbnail box-style-1 no-padding" itemscope=""
-                                        itemtype="http://schema.org/Product">
+                                    <div class="thumbnail box-style-1 no-padding">
                                         @php
                                         $product_image = product_image($product->id)
                                         @endphp
@@ -863,21 +358,15 @@
                                                 </div>
                                             </div>
                                         </a>
-                                        <div class="caption text-center" id="cap">
-                                            <h4 itemprop="name" class="caption-title" style="height: 61px;">
-                                                <a itemprop="url"
-                                                    href="{{ route('product.detail',['product_slug'=>$product->slug]) }}">
+                                        <div class="caption text-center">
+                                            <h4 class="caption-title" style="height: 61px;">
+                                                <a href="{{ route('product.detail',['product_slug'=>$product->slug]) }}">
                                                     <span itemprop="name">{{ $product->title }}</span>
                                                 </a>
                                             </h4>
                                             @php
-                                            $avgrating = 0;
+                                            $avgrating = get_product_rating($product->id);
                                             @endphp
-                                            @foreach ($product->OrderItem->where('rstatus', 1) as $orderItem)
-                                            @php
-                                            $avgrating = $avgrating + $orderItem->Review->rating;
-                                            @endphp
-                                            @endforeach
                                             @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating)<i
                                                 class="fa fa-star text-warning"></i>
                                                 @else
@@ -890,8 +379,7 @@
                                                     <del itemprop="price">NPR{{ $product->purchase_price }}</del>
                                                 </div>
                                                 <div class="button">
-                                                    <span class="icon-view left" onclick="do_compare(404,event)"
-                                                        data-toggle="tooltip" data-original-title="Compare">
+                                                    <span class="icon-view left" wire:click.prevent="addToCompare()">
                                                         <strong><i class="fa fa-exchange"></i></strong>
                                                     </span>
                                                     <span class="icon-view middle"

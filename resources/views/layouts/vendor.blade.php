@@ -133,6 +133,24 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" data-toggle="collapse" href="#payment" aria-expanded="false"
+                        aria-controls="payment">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-security"></i>
+                        </span>
+                        <span class="menu-title">Payment</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="payment">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('vendor.merchant.update') }}"> Esewa Merchant </a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('vendor.payment.admin') }}"> Payments </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 <li class="nav-item menu-items {{ Route::is('vendor.sale') || Route::is('vendor.sale.show') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('vendor.sale') }}">
                         <span class="menu-icon">

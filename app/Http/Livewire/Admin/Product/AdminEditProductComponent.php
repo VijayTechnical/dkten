@@ -58,7 +58,6 @@ class AdminEditProductComponent extends Component
         $this->product_id = $product->id;
         $this->title = $product->title;
         $this->slug = $product->slug;
-        $this->user_id = $product->user_id;
         $this->category_id = $product->category_id;
         $this->sub_category_id = $product->sub_category_id;
         $this->type_id = $product->type_id;
@@ -144,7 +143,6 @@ class AdminEditProductComponent extends Component
             'type_id' => 'required|integer',
             'unit' => 'required',
             'tags' => 'required',
-            'images' => 'required',
             'description' => 'required',
             'seo_title' => 'required|unique:products,seo_title,'.$this->product_id,
             'seo_description' => 'required',
@@ -159,7 +157,6 @@ class AdminEditProductComponent extends Component
         $product = Product::find($this->product_id);
         $product->title = $this->title;
         $product->slug = $this->slug;
-        $product->admin_id = Auth::guard('admin')->user()->id;
         $product->category_id = $this->category_id;
         $product->sub_category_id = $this->sub_category_id;
         $product->type_id = $this->type_id;

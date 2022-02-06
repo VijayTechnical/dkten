@@ -34,8 +34,10 @@ class CartComponent extends Component
 
     public function render()
     {
-        if (Auth::guard('web')->check()) {
-            Cart::instance('cart')->store(Auth::guard('web')->user()->email);
+        if (Auth::guard('web')->user()) {
+            Cart::instance('cart')->restore(Auth::guard('web')->user()->email);
+            Cart::instance('wishlist')->restore(Auth::guard('web')->user()->email);
+            Cart::instance('compare')->restore(Auth::guard('web')->user()->email);
         }
         return view('livewire.components.cart-component');
     }

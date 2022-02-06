@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use PDF;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
@@ -10,11 +11,14 @@ use App\Models\Coupon;
 use App\Models\Payment;
 use App\Models\Product;
 use Livewire\Component;
+use App\Mail\InvoiceMail;
 use App\Models\OrderItem;
 use App\Models\Transaction;
 use App\Classes\StockStatus;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutComponent extends Component
@@ -92,74 +96,82 @@ class CheckoutComponent extends Component
             'payment_mode_id' => 'required'
         ]);
 
-        $order = new Order();
-        $sale_code = rand(100000, 999999);
-        Log::info("sale_code = " . $sale_code);
-        $order->sale_code = $sale_code;
-        $order->user_id = Auth::guard('web')->user()->id;
-        $order->subtotal = str_replace(",", "", session()->get('checkout')['subtotal']);
-        $order->discount = str_replace(",", "", session()->get('checkout')['discount']);
-        $order->tax = str_replace(",", "", session()->get('checkout')['tax']);
-        $order->total = str_replace(",", "", session()->get('checkout')['total']);
-        $order->shipping_cost = $this->shipping;
-        $order->firstname =  $this->first_name;
-        $order->lastname =  $this->last_name;
-        $order->mobile =  $this->phone;
-        $order->email =  $this->email;
-        $order->line1 =  $this->line1;
-        $order->line2 =  $this->line2;
-        $order->zip =  $this->zip;
-        $order->delivery_place =  $this->delivery_place;
-        $order->delivery_date =  $this->delivery_date;
-        $order->status = 'ordered';
-        $order->save();
+        $pre_status = $this->checkStatus();
+        if (!in_array(false, $pre_status)) {
+            $order = new Order();
+            $this->sale_code = rand(100000, 999999);
+            Log::info("sale_code = " . $this->sale_code);
+            $order->sale_code = $this->sale_code;
+            $order->user_id = Auth::guard('web')->user()->id;
+            $order->subtotal = str_replace(",", "", session()->get('checkout')['subtotal']);
+            $order->discount = str_replace(",", "", session()->get('checkout')['discount']);
+            $order->tax = str_replace(",", "", session()->get('checkout')['tax']);
+            $order->total = str_replace(",", "", session()->get('checkout')['total']);
+            $order->shipping_cost = $this->shipping;
+            $order->firstname =  $this->first_name;
+            $order->lastname =  $this->last_name;
+            $order->mobile =  $this->phone;
+            $order->email =  $this->email;
+            $order->line1 =  $this->line1;
+            $order->line2 =  $this->line2;
+            $order->zip =  $this->zip;
+            $order->delivery_place =  $this->delivery_place;
+            $order->delivery_date =  $this->delivery_date;
+            $order->status = 'ordered';
+            $order->save();
 
-        $payment = Payment::where('id', $this->payment_mode_id)->first();
-        $this->paymentmode = $payment->name;
-        if ($this->paymentmode == 'cash_on_delivery') {
-            $this->makeTransaction($order->id, 'pending');
-            $status = $this->setOrders($order->id);
-            if ($status == false) {
-                $this->dispatchBrowserEvent(
-                    'alert',
-                    ['type' => 'error',  'message' => 'Product is out of stock!']
-                );
-                return redirect()->back();
-            }
-            else{
-                $this->resetCart();
-            }
-        } elseif ($this->paymentmode == 'wallet') {
-            if($this->checkWallet() == true){
-                Auth::guard('web')->user()->forceWithdraw(session()->get('checkout')['total'],['description' => 'payment of product']);
-                $this->makeTransaction($order->id, 'pending');
+            $payment = Payment::where('id', $this->payment_mode_id)->first();
+            $this->paymentmode = $payment->name;
+            if ($this->paymentmode == 'cash_on_delivery') {
                 $status = $this->setOrders($order->id);
                 if ($status == false) {
                     $this->dispatchBrowserEvent(
                         'alert',
-                        ['type' => 'error',  'message' => 'Product is out of stock!!!']
+                        ['type' => 'error',  'message' => 'Product is out of stock!']
                     );
                     return redirect()->back();
+                } else {
+                    $this->makeTransaction($order->id, 'pending');
+                    $this->resetCart($order->id);
                 }
-                $this->resetCart();
+            } elseif ($this->paymentmode == 'wallet') {
+                if ($this->checkWallet() == true) {
+                    Auth::guard('web')->user()->forceWithdraw(session()->get('checkout')['total'], ['description' => 'payment of product']);
+                    $status = $this->setOrders($order->id);
+                    if ($status == false) {
+                        $this->dispatchBrowserEvent(
+                            'alert',
+                            ['type' => 'error',  'message' => 'Product is out of stock!!!']
+                        );
+                        return redirect()->back();
+                    } else {
+                        $this->makeTransaction($order->id, 'pending');
+                        $this->resetCart($order->id);
+                    }
+                } else {
+                    $this->dispatchBrowserEvent(
+                        'alert',
+                        ['type' => 'error',  'message' => 'You do not have enough balance on your wallet!!!']
+                    );
+                }
+            } elseif ($this->paymentmode == 'esewa') {
+                $this->dispatchBrowserEvent('submitEsewa');
+                $this->order_id = $order->id;
+                $this->makeTransaction($order->id, 'pending');
+            } elseif ($this->paymentmode == 'khalti') {
+                $this->dispatchBrowserEvent('showKhalti');
+                $this->order_id = $order->id;
+                $this->makeTransaction($order->id, 'pending');
+            } elseif ($this->paymentmode == 'ime_pay') {
+                $this->order_id = $order->id;
+                $this->makeTransaction($order->id, 'pending');
             }
-            else{
-                $this->dispatchBrowserEvent(
-                    'alert',
-                    ['type' => 'error',  'message' => 'You do not have enough balance on your wallet!!!']
-                );
-            }
-        } elseif ($this->paymentmode == 'esewa') {
-            $this->dispatchBrowserEvent('submitEsewa');
-            $this->order_id = $order->id;
-            $this->makeTransaction($order->id, 'pending');
-        } elseif ($this->paymentmode == 'khalti') {
-            $this->dispatchBrowserEvent('showKhalti');
-            $this->order_id = $order->id;
-            $this->makeTransaction($order->id, 'pending');
-        } elseif ($this->paymentmode == 'ime_pay') {
-            $this->order_id = $order->id;
-            $this->makeTransaction($order->id, 'pending');
+        } else {
+            $this->dispatchBrowserEvent(
+                'alert',
+                ['type' => 'error',  'message' => 'One of the product in your cart is out of stock!!!']
+            );
+            return redirect()->back();
         }
     }
 
@@ -167,14 +179,20 @@ class CheckoutComponent extends Component
     {
         $totalWalletBalance = Auth::guard('web')->user()->balance;
         $total = str_replace(',', '', session()->get('checkout')['total']);
-        if($totalWalletBalance >= $total)
-        {
+        if ($totalWalletBalance >= $total) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
+    }
+
+    public function checkStatus()
+    {
+        $status = [];
+        foreach (Cart::instance('cart')->content() as $item) {
+            array_push($status,StockStatus::getStockStatus($item->id, $item->qty));
+        }
+        return $status;
     }
 
     public function setOrders($order_id)
@@ -204,15 +222,22 @@ class CheckoutComponent extends Component
         }
     }
 
-    public function resetCart()
+    public function resetCart($order_id)
     {
         $this->thankyou = 1;
-        Cart::instance('cart')->destroy(Auth::user()->email);
+        $owners = collect();
+        foreach (Cart::instance('cart')->content() as $item) {
+            $owners->push(get_product_owner($item->id));
+        }
+        if ($owners->count() > 0) {
+            foreach ($owners as $owner) {
+                Mail::to($owner)->send(new InvoiceMail($order_id));
+            }
+        }
+        Mail::to(Auth::guard('web')->user()->email)->send(new InvoiceMail($order_id));
+        Mail::to('dkten@gmail.com')->send(new InvoiceMail($order_id));
+        Cart::instance('cart')->destroy(Auth::guard('web')->user()->email);
         session()->forget('checkout');
-        $message = [
-            'name' => Auth::user()->name,
-            'method' => $this->paymentmode,
-        ];
     }
 
     public function makeTransaction($order_id, $status)
@@ -253,9 +278,6 @@ class CheckoutComponent extends Component
         $token = json_decode($response, TRUE);
 
         if (isset($token['idx']) && $status_code == 200) {
-            $transaction = Transaction::where('order_id', $this->order_id)->first();
-            $transaction->status = 'approved';
-            $transaction->save();
             $status = $this->setOrders($this->order_id);
             if ($status == false) {
                 $this->dispatchBrowserEvent(
@@ -263,14 +285,18 @@ class CheckoutComponent extends Component
                     ['type' => 'error',  'message' => 'Product is out of stock!']
                 );
                 return redirect()->back();
+            } else {
+                $transaction = Transaction::where('order_id', $this->order_id)->first();
+                $transaction->status = 'approved';
+                $transaction->save();
+                $this->resetCart($this->order_id);
             }
-            $this->resetCart();
         } else {
             $this->dispatchBrowserEvent(
                 'alert',
                 ['type' => 'error',  'message' => 'Invalid token!!!']
             );
-            return;
+            return redirect()->back();
         }
     }
 
@@ -427,8 +453,10 @@ class CheckoutComponent extends Component
 
         $this->setAmountForCheckout();
 
-        if (Auth::guard('web')->check()) {
-            Cart::instance('cart')->store(Auth::guard('web')->user()->email);
+        if (Auth::guard('web')->user()) {
+            Cart::instance('cart')->restore(Auth::guard('web')->user()->email);
+            Cart::instance('wishlist')->restore(Auth::guard('web')->user()->email);
+            Cart::instance('compare')->restore(Auth::guard('web')->user()->email);
         }
 
         $this->verifyForCheckout();

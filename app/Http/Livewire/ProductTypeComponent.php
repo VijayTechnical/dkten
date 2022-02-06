@@ -21,10 +21,10 @@ class ProductTypeComponent extends Component
     public $paginate;
 
 
-    public $category_slug;
-    public $sub_category_slug;
-    public $type_slug;
-    public $sub_type_slug;
+    public $category_id;
+    public $sub_category_id;
+    public $type_id;
+    public $sub_type_id;
     public $brand_id;
     public $vendor_id;
     public $searchTerm;
@@ -35,24 +35,31 @@ class ProductTypeComponent extends Component
     public $qty;
 
 
-    public function mount($category_slug, $sub_category_slug=null, $type_slug = null, $sub_type_slug = null)
+    public function mount($category_id, $sub_category_id = null, $type_id = null, $sub_type_id = null)
     {
-        $this->category_slug = $category_slug;
-        if($sub_category_slug)
-        {
-            $this->sub_category_slug = $sub_category_slug;
+        $this->category_id = $category_id;
+        if ($sub_category_id) {
+            $this->sub_category_id = $sub_category_id;
         }
-        if ($type_slug) {
-            $this->type_slug = $type_slug;
+        if ($type_id) {
+            $this->type_id = $type_id;
         }
-        if ($sub_type_slug) {
-            $this->sub_type_slug = $sub_type_slug;
+        if ($sub_type_id) {
+            $this->sub_type_id = $sub_type_id;
         }
         $this->sorting = "default";
         $this->paginate = 12;
         $this->min_price = 0;
         $this->max_price = 10000000;
         $this->qty = 1;
+    }
+
+    public function addToCompare()
+    {
+        $this->dispatchBrowserEvent(
+            'alert',
+            ['type' => 'success',  'message' => 'Product added sucessfully to compare!']
+        );
     }
 
     public function store($product_id, $product_title, $product_price)
@@ -65,9 +72,7 @@ class ProductTypeComponent extends Component
                 'alert',
                 ['type' => 'error',  'message' => 'Product is already in your cart!']
             );
-        }
-        else
-        {
+        } else {
             Cart::instance('cart')->add($product_id, $product_title, $this->qty, $product_price)->associate('App\Models\Product');
             $this->emitTo('components.midbar-component', 'refreshComponent');
             $this->dispatchBrowserEvent(
@@ -89,34 +94,33 @@ class ProductTypeComponent extends Component
 
     public function render()
     {
-        $category = Category::where('slug', $this->category_slug)->first();
-        $products = $this->searchProduct($this->sorting, $category->id, $this->min_price, $this->max_price, $this->paginate,$this->brand_id, $this->vendor_id, $this->searchTerm);
-        if($this->sub_category_slug)
-        {
-            $sub_category = SubCategory::where('slug', $this->sub_category_slug)->first();
-            $products = $this->searchProduct($this->sorting, $category->id, $this->min_price, $this->max_price, $this->paginate, $this->brand_id, $this->vendor_id, $this->searchTerm);
-            if ($this->type_slug) {
-                $type = Type::where('slug', $this->type_slug)->first();
-                $products = $this->searchProduct($this->sorting, $category->id, $this->min_price, $this->max_price, $this->paginate, $this->brand_id, $this->vendor_id, $this->searchTerm,$sub_category->id, $type->id);
-                if ($this->sub_type_slug) {
-                    $sub_type = Type::where('slug', $this->sub_type_slug)->first();
-                    $products = $this->searchProduct($this->sorting, $category->id, $this->min_price, $this->max_price, $this->paginate, $this->brand_id, $this->vendor_id, $this->searchTerm,$sub_category->id, $type->id, $sub_type->id);
-                }
-            }
-
+        if (Auth::guard('web')->user()) {
+            Cart::instance('cart')->restore(Auth::guard('web')->user()->email);
+            Cart::instance('wishlist')->restore(Auth::guard('web')->user()->email);
+            Cart::instance('compare')->restore(Auth::guard('web')->user()->email);
         }
 
-
-
+        $category = Category::where('id', $this->category_id)->first();
+        $products = $this->searchProductByCategory($this->sorting, $category->id, $this->min_price, $this->max_price, $this->paginate, $this->searchTerm, $this->brand_id, $this->vendor_id);
+        if ($this->sub_category_id) {
+            $sub_category = SubCategory::where('id', $this->sub_category_id)->first();
+            $products = $this->searchProductBySubCategory($this->sorting, $category->id, $this->min_price, $this->max_price, $this->paginate, $this->searchTerm, $sub_category->id, $this->brand_id, $this->vendor_id);
+            if ($this->type_id) {
+                $type = Type::where('id', $this->type_id)->first();
+                $products = $this->searchProductByType($this->sorting, $category->id, $this->min_price, $this->max_price, $this->paginate, $this->searchTerm, $sub_category->id, $type->id, $this->brand_id, $this->vendor_id);
+                if ($this->sub_type_id) {
+                    $sub_type = Type::where('id', $this->sub_type_id)->first();
+                    $products = $this->searchProductBySubType($this->sorting, $category->id, $this->min_price, $this->max_price, $this->paginate, $this->searchTerm, $sub_category->id, $type->id, $sub_type->id, $this->brand_id, $this->vendor_id);
+                }
+            }
+        }
 
         $categories = Category::where('status', true)->get();
         $brands = Brand::where('status', true)->get();
         $vendors = Vendor::where('status', true)->get();
-
-        if (Auth::guard('web')->check()) {
-            Cart::instance('cart')->store(Auth::guard('web')->user()->email);
-            Cart::instance('wishlist')->store(Auth::guard('web')->user()->email);
-        }
-        return view('livewire.product-type-component', ['products' => $products, 'categories' => $categories, 'brands' => $brands, 'vendors' => $vendors])->layout('layouts.base');
+        $popular_products = Product::MostViewed()->latest()->Status()->offset(0)->limit(3)->get();
+        $deal_products = Product::TDeal()->Status()->latest()->offset(0)->limit(3)->get();
+        $latest_products = Product::Status()->latest()->offset(0)->limit(3)->get();
+        return view('livewire.product-type-component', ['products' => $products, 'categories' => $categories, 'brands' => $brands, 'vendors' => $vendors, 'popular_products' => $popular_products, 'deal_products' => $deal_products, 'latest_products' => $latest_products])->layout('layouts.base');
     }
 }

@@ -14,10 +14,20 @@ class Category extends Model
 
     protected $fillable = ['name','slug','image','status'];
 
+    public function scopeStatus($query)
+    {
+        return $query->where('status', true);
+    }
+
 
     public function SubCategory()
     {
         return $this->hasMany(SubCategory::class);
+    }
+
+    public function Type()
+    {
+        return $this->hasMany(Type::class);
     }
 
     public function Product()

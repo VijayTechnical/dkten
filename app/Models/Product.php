@@ -53,11 +53,6 @@ class Product extends Model
         return $this->belongsTo(Vendor::class, 'vendor_id', 'id');
     }
 
-    public function Admin()
-    {
-        return $this->belongsTo(Admin::class, 'admin_id', 'id');
-    }
-
     public function Brand()
     {
         return $this->belongsTo(Brand::class, 'brand_id', 'id');

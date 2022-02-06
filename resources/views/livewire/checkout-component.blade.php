@@ -181,7 +181,7 @@
                             </div>
                         </div>
                     </fieldset>
-                    <form action="#" wire:submit.prevent="proceedToCheckout()">
+                    <form action="#" wire:submit.prevent="proceedToCheckout()" onsubmit="$('#processing').show();">
                         <fieldset class="wizard-fieldset show">
                             <h3 class="block-title alt">
                                 <i class="fa fa-angle-down"></i>
@@ -332,9 +332,16 @@
     <a class="btn btn-theme-dark" href="{{ route('home') }}">
         Cancel Order
     </a>
+    @if (!$errors->isEmpty())
+    <button wire:ignore id="processing" class="btn btn-theme pull-right form-wizard-submit">
+        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+        <span>Processing...</span>
+    </button>
+    @else
     <button type="submit" class="btn btn-theme pull-right form-wizard-submit">
         Place Order
     </button>
+    @endif
 </div>
 </form>
 </div>

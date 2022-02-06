@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Api;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -31,7 +31,7 @@ class PasswordReset extends Mailable
     public function build()
     {
         return $this->from('dkten@gmail.com')
-        ->markdown('mail.verify', [
+        ->markdown('mail.api.verify', [
             'msg' => $this->message,
         ]);
     }

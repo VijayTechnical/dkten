@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\User\Auth;
 
-use App\Mail\PasswordReset;
+use App\Mail\Web\PasswordReset;
 use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Str;

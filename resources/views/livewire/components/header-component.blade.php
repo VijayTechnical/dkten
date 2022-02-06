@@ -12,14 +12,14 @@
                             @foreach ($category->SubCategory as $key=>$sub_category)
                             <li class="catsdropdownextnow">
                                 <a
-                                    href="{{ route('product.type',['category_slug'=>$category->slug,'sub_category_slug'=>$sub_category->slug]) }}">{{
+                                    href="{{ route('product.type',['category_id'=>$category->id,'sub_category_id'=>$sub_category->id]) }}">{{
                                     $sub_category->name }}</a>
                                 <ul class="allcatdk bhosdk" style="width: 200px; height:100%; background-color:white;">
                                     @if(count($sub_category->Type) > 0)
                                     @foreach ($sub_category->Type as $key=>$type)
                                     <li class="catsdropdownextnow">
                                         <a
-                                            href="{{ route('product.type',['category_slug'=>$category->slug,'sub_category_slug'=>$sub_category->slug,'type_slug'=>$type->slug]) }}">{{
+                                            href="{{ route('product.type',['category_id'=>$category->id,'sub_category_id'=>$sub_category->id,'type_id'=>$type->id]) }}">{{
                                             $type->name }}</a>
                                     </li>
                                     @endforeach

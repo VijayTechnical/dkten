@@ -41,10 +41,10 @@ class UserProfileComponent extends Component
 
     public function updated($fields)
     {
-        $this->validateOnly($fields,[
+        $this->validateOnly($fields, [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-             'email' => 'required|email|unique:users,email,' . Auth::guard('web')->user()->id,
+            'email' => 'required|email|unique:users,email,' . Auth::guard('web')->user()->id,
             'phone' => 'required|string',
             'line1' => 'required|string',
             'line2' => 'required|string',
@@ -62,7 +62,7 @@ class UserProfileComponent extends Component
         $this->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-             'email' => 'required|email|unique:users,email,' . Auth::guard('web')->user()->id,
+            'email' => 'required|email|unique:users,email,' . Auth::guard('web')->user()->id,
             'phone' => 'required|string',
             'line1' => 'required|string',
             'line2' => 'required|string',

@@ -196,6 +196,8 @@
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admin.vendor.slider') }}"> Vendor
                                     Slider List
                                 </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.vendor.pay_vendor') }}"> Vendor Payment
+                                </a></li>
                         </ul>
                     </div>
                 </li>

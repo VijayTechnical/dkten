@@ -203,7 +203,7 @@
     </div>
 
 
-    @if($sale->Transaction)
+    @if($order->Transaction)
     <div class="row ">
         <div class="col-12 grid-margin">
             <div class="card">

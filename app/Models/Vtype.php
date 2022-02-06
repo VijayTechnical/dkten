@@ -9,8 +9,13 @@ class Vtype extends Model
 {
     use HasFactory;
 
-    public function Vcategory()
+    public function Category()
     {
         return $this->belongsTo(Vcategory::class,'vcategory_id','id');
+    }
+
+    public function Vendor()
+    {
+        return $this->hasMany(Vendor::class);
     }
 }

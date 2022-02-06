@@ -16,6 +16,8 @@ class User extends Authenticatable implements Wallet, WalletFloat
 {
     use HasApiTokens, HasFactory, Notifiable,HasWalletFloat;
 
+    public $guard_name = 'web';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -45,4 +47,9 @@ class User extends Authenticatable implements Wallet, WalletFloat
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function Order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

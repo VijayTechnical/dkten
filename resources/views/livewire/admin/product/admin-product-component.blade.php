@@ -66,8 +66,8 @@
                                             alt="{{ $product->title }}" />
                                     </td>
                                     <td>{{ $product->title }}</td>
-                                    @if($product->admin_id)
-                                    <td>{{ $product->Admin->name }}</td>
+                                    @if(!$product->vendor_id)
+                                    <td>Admin</td>
                                     @else
                                     <td>{{ $product->Vendor->name }}</td>
                                     @endif

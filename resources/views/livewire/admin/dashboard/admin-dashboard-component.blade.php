@@ -6,17 +6,21 @@
                     <div class="row">
                         <div class="col-9">
                             <div class="d-flex align-items-center align-self-start">
-                                <h3 class="mb-0">$12.34</h3>
-                                <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
+                                @php
+                                $total_user = DB::table('users')->count();
+                                @endphp
+                                <p class="mb-0">
+                                    {{ $total_user }}
+                                </p>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="icon icon-box-success ">
-                                <span class="mdi mdi-arrow-top-right icon-item"></span>
+                                <span class="mdi mdi-account icon-item"></span>
                             </div>
                         </div>
                     </div>
-                    <h6 class="text-muted font-weight-normal">Potential growth</h6>
+                    <h6 class="text-muted font-weight-normal">Total Customers</h6>
                 </div>
             </div>
         </div>
@@ -26,17 +30,38 @@
                     <div class="row">
                         <div class="col-9">
                             <div class="d-flex align-items-center align-self-start">
-                                <h3 class="mb-0">$17.34</h3>
-                                <p class="text-success ml-2 mb-0 font-weight-medium">+11%</p>
+                                @php
+                                $total_vendor = DB::table('vendors')->where('status',true)->count();
+                                @endphp
+                                <p class="mb-0">{{ $total_vendor }}</p>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="icon icon-box-success ">
+                                <span class="mdi mdi-account icon-item"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Total Vendors</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="d-flex align-items-center align-self-start">
+                                <p class="mb-0">NRP. {{ $daily_sale }}</p>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="icon icon-box-success">
-                                <span class="mdi mdi-arrow-top-right icon-item"></span>
+                                <span class="mdi mdi-currency-usd icon-item"></span>
                             </div>
                         </div>
                     </div>
-                    <h6 class="text-muted font-weight-normal">Revenue current</h6>
+                    <h6 class="text-muted font-weight-normal">Today Sales</h6>
                 </div>
             </div>
         </div>
@@ -46,37 +71,16 @@
                     <div class="row">
                         <div class="col-9">
                             <div class="d-flex align-items-center align-self-start">
-                                <h3 class="mb-0">$12.34</h3>
-                                <p class="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="icon icon-box-danger">
-                                <span class="mdi mdi-arrow-bottom-left icon-item"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <h6 class="text-muted font-weight-normal">Daily Income</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-9">
-                            <div class="d-flex align-items-center align-self-start">
-                                <h3 class="mb-0">$31.53</h3>
-                                <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
+                                <p class="mb-0">NRP. {{ $total_sale }}</p>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="icon icon-box-success ">
-                                <span class="mdi mdi-arrow-top-right icon-item"></span>
+                                <span class="mdi mdi-currency-usd icon-item"></span>
                             </div>
                         </div>
                     </div>
-                    <h6 class="text-muted font-weight-normal">Expense current</h6>
+                    <h6 class="text-muted font-weight-normal">Total Sales</h6>
                 </div>
             </div>
         </div>
@@ -90,187 +94,209 @@
                     <div
                         class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                         <div class="text-md-center text-xl-left">
-                            <h6 class="mb-1">Transfer to Paypal</h6>
-                            <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
+                            <h6 class="mb-1">Transfer to Esewa</h6>
                         </div>
                         <div
                             class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                            <h6 class="font-weight-bold mb-0">$236</h6>
+                            <h6 class="font-weight-bold mb-0">NRP.{{ $transaction_data_esewa }}</h6>
                         </div>
                     </div>
                     <div
                         class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                         <div class="text-md-center text-xl-left">
-                            <h6 class="mb-1">Tranfer to Stripe</h6>
-                            <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
+                            <h6 class="mb-1">Transfer to Khalti</h6>
                         </div>
                         <div
                             class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                            <h6 class="font-weight-bold mb-0">$593</h6>
+                            <h6 class="font-weight-bold mb-0">NRP.{{ $transaction_data_khalti }}</h6>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                        <div class="text-md-center text-xl-left">
+                            <h6 class="mb-1">Transfer to Cash</h6>
+                        </div>
+                        <div
+                            class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+                            <h6 class="font-weight-bold mb-0">NRP.{{ $transaction_data_cash }}</h6>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                        <div class="text-md-center text-xl-left">
+                            <h6 class="mb-1">Transfer to Imepay</h6>
+                        </div>
+                        <div
+                            class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+                            <h6 class="font-weight-bold mb-0">NRP.{{ $transaction_data_imepay }}</h6>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                        <div class="text-md-center text-xl-left">
+                            <h6 class="mb-1">Tranfer to Wallet</h6>
+                        </div>
+                        <div
+                            class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+                            <h6 class="font-weight-bold mb-0">NRP.{{ $transaction_data_wallet }}</h6>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-8 grid-margin stretch-card">
+        <div class="col-lg-8 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex flex-row justify-content-between">
-                        <h4 class="card-title mb-1">Open Projects</h4>
-                        <p class="text-muted mb-1">Your data status</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="preview-list">
-                                <div class="preview-item border-bottom">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-primary">
-                                            <i class="mdi mdi-file-document"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content d-sm-flex flex-grow">
-                                        <div class="flex-grow">
-                                            <h6 class="preview-subject">Admin dashboard design</h6>
-                                            <p class="text-muted mb-0">Broadcast web app mockup</p>
-                                        </div>
-                                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                            <p class="text-muted">15 minutes ago</p>
-                                            <p class="text-muted mb-0">30 tasks, 5 issues </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="preview-item border-bottom">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-success">
-                                            <i class="mdi mdi-cloud-download"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content d-sm-flex flex-grow">
-                                        <div class="flex-grow">
-                                            <h6 class="preview-subject">Wordpress Development</h6>
-                                            <p class="text-muted mb-0">Upload new design</p>
-                                        </div>
-                                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                            <p class="text-muted">1 hour ago</p>
-                                            <p class="text-muted mb-0">23 tasks, 5 issues </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="preview-item border-bottom">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-info">
-                                            <i class="mdi mdi-clock"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content d-sm-flex flex-grow">
-                                        <div class="flex-grow">
-                                            <h6 class="preview-subject">Project meeting</h6>
-                                            <p class="text-muted mb-0">New project discussion</p>
-                                        </div>
-                                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                            <p class="text-muted">35 minutes ago</p>
-                                            <p class="text-muted mb-0">15 tasks, 2 issues</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="preview-item border-bottom">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-danger">
-                                            <i class="mdi mdi-email-open"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content d-sm-flex flex-grow">
-                                        <div class="flex-grow">
-                                            <h6 class="preview-subject">Broadcast Mail</h6>
-                                            <p class="text-muted mb-0">Sent release details to team</p>
-                                        </div>
-                                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                            <p class="text-muted">55 minutes ago</p>
-                                            <p class="text-muted mb-0">35 tasks, 7 issues </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="preview-item">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-warning">
-                                            <i class="mdi mdi-chart-pie"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content d-sm-flex flex-grow">
-                                        <div class="flex-grow">
-                                            <h6 class="preview-subject">UI Design</h6>
-                                            <p class="text-muted mb-0">New application planning</p>
-                                        </div>
-                                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                            <p class="text-muted">50 minutes ago</p>
-                                            <p class="text-muted mb-0">27 tasks, 4 issues </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4 grid-margin">
-            <div class="card">
-                <div class="card-body">
-                    <h5>Revenue</h5>
-                    <div class="row">
-                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                            <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                <h2 class="mb-0">$32123</h2>
-                                <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
-                            </div>
-                            <h6 class="text-muted font-weight-normal">11.38% Since last month</h6>
-                        </div>
-                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                            <i class="icon-lg mdi mdi-codepen text-primary ml-auto"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4 grid-margin">
-            <div class="card">
-                <div class="card-body">
-                    <h5>Sales</h5>
-                    <div class="row">
-                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                            <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                <h2 class="mb-0">$45850</h2>
-                                <p class="text-success ml-2 mb-0 font-weight-medium">+8.3%</p>
-                            </div>
-                            <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6>
-                        </div>
-                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                            <i class="icon-lg mdi mdi-wallet-travel text-danger ml-auto"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4 grid-margin">
-            <div class="card">
-                <div class="card-body">
-                    <h5>Purchase</h5>
-                    <div class="row">
-                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                            <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                <h2 class="mb-0">$2039</h2>
-                                <p class="text-danger ml-2 mb-0 font-weight-medium">-2.1% </p>
-                            </div>
-                            <h6 class="text-muted font-weight-normal">2.27% Since last month</h6>
-                        </div>
-                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                            <i class="icon-lg mdi mdi-monitor text-success ml-auto"></i>
-                        </div>
-                    </div>
+                    <h4 class="card-title">Weekly Sale Report</h4>
+                    <canvas id="lineChart" style="height:250px"></canvas>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@push('scripts')
+<script>
+    $(function() {
+        var date = @this.get('graph_date');
+        var sale = @this.get('graph_sale');
+        console.log(sale);
+               var data = {
+                labels: date,
+                datasets: [{
+                label: '# of Votes',
+                data: sale,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1,
+                fill: false
+                }]
+            };
+            var options = {
+            scales: {
+            yAxes: [{
+                ticks: {
+                beginAtZero: true
+                },
+                gridLines: {
+                color: "rgba(204, 204, 204,0.1)"
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                color: "rgba(204, 204, 204,0.1)"
+                }
+            }]
+            },
+            legend: {
+            display: false
+            },
+            elements: {
+            point: {
+                radius: 0
+            }
+            }
+        };
+        if ($("#lineChart").length) {
+            var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
+            var lineChart = new Chart(lineChartCanvas, {
+            type: 'line',
+            data: data,
+            options: options
+            });
+         }
+});
+</script>
+<script>
+    $(function() {
+    if ($("#transaction-history").length) {
+        wallet = @this.get('transaction_data_wallet');
+        esewa = @this.get('transaction_data_esewa');
+        khalti = @this.get('transaction_data_khalti');
+        imepay = @this.get('transaction_data_imepay');
+        cash = @this.get('transaction_data_cash');
+      var areaData = {
+        labels: ["Wallet", "Esewa","Khalti","Ime Pay","Cash"],
+        datasets: [{
+            data: [wallet, esewa,khalti,imepay, cash],
+            backgroundColor: [
+              "#17E7E7","#30E717","#7B17E7","#E71717","#ffab00",
+            ]
+          }
+        ]
+      };
+      var areaOptions = {
+        responsive: true,
+        maintainAspectRatio: true,
+        segmentShowStroke: false,
+        cutoutPercentage: 70,
+        elements: {
+          arc: {
+              borderWidth: 0
+          }
+        },      
+        legend: {
+          display: false
+        },
+        tooltips: {
+          enabled: true
+        }
+      }
+      var transactionhistoryChartPlugins = {
+        beforeDraw: function(chart) {
+          var width = chart.chart.width,
+              height = chart.chart.height,
+              ctx = chart.chart.ctx;
+      
+          ctx.restore();
+          var fontSize = 1;
+          ctx.font = fontSize + "rem sans-serif";
+          ctx.textAlign = 'left';
+          ctx.textBaseline = "middle";
+          ctx.fillStyle = "#ffffff";
+      
+          var text = "$1200", 
+              textX = Math.round((width - ctx.measureText(text).width) / 2),
+              textY = height / 2.4;
+      
+          ctx.fillText(text, textX, textY);
+
+          ctx.restore();
+          var fontSize = 0.75;
+          ctx.font = fontSize + "rem sans-serif";
+          ctx.textAlign = 'left';
+          ctx.textBaseline = "middle";
+          ctx.fillStyle = "#6c7293";
+
+          var texts = "Total", 
+              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+              textsY = height / 1.7;
+      
+          ctx.fillText(texts, textsX, textsY);
+          ctx.save();
+        }
+      }
+      var transactionhistoryChartCanvas = $("#transaction-history").get(0).getContext("2d");
+      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+        type: 'doughnut',
+        data: areaData,
+        options: areaOptions,
+        plugins: transactionhistoryChartPlugins
+      });
+    }
+});
+</script>
+@endpush

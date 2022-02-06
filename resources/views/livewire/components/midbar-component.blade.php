@@ -22,7 +22,7 @@
                     <button type="button" class="shrc_btn"><i class="fa fa-search"></i></button>
                 </div>
                 @if($search_products->count() > 0)
-                <ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front"
+                <ul class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front"
                     style=" display:{{ strlen($searchTerm) > 1 ? '' : 'none'}};width: 630px; top: 93.7969px; left: 241.828px;">
                     @foreach ($search_products as $search_product)
                     <li class="ui-menu-item">
@@ -47,7 +47,8 @@
                         <div class="form-check">
                             <a class="set_langs">
                                 <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                    value="en" {{ session()->get('locale') == 'en' ? 'checked' : '' }} wire:model.defer="lang">
+                                    value="en" {{ session()->get('locale') == 'en' ? 'checked' : '' }}
+                                wire:model.defer="lang">
                                 <label class="form-check-label" for="exampleRadios1">English</label>
                             </a>
                         </div>

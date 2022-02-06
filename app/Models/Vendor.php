@@ -50,21 +50,13 @@ class Vendor extends Authenticatable
         return $this->hasMany(Product::class);
     }
 
-    public function Type()
+    public function Category()
     {
         return $this->belongsTo(Vcategory::class,'vcategory_id','id');
     }
 
-    public function Mall()
+    public function Type()
     {
-        return $this->belongsTo(Mall::class,'mall_id','id');
-    }
-    public function Eservice()
-    {
-        return $this->belongsTo(Eservice::class,'eservice_id','id');
-    }
-    public function Gvendor()
-    {
-        return $this->belongsTo(Gvendor::class,'gvendor_id','id');
+        return $this->belongsTo(Vtype::class,'vtype_id','id');
     }
 }

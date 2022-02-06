@@ -14,7 +14,7 @@
                         @if($vtypes->count() > 0)
                         @foreach ($vtypes as $key=>$vtype)
                         <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="mall-details" itemscope="" itemtype="http://schema.org/Store">
+                            <div class="mall-details">
                                 <div class="mall-mall">
                                     <img class="img-responsive" itemprop="logo"
                                         src="{{ asset('/storage/vtype') }}/{{ $vtype->image }}">
@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="mall-products">
                                     <div class="mall-btn">
-                                        <a href="{{ route('vendor.category.detail',['vcategory_slug'=>$vtype->Vcategory->slug,'vtype_slug'=>$vtype->slug]) }}"
+                                        <a href="{{ route('vendor.category.detail',['vcategory_slug'=>$vtype->Category->slug,'vtype_slug'=>$vtype->slug]) }}"
                                             class="btn btn-custom btn-block btn-theme">
                                             Visit </a>
                                     </div>

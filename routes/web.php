@@ -124,13 +124,17 @@ use App\Http\Livewire\Admin\Vendor\AdminCommisionVendorComponent;
 use App\Http\Livewire\User\Wallet\UserProceedWalletLoadComponent;
 use App\Http\Livewire\Admin\Attribute\AdminEditAttributeComponent;
 use App\Http\Livewire\Admin\Bcategory\AdminEditBcategoryComponent;
+use App\Http\Livewire\Admin\Esewa\AdminVendorPayEsewaComponent;
 use App\Http\Livewire\Admin\Vcategory\AdminEditVcategoryComponent;
 use App\Http\Livewire\Admin\Permission\AdminAddPermissionComponent;
 use App\Http\Livewire\Admin\Permission\AdminEditPermissionComponent;
+use App\Http\Livewire\Admin\Vendor\AdminPayVendorComponent;
 use App\Http\Livewire\User\SupportTicket\UserAdminSupportTicketComponent;
 use App\Http\Livewire\User\SupportTicket\UserVendorSupportTicketComponent;
 use App\Http\Livewire\User\SupportTicket\UserAdminViewSupportTicketComponent;
 use App\Http\Livewire\User\SupportTicket\UserVendorViewSupportTicketComponent;
+use App\Http\Livewire\Vendor\Payment\VendorPaymentFromAdminComponent;
+use App\Http\Livewire\Vendor\Payment\VendorUpdateMerchantComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -168,7 +172,7 @@ Route::get('/thankyou', ThankyouComponent::class)->name('thankyou');
 Route::get('/checkout/esewa-verify', EsewaComponent::class . '@verify')->name('esewa.verify');
 
 //Product Category Routes
-Route::get('/product/{category_slug}/{sub_category_slug?}/{type_slug?}/{sub_type_slug?}', ProductTypeComponent::class)->name('product.type');
+Route::get('/product/{category_id}/{sub_category_id?}/{type_id?}/{sub_type_id?}', ProductTypeComponent::class)->name('product.type');
 
 
 //Legality Routes
@@ -274,6 +278,10 @@ Route::prefix('vendor')->name('vendor.')->group(function () {
         //Sales Route
         Route::get('/sales', VendorSaleComponent::class)->name('sale');
         Route::get('/sales/show/{sale_id}', VendorSaleViewComponent::class)->name('sale.show');
+
+        //Admin Payment Routes 
+        Route::get('update-esewa-merchant', VendorUpdateMerchantComponent::class)->name('merchant.update');
+        Route::get('payment-from-admin', VendorPaymentFromAdminComponent::class)->name('payment.admin');
     });
 });
 
@@ -342,6 +350,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/vendor', AdminVendorComponent::class)->name('vendor');
         Route::get('/vendor/commision', AdminCommisionVendorComponent::class)->name('vendor.commision');
         Route::get('/vendor/slider', AdminSlidesVendorComponent::class)->name('vendor.slider');
+        Route::get('/vendor/payment', AdminPayVendorComponent::class)->name('vendor.pay_vendor');
+
+        //Esewa Route for vendor payment
+        Route::get('/vendor-payment/esewa-verify', AdminVendorPayEsewaComponent::class . '@verify')->name('esewa.verify');
 
         //Vendor Types Routes
         Route::get('/vtype', AdminVtypeComponent::class)->name('vtype');

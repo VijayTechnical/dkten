@@ -51,12 +51,10 @@ class AdminSaleComponent extends Component
     public function render()
     {
         $sales = Order::query()
-            ->where('id', 'LIKE', "%{$this->searchTerm}%")
-            ->orWhere('firstname', 'LIKE', "%{$this->searchTerm}%")
-            ->orWhere('sale_code', 'LIKE', "%{$this->searchTerm}%")
-            ->orWhere('lastname', 'LIKE', "%{$this->searchTerm}%")
-            ->orWhere('email', 'LIKE', "%{$this->searchTerm}%")
-            ->orderBy('created_at', 'DESC')->paginate($this->paginate);
+            ->where('firstname', 'LIKE', '%'.$this->searchTerm.'%')
+            ->orWhere('sale_code', 'LIKE', '%'.$this->searchTerm.'%')
+            ->orWhere('email', 'LIKE', '%'.$this->searchTerm.'%')
+            ->latest()->paginate($this->paginate);
         return view('livewire.admin.sale.admin-sale-component', ['sales' => $sales])->layout('layouts.admin');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Classes;
 
 use Illuminate\Support\Facades\DB;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class StockStatus
 {
@@ -42,5 +43,19 @@ class StockStatus
                 'quantity' => 0
             ];
         }
+    }
+
+    public static function getCartProductStatus()
+    {
+        if (auth()->user()) {
+            Cart::instance('cart')->restore(auth()->user()->email);
+            Cart::instance('wishlist')->restore(auth()->user()->email);
+            Cart::instance('compare')->restore(auth()->user()->email);
+        }
+        $status = [];
+        foreach (Cart::instance('cart')->content() as $item) {
+            array_push($status,StockStatus::getStockStatus($item->id, $item->qty));
+        }
+        return $status;
     }
 }

@@ -10,4 +10,9 @@ class UserWallet extends Model
     use HasFactory;
 
     protected $fillable = ['user_id','otp','amount','method','retry','is_verified'];
+
+    public function User()
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
 }

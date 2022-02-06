@@ -59,6 +59,27 @@ class ProductDetailComponent extends Component
         }
     }
 
+    public function buyNow($product_id, $product_name, $product_price)
+    {
+        $cart_items = Cart::instance('cart')
+            ->content()
+            ->pluck('id');
+        if ($cart_items->contains($product_id)) {
+            $this->dispatchBrowserEvent(
+                'alert',
+                ['type' => 'error',  'message' => 'Product is already in your cart!']
+            );
+        } else {
+            Cart::instance('cart')->add($product_id, $product_name, $this->qty, $product_price, $this->sattr)->associate('App\Models\Product');
+            $this->emitTo('components.midbar-component', 'refreshComponent');
+            $this->dispatchBrowserEvent(
+                'alert',
+                ['type' => 'success',  'message' => 'Product added to  your cart!']
+            );
+            return redirect()->route('checkout');
+        }
+    }
+
     public function store($product_id, $product_name, $product_price)
     {
         $cart_items = Cart::instance('cart')
@@ -96,9 +117,10 @@ class ProductDetailComponent extends Component
     {
         $product = Product::find($this->product_id);
         $r_products = Product::where('status', true)->where('category_id', $product->category_id)->limit(12)->get();
-        if (Auth::guard('web')->check()) {
-            Cart::instance('cart')->store(Auth::guard('web')->user()->email);
-            Cart::instance('wishlist')->store(Auth::guard('web')->user()->email);
+        if (Auth::guard('web')->user()) {
+            Cart::instance('cart')->restore(Auth::guard('web')->user()->email);
+            Cart::instance('wishlist')->restore(Auth::guard('web')->user()->email);
+            Cart::instance('compare')->restore(Auth::guard('web')->user()->email);
         }
         $orderItems = $product->OrderItem()->where('rstatus', 1)->get();
         return view('livewire.product-detail-component', ['product' => $product, 'r_products' => $r_products, 'orderItems' => $orderItems])->layout('layouts.base');

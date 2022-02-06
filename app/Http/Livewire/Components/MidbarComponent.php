@@ -7,6 +7,7 @@ use App\Models\Product;
 use Livewire\Component;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class MidbarComponent extends Component
 {
@@ -39,6 +40,11 @@ class MidbarComponent extends Component
     
     public function render()
     {
+        if (Auth::guard('web')->user()) {
+            Cart::instance('cart')->restore(Auth::guard('web')->user()->email);
+            Cart::instance('wishlist')->restore(Auth::guard('web')->user()->email);
+            Cart::instance('compare')->restore(Auth::guard('web')->user()->email);
+        }
         if($this->lang == 'ne')
         {
             $this->setLanguage('ne');

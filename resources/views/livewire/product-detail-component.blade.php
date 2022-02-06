@@ -52,47 +52,41 @@
                     <h3 itemprop="name" class="product-title">{{ $product->title }} </h3>
                     <div class="product-info">
                         <p>
-                            <a href="https://dkten.com/home/category/30">
+                            <a href="{{ route('product.type',['category_id'=>$product->Category->id]) }}">
                                 {{ $product->Category->name }}
                             </a>
                         </p>
-
                         ||
-
                         <p>
-                            <a href="https://dkten.com/home/category/30/119">
+                            <a
+                                href="{{ route('product.type',['category_id'=>$product->Category->id,'sub_category_id'=>$product->SubCategory->id]) }}">
                                 {{ $product->SubCategory->name }}
                             </a>
                         </p>
                         ||
-                        <p itemscope="" itemtype="http://schema.org/Brand">
-                            <a href="https://dkten.com/home/category/30/119-">
-                                <span itemprop="name">{{ $product->Brand->name }}</span>
+                        <p>
+                            <a
+                                href="{{ route('product.type',['category_id'=>$product->Category->id,'sub_category_id'=>$product->SubCategory->id,'type_id'=>$product->Type->id]) }}">
+                                <span itemprop="name">{{ $product->Type->name }}</span>
                             </a>
                         </p>
                     </div>
-                    <div class="added_by" itemscope="" itemtype="http://schema.org/Store">
+                    <div class="added_by">
                         Sold By :
                         <p itemprop="name">
                             @if($product->vendor_id)
-                            <a href="https://dkten.com/home/vendor_profile/158/A-One-Nepal-Leather-Craft">{{
+                            <a
+                                href="{{ route('vendor.detail',['vendor_display_name'=>$product->Vendor->display_name]) }}">{{
                                 $product->Vendor->display_name }}</a>
                             @else
-                            <a href="https://dkten.com/home/vendor_profile/158/A-One-Nepal-Leather-Craft">{{
-                                $product->Admin->name }}</a>
+                            <a href="{{ route('about') }}">Admin</a>
                             @endif
                         </p>
                     </div>
-                    <div class="product-rating clearfix" itemprop="aggregateRating" itemscope=""
-                        itemtype="https://schema.org/AggregateRating">
+                    <div class="product-rating clearfix">
                         @php
-                        $avgrating = 0;
+                        $avgrating = get_product_rating($product->id);
                         @endphp
-                        @foreach ($product->OrderItem->where('rstatus', 1) as $orderItem)
-                        @php
-                        $avgrating = $avgrating + $orderItem->Review->rating;
-                        @endphp
-                        @endforeach
                         @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating) <i class="fa fa-star text-warning"></i>
                             @else
                             <i class="fa fa-star text-secondary"></i>
@@ -117,9 +111,8 @@
                             Discount: {{ $product->discount }}%
                         </span>
                     </div>
-                    <div class="col-md-6">
-                        <form action="https://dkten.com/home/product_view/430/Mens-Genuine-Long-Slim-Fit-Leather-Jacket"
-                            method="post" class="sky-form" accept-charset="utf-8">
+                    <div class="col-md-12">
+                        <form action="#" method="post" class="sky-form" accept-charset="utf-8">
                             <div class="order">
                                 <div class="buttons">
                                     <fieldset class="options">
@@ -163,7 +156,7 @@
                                                 </i></span>
                                         </div>
                                         @if($current_status['status'] == 'In-Stock')
-                                        <div class="stock" itemprop="availability" href="http://schema.org/InStock">
+                                        <div class="stock">
                                             {{ $current_status['quantity'] }} {{ $product->unit }} Available
                                         </div>
                                         @else
@@ -174,7 +167,8 @@
                             </div>
 
                             <div class="buttons" style="display:inline-flex;">
-                                <span class="btn btn-add-to buy_now cart" onclick="to_buy(430,event)">
+                                <span class="btn btn-add-to buy_now cart"
+                                    wire:click.prevent="buyNow({{$product->id}},'{{$product->title}}',{{$product->sale_price}})">
                                     <i class="fa fa-shopping-cart"></i>
                                     Buy Now
                                 </span>
@@ -256,8 +250,7 @@
                                                     <div class="review__rating">
                                                         <div class="rating">
                                                             <div class="rating__body">
-                                                                @for ($i = 0; $i < 5; $i++) 
-                                                                @if ($i < $orderItem->Review->rating)
+                                                                @for ($i = 0; $i < 5; $i++) @if ($i < $orderItem->Review->rating)
                                                                     <i class="fa fa-star text-secondary"></i>
                                                                     @else
                                                                     <i class="fa fa-star text-warning"></i>
@@ -345,13 +338,8 @@
                                         <b>{{ $product->title }} </b>
                                     </h4>
                                     @php
-                                    $avgrating = 0;
+                                    $avgrating = get_product_rating($product->id);
                                     @endphp
-                                    @foreach ($product->OrderItem->where('rstatus', 1) as $orderItem)
-                                    @php
-                                    $avgrating = $avgrating + $orderItem->Review->rating;
-                                    @endphp
-                                    @endforeach
                                     @for ($i = 1; $i <= 5; $i++) @if ($i <=$avgrating)<i
                                         class="fa fa-star text-warning"></i>
                                         @else

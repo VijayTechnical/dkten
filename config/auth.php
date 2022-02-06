@@ -25,7 +25,6 @@ return [
         'guard' => 'vendor',
         'passwords' => 'vendors',
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards

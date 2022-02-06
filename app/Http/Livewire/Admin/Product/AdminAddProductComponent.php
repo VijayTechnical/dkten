@@ -24,7 +24,6 @@ class AdminAddProductComponent extends Component
 
     public $title;
     public $slug;
-    public $user_id;
     public $category_id;
     public $sub_category_id;
     public $type_id;
@@ -60,10 +59,9 @@ class AdminAddProductComponent extends Component
 
     public function add()
     {
-        if(!in_array($this->attr,$this->attribute_arr))
-        {
-            array_push($this->inputs,$this->attr);
-            array_push($this->attribute_arr,$this->attr);
+        if (!in_array($this->attr, $this->attribute_arr)) {
+            array_push($this->inputs, $this->attr);
+            array_push($this->attribute_arr, $this->attr);
         }
     }
 
@@ -80,7 +78,7 @@ class AdminAddProductComponent extends Component
 
     public function updated($fields)
     {
-        $this->validateOnly($fields,[
+        $this->validateOnly($fields, [
             'title' => 'required',
             'slug' => 'required|unique:products',
             'category_id' => 'required|integer',
@@ -103,7 +101,7 @@ class AdminAddProductComponent extends Component
 
     public function addProduct()
     {
-        
+
         $this->validate([
             'title' => 'required',
             'slug' => 'required|unique:products',
@@ -127,25 +125,21 @@ class AdminAddProductComponent extends Component
         $product = new Product();
         $product->title = $this->title;
         $product->slug = $this->slug;
-        $product->admin_id = Auth::guard('admin')->user()->id;
         $product->category_id = $this->category_id;
         $product->sub_category_id = $this->sub_category_id;
         $product->type_id = $this->type_id;
         $product->brand_id = $this->brand_id;
-        if($this->sub_type_id)
-        {
+        if ($this->sub_type_id) {
             $product->sub_type_id = $this->sub_type_id;
         }
         $product->unit = $this->unit;
         $product->tags = $this->tags;
-        if($this->images)
-        {
+        if ($this->images) {
             $imagesName = '';
-            foreach($this->images as $key=>$image)
-            {
-                $imgName = Carbon::now()->timestamp. $key. '.' .$image->extension();
-                $image->storeAs('public/product',$imgName);
-                $imagesName = $imagesName.','. $imgName;
+            foreach ($this->images as $key => $image) {
+                $imgName = Carbon::now()->timestamp . $key . '.' . $image->extension();
+                $image->storeAs('public/product', $imgName);
+                $imagesName = $imagesName . ',' . $imgName;
             }
             $product->images = $imagesName;
         }
@@ -161,11 +155,9 @@ class AdminAddProductComponent extends Component
         $product->t_deal = $this->t_deal;
         $product->featured = $this->featured;
         $product->save();
-        foreach($this->attribute_values as $key=>$attribute_value)
-        {
-            $avalues = explode(",",$attribute_value);
-            foreach($avalues as $avalue)
-            {
+        foreach ($this->attribute_values as $key => $attribute_value) {
+            $avalues = explode(",", $attribute_value);
+            foreach ($avalues as $avalue) {
                 $attr_value =  new AttributeValue();
                 $attr_value->attribute_id = $key;
                 $attr_value->value = $avalue;
@@ -173,19 +165,21 @@ class AdminAddProductComponent extends Component
                 $attr_value->save();
             }
         }
-        $this->dispatchBrowserEvent('alert',
-        ['type' => 'success',  'message' => 'Product Created Successfully!']);
+        $this->dispatchBrowserEvent(
+            'alert',
+            ['type' => 'success',  'message' => 'Product Created Successfully!']
+        );
     }
 
 
     public function render()
     {
-        $categories = Category::where('status',true)->orderBy('created_at','DESC')->get();
-        $sub_categories = SubCategory::where('status',true)->where('category_id',$this->category_id)->orderBy('created_at','DESC')->get();
-        $types = Type::where('status',true)->where('category_id',$this->category_id)->where('sub_category_id',$this->sub_category_id)->orderBy('created_at','DESC')->get();
-        $sub_types = SubType::where('status',true)->where('type_id',$this->type_id)->orderBy('created_at','DESC')->get();
+        $categories = Category::where('status', true)->latest()->get();
+        $sub_categories = SubCategory::where('status', true)->where('category_id', $this->category_id)->latest()->get();
+        $types = Type::where('status', true)->where('category_id', $this->category_id)->where('sub_category_id', $this->sub_category_id)->latest()->get();
+        $sub_types = SubType::where('status', true)->where('type_id', $this->type_id)->latest()->get();
         $parrributes = Attribute::all();
-        $brands = Brand::where('status',true)->orderBy('created_at','DESC')->get();
-        return view('livewire.admin.product.admin-add-product-component',['categories'=>$categories,'sub_categories'=>$sub_categories,'types'=>$types,'sub_types'=>$sub_types,'pattributes'=>$parrributes,'brands'=>$brands])->layout('layouts.admin');
+        $brands = Brand::where('status', true)->latest()->get();
+        return view('livewire.admin.product.admin-add-product-component', ['categories' => $categories, 'sub_categories' => $sub_categories, 'types' => $types, 'sub_types' => $sub_types, 'pattributes' => $parrributes, 'brands' => $brands])->layout('layouts.admin');
     }
 }

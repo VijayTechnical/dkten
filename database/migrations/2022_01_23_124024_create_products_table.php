@@ -17,7 +17,6 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->bigInteger('admin_id')->unsigned()->nullable();
             $table->bigInteger('vendor_id')->unsigned()->nullable();
             $table->bigInteger('category_id')->unsigned()->nullable();
             $table->bigInteger('sub_category_id')->unsigned()->nullable();
