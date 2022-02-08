@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Faq;
 use App\Models\Payment;
+use App\Models\Slider;
 use App\Traits\ProductSearchForApi;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
@@ -472,6 +473,23 @@ class FrontendController extends Controller
         return response()->json([
             'message' => 'Payment methods found sucessfully!',
             'data' => $methods
+        ]);
+    }
+
+    public function getSlider()
+    {
+        try{
+            $sliders = Slider::latest()->get();
+            
+        }catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Sliders found sucessfully!',
+            'data' => $sliders
         ]);
     }
 }

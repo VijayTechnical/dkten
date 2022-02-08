@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-         <!-- Required meta tags -->
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- plugins:css -->
@@ -39,7 +39,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- Favicon Image -->
     <link rel="icon" type="image/png" href="{{ asset('favicon/logo.png') }}" />
@@ -196,7 +196,8 @@
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admin.vendor.slider') }}"> Vendor
                                     Slider List
                                 </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.vendor.pay_vendor') }}"> Vendor Payment
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.vendor.pay_vendor') }}">
+                                    Vendor Payment
                                 </a></li>
                         </ul>
                     </div>
@@ -255,6 +256,8 @@
                     </a>
                     <div class="collapse" id="front">
                         <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.slider') }}"> Slider </a>
+                            </li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admin.gsetting') }}"> General
                                     Setting </a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admin.ssetting') }}"> Social

@@ -84,6 +84,8 @@ Route::get('faqs',[FrontendController::class,'getFaq']);
 //Payment methods route
 Route::get('payment-methods',[FrontendController::class,'getPaymentMethod']);
 
+Route::get('sliders',[FrontendController::class,'getSlider']);
+
 
 
 

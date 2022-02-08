@@ -54,6 +54,7 @@ use App\Http\Livewire\Admin\Coupon\AdminCouponComponent;
 use App\Http\Livewire\Admin\Report\AdminReportComponent;
 use App\Http\Livewire\Admin\Role\AdminEditRoleComponent;
 use App\Http\Livewire\Admin\Sale\AdminViewSaleComponent;
+use App\Http\Livewire\Admin\Slider\AdminSliderComponent;
 use App\Http\Livewire\Admin\Ticket\AdminTicketComponent;
 use App\Http\Livewire\Admin\Type\AdminEditTypeComponent;
 use App\Http\Livewire\Admin\Vendor\AdminVendorComponent;
@@ -80,12 +81,15 @@ use App\Http\Livewire\Vendor\Sale\VendorSaleViewComponent;
 use App\Http\Livewire\Vendor\Slider\VendorSliderComponent;
 use App\Http\Livewire\Vendor\Ticket\VendorTicketComponent;
 use App\Http\Livewire\Admin\Coupon\AdminAddCouponComponent;
+use App\Http\Livewire\Admin\Slider\AdminAddSliderComponent;
+use App\Http\Livewire\Admin\Vendor\AdminPayVendorComponent;
 use App\Http\Livewire\User\Wallet\UserWalletEsewaComponent;
 use App\Http\Livewire\Vendor\Stock\VendorAddStockComponent;
 use App\Http\Livewire\Admin\Category\AdminCategoryComponent;
 use App\Http\Livewire\Admin\Coupon\AdminEditCouponComponent;
 use App\Http\Livewire\Admin\Customer\AdminCustomerComponent;
 use App\Http\Livewire\Admin\Legality\AdminLegalityComponent;
+use App\Http\Livewire\Admin\Slider\AdminEditSliderComponent;
 use App\Http\Livewire\Admin\Ticket\AdminViewTicketComponent;
 use App\Http\Livewire\User\Dashboard\UserDashboardComponent;
 use App\Http\Livewire\Vendor\Product\VendorProductComponent;
@@ -108,6 +112,7 @@ use App\Http\Livewire\Admin\Vendor\AdminSlidesVendorComponent;
 use App\Http\Livewire\Vendor\Slider\VendorEditSliderComponent;
 use App\Http\Livewire\Vendor\Ticket\VendorViewTicketComponent;
 use App\Http\Livewire\Admin\Category\AdminAddCategoryComponent;
+use App\Http\Livewire\Admin\Esewa\AdminVendorPayEsewaComponent;
 use App\Http\Livewire\Vendor\Auth\VendorResetPasswordComponent;
 use App\Http\Livewire\Vendor\Product\VendorAddProductComponent;
 use App\Http\Livewire\Vendor\Stock\VendorDestroyStockComponent;
@@ -124,17 +129,15 @@ use App\Http\Livewire\Admin\Vendor\AdminCommisionVendorComponent;
 use App\Http\Livewire\User\Wallet\UserProceedWalletLoadComponent;
 use App\Http\Livewire\Admin\Attribute\AdminEditAttributeComponent;
 use App\Http\Livewire\Admin\Bcategory\AdminEditBcategoryComponent;
-use App\Http\Livewire\Admin\Esewa\AdminVendorPayEsewaComponent;
 use App\Http\Livewire\Admin\Vcategory\AdminEditVcategoryComponent;
 use App\Http\Livewire\Admin\Permission\AdminAddPermissionComponent;
+use App\Http\Livewire\Vendor\Payment\VendorUpdateMerchantComponent;
 use App\Http\Livewire\Admin\Permission\AdminEditPermissionComponent;
-use App\Http\Livewire\Admin\Vendor\AdminPayVendorComponent;
+use App\Http\Livewire\Vendor\Payment\VendorPaymentFromAdminComponent;
 use App\Http\Livewire\User\SupportTicket\UserAdminSupportTicketComponent;
 use App\Http\Livewire\User\SupportTicket\UserVendorSupportTicketComponent;
 use App\Http\Livewire\User\SupportTicket\UserAdminViewSupportTicketComponent;
 use App\Http\Livewire\User\SupportTicket\UserVendorViewSupportTicketComponent;
-use App\Http\Livewire\Vendor\Payment\VendorPaymentFromAdminComponent;
-use App\Http\Livewire\Vendor\Payment\VendorUpdateMerchantComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -404,5 +407,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/staff', AdminStaffComponent::class)->name('staff');
         Route::get('/staff/add', AdminAddStaffComponent::class)->name('staff.add');
         Route::get('/staff/edit/{staff_id}', AdminEditStaffComponent::class)->name('staff.edit');
+
+        //Slider Route
+        Route::get('/slider', AdminSliderComponent::class)->name('slider');
+        Route::get('/slider/add', AdminAddSliderComponent::class)->name('slider.add');
+        Route::get('/slider/edit/{slider_id}', AdminEditSliderComponent::class)->name('slider.edit');
     });
 });
