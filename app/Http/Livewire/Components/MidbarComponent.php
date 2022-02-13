@@ -6,6 +6,7 @@ use App\Models\Logo;
 use App\Models\Product;
 use Livewire\Component;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -13,13 +14,24 @@ class MidbarComponent extends Component
 {
     public $searchTerm;
     public $locale;
-
     protected $listeners = ['refreshComponent' => '$refresh'];
 
     public function mount()
     {
         $this->searchTerm = '';
         $this->locale = session()->get('locale');
+    }
+
+    public function submitSearch()
+    {
+        if ($this->searchTerm) {
+            $product = Product::where('title','LIKE', '%' . $this->searchTerm . '%')->orWhere('slug', 'LIKE', '%' . $this->searchTerm . '%')->first();
+            if ($product) {
+                return redirect()->route('product.detail', $product->slug);
+            }
+        } else {
+            return redirect()->back();
+        }
     }
 
     public function Logout()
@@ -38,7 +50,7 @@ class MidbarComponent extends Component
         session()->put('locale', $this->locale);
         $this->emitSelf('refreshComponent');
         $this->emitTo('components.header-component','refreshComponent');
-        return redirect()->to('/');
+        return redirect()->to(URL::previous());
     }
     
     public function render()

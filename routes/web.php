@@ -177,6 +177,9 @@ Route::get('/thankyou', ThankyouComponent::class)->name('thankyou');
 //Esewa Route
 Route::get('/checkout/esewa-verify', EsewaComponent::class . '@verify')->name('esewa.verify');
 
+//Search Route
+Route::get('/autocomplete-search', [SearchController::class, 'getProduct']);
+
 //Product Category Routes
 Route::get('/product/{category_id}/{sub_category_id?}/{type_id?}/{sub_type_id?}', ProductTypeComponent::class)->name('product.type');
 

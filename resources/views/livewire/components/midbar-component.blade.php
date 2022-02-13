@@ -12,28 +12,15 @@
         </div>
 
         <div class="col-xl-6 col-lg-6 header-search mt-4">
-            <form action="#" wire:submit.prevent="searchProduct()" method="post" accept-charset="UTF-8">
+            <form action="#" wire:submit.prevent="submitSearch" method="post" accept-charset="UTF-8">
                 <div class="d-flex position-relative">
                     <div class="flex-grow-1">
                         <input class="form-control ui-autocomplete-input" type="text" name="query"
                             accept-charset="utf-8" placeholder="What Are You Looking For?" autocomplete="off"
-                            id="search" wire:model="searchTerm">
+                            id="searchQueryInput" wire:model.defer="searchTerm">
                     </div>
-                    <button type="button" class="shrc_btn"><i class="fa fa-search"></i></button>
+                    <button type="submit" class="shrc_btn"><i class="fa fa-search"></i></button>
                 </div>
-                @if($search_products->count() > 0)
-                <ul class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front"
-                    style=" display:{{ strlen($searchTerm) > 1 ? '' : 'none'}};width: 630px; top: 93.7969px; left: 241.828px;">
-                    @foreach ($search_products as $search_product)
-                    <li class="ui-menu-item">
-                        <div id="ui-id-2" tabindex="-1" class="ui-menu-item-wrapper">
-                            <a href="{{ route('product.detail',['product_slug'=>$search_product->slug]) }}"
-                                style="margin-top: 2px;">{{ $search_product->title }}</a>
-                        </div>
-                    </li>
-                    @endforeach
-                </ul>
-                @endif
             </form>
         </div>
         <div class="col-xl-4 col-lg-4">
@@ -124,4 +111,19 @@
         @this.setLocale();
     });  
 </script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+<script type="text/javascript">
+    var route = "{{ url('autocomplete-search') }}";
+    $('#searchQueryInput').typeahead({
+        source: function (query, process) {
+            return $.get(route, {
+                query: query
+            }, function (data) {
+                console.log(data);
+                return process(data);
+            });
+        }
+    });
+</script> 
 @endpush
