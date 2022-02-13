@@ -2,6 +2,10 @@
 
 return [
     'flight_holiday' => 'Flights Holiday',
-    'welcome_message' => 'Hi, Welcome to this page',
-    'author_information' => 'My name is Sanjay. This blog is mine and we created this post for you to learn.',
+    'sell_on_dKten' => 'Sell On DKten',
+    'track_my_order' => 'Track My Order',
+    'reffer_and_earn' => 'Reffer And Earn',
+    'contact' => 'Helpline'
 ];
+
+?>

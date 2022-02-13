@@ -46,18 +46,16 @@
                         <p>Change Language</p>
                         <div class="form-check">
                             <a class="set_langs">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                    value="en" {{ session()->get('locale') == 'en' ? 'checked' : '' }}
-                                wire:model.defer="lang">
+                                <input class="form-check-input Langchange" type="radio" name="exampleRadios" id="exampleRadios1"
+                                    value="en" wire:model="locale">
                                 <label class="form-check-label" for="exampleRadios1">English</label>
                             </a>
                         </div>
                         <div class="form-check">
                             <a class="set_langs">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                    value="ne" {{ session()->get('locale') == 'ne' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="exampleRadios1"
-                                    wire:model.defer="lang">Nepali</label>
+                                <input class="form-check-input Langchange" type="radio" name="exampleRadios" id="exampleRadios"
+                                    value="ne" wire:model="locale">
+                                <label class="form-check-label" for="exampleRadios">Nepali</label>
                             </a>
                         </div>
                     </div>
@@ -120,3 +118,10 @@
         </div>
     </div>
 </div>
+@push('scripts')
+<script type="text/javascript">
+    $(".Langchange").change(function(){
+        @this.setLocale();
+    });  
+</script>
+@endpush

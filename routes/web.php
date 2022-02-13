@@ -23,6 +23,7 @@ use App\Http\Livewire\PrivacyPolicyComponent;
 use App\Http\Livewire\ProductDetailComponent;
 use App\Http\Livewire\TermConditionComponent;
 use App\Http\Livewire\VendorCategoryComponent;
+use App\Http\Controllers\LocalizationController;
 use App\Http\Livewire\LegalInformationComponent;
 use App\Http\Livewire\Admin\Faq\AdminFaqComponent;
 use App\Http\Livewire\User\Auth\UserLoginComponent;
@@ -88,6 +89,7 @@ use App\Http\Livewire\Vendor\Stock\VendorAddStockComponent;
 use App\Http\Livewire\Admin\Category\AdminCategoryComponent;
 use App\Http\Livewire\Admin\Coupon\AdminEditCouponComponent;
 use App\Http\Livewire\Admin\Customer\AdminCustomerComponent;
+use App\Http\Livewire\Admin\Language\AdminLanguageComponent;
 use App\Http\Livewire\Admin\Legality\AdminLegalityComponent;
 use App\Http\Livewire\Admin\Slider\AdminEditSliderComponent;
 use App\Http\Livewire\Admin\Ticket\AdminViewTicketComponent;
@@ -117,6 +119,7 @@ use App\Http\Livewire\Vendor\Auth\VendorResetPasswordComponent;
 use App\Http\Livewire\Vendor\Product\VendorAddProductComponent;
 use App\Http\Livewire\Vendor\Stock\VendorDestroyStockComponent;
 use App\Http\Livewire\Admin\Category\AdminEditCategoryComponent;
+use App\Http\Livewire\Admin\Language\AdminEditLanguageComponent;
 use App\Http\Livewire\Admin\Permission\AdminPermissionComponent;
 use App\Http\Livewire\Admin\Setting\AdminSocialSettingComponent;
 use App\Http\Livewire\Vendor\Dashboard\VendorDashboardComponent;
@@ -412,5 +415,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/slider', AdminSliderComponent::class)->name('slider');
         Route::get('/slider/add', AdminAddSliderComponent::class)->name('slider.add');
         Route::get('/slider/edit/{slider_id}', AdminEditSliderComponent::class)->name('slider.edit');
+
+        //Language Route
+        Route::get('/language',AdminLanguageComponent::class)->name('language');
+        Route::get('/language/edit/{field}/{id}',AdminEditLanguageComponent::class)->name('language.edit');
     });
 });

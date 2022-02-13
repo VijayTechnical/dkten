@@ -268,6 +268,7 @@
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admin.legality') }}">Legality</a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admin.faq') }}">Faq's</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.language') }}">Language</a></li>
                         </ul>
                     </div>
                 </li>

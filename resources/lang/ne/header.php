@@ -2,6 +2,10 @@
 
 return [
     'flight_holiday' => 'यात्रा टिकट र बिदा मनाउने स्थलहरु',
-    'welcome_message' => 'Hola bienvenido a esta pagina',
-    'author_information' => 'Mi nombre es Sanjay. Este blog es mío y creamos esta publicación para que aprendas.',
+    'sell_on_dKten' => 'Dkten मा बेच्नुहोस्',
+    'track_my_order' => 'मेरो अर्डर ट्र्याक गर्नुहोस्',
+    'reffer_and_earn' => 'सन्दर्भ गर्नुहोस् र कमाउनुहोस्',
+    'contact' => 'हेल्पलाइन'
 ];
+
+?>

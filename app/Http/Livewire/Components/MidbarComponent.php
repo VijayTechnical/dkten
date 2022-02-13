@@ -12,13 +12,14 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class MidbarComponent extends Component
 {
     public $searchTerm;
-    public $lang;
+    public $locale;
 
     protected $listeners = ['refreshComponent' => '$refresh'];
 
     public function mount()
     {
         $this->searchTerm = '';
+        $this->locale = session()->get('locale');
     }
 
     public function Logout()
@@ -31,12 +32,14 @@ class MidbarComponent extends Component
         return redirect('/user/login');
     }
 
-    public function setLanguage($lang)
+    public function setLocale()
     {
-        App::setLocale($lang);
-        session()->put('locale', $lang);
+        App::setLocale($this->locale);
+        session()->put('locale', $this->locale);
+        $this->emitSelf('refreshComponent');
+        $this->emitTo('components.header-component','refreshComponent');
+        return redirect()->to('/');
     }
-
     
     public function render()
     {
@@ -44,13 +47,6 @@ class MidbarComponent extends Component
             Cart::instance('cart')->restore(Auth::guard('web')->user()->email);
             Cart::instance('wishlist')->restore(Auth::guard('web')->user()->email);
             Cart::instance('compare')->restore(Auth::guard('web')->user()->email);
-        }
-        if($this->lang == 'ne')
-        {
-            $this->setLanguage('ne');
-        }
-        else{
-            $this->setLanguage('en');
         }
         $logo = Logo::find(1);
         $search_products = Product::query()
