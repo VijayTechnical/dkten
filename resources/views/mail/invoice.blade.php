@@ -49,6 +49,9 @@ Your sale code is {{ $order->sale_code }}
     <li>Tax : NPR{{ $order->tax }}</li>
     <li>Shipping : NPR{{ $order->shipping_cost }}</li>
     <li>Total : NPR{{ $order->total }}</li>
+    <li>Delivery Region : NPR{{ $order->Region->name }}</li>
+    <li>Delivery City : NPR{{ $order->City->name }}</li>
+    <li>Delivery Area : NPR{{ $order->Area->name }}</li>
 </ul>
 @endcomponent
 Thanks,<br>

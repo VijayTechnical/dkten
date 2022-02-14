@@ -113,20 +113,24 @@
                                 <tr>
                                     <th>Subtotal</th>
                                     <th>Tax</th>
+                                    <th>Discount</th>
                                     <th>Shipping</th>
                                     <th>Total</th>
-                                    <th>Delivery Location</th>
-                                    <th>Delivery Date</th>
+                                    <th>Delivey Region</th>
+                                    <th>Delivery City</th>
+                                    <th>Delivery Area</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>NPR. {{ $order->subtotal }}</td>
                                     <td>NPR. {{ $order->tax }}</td>
+                                    <td>NPR. {{ $order->discount }}</td>
                                     <td>NPR. {{ $order->shipping_cost }}</td>
                                     <td>NPR. {{ $order->total }}</td>
-                                    <td>{{ $order->delivery_place }} Valley</td>
-                                    <td>{{ $order->delivery_date }} Days</td>
+                                    <td>{{ $order->Region->name }}</td>
+                                    <td>{{ $order->City->name }}</td>
+                                    <td>{{ $order->Area->name }}</td>
                                 </tr>
                             </tbody>
                         </table>

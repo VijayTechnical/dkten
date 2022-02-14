@@ -25,4 +25,19 @@ class Order extends Model
     {
         return $this->hasOne(Transaction::class);
     }
+
+    public function Region()
+    {
+        return $this->belongsTo(Region::class,'region_id','id');
+    }
+
+    public function City()
+    {
+        return $this->belongsTo(City::class,'city_id','id');
+    }
+
+    public function Area()
+    {
+        return $this->belongsTo(Area::class,'area_id','id');
+    }
 }

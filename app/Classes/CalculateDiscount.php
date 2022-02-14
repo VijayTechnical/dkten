@@ -16,7 +16,7 @@ class CalculateDiscount
         return true;
     }
 
-    public static function calculateDiscounts()
+    public static function calculateDiscounts($shipping)
     {
         try {
             if (session()->has('coupon')) {
@@ -27,13 +27,12 @@ class CalculateDiscount
                 }
                 $subtotalAfterDiscount = str_replace(',', '', Cart::instance('cart')->subtotal()) - $discount;
                 $taxAfterDiscount = ($subtotalAfterDiscount * config('cart.tax')) / 100;
-                $totalAfterDiscount = $subtotalAfterDiscount + $taxAfterDiscount + 100;
+                $totalAfterDiscount = $subtotalAfterDiscount + $taxAfterDiscount + str_replace(',', '', $shipping);
             } else {
                 $discount = 0;
                 $subtotalAfterDiscount = str_replace(',', '', Cart::instance('cart')->subtotal());
                 $taxAfterDiscount = str_replace(',', '', Cart::instance('cart')->tax());
-                $shipping = 100;
-                $totalAfterDiscount = str_replace(',', '', Cart::instance('cart')->total()) + 100;
+                $totalAfterDiscount = str_replace(',', '', Cart::instance('cart')->total()) + str_replace(',', '', $shipping);
             }
             session()->put('checkout', [
                 'discount' => $discount,

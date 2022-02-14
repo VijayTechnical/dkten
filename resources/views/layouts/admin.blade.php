@@ -246,6 +246,26 @@
                     </a>
                 </li>
                 <li class="nav-item menu-items">
+                    <a class="nav-link" data-toggle="collapse" href="#shipping" aria-expanded="false"
+                        aria-controls="shipping">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-security"></i>
+                        </span>
+                        <span class="menu-title">Shipping Setting</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="shipping">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.shipping.region') }}"> Region </a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.shipping.city') }}"> City </a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.shipping.area') }}"> Area </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item menu-items">
                     <a class="nav-link" data-toggle="collapse" href="#front" aria-expanded="false"
                         aria-controls="front">
                         <span class="menu-icon">

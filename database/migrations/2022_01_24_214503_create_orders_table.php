@@ -29,13 +29,17 @@ class CreateOrdersTable extends Migration
             $table->string('line1');
             $table->string('line2');
             $table->string('zip');
-            $table->enum('delivery_place',['inside','outside']);
-            $table->enum('delivery_date',['2-3','3-5']);
+            $table->unsignedBigInteger('region_id');
+            $table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('area_id');
             $table->enum('status',['ordered','delivered','cancelled'])->default('ordered');
             $table->date('delivered_date')->nullable();
             $table->date('cancelled_date')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+            $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
         });
     }
 

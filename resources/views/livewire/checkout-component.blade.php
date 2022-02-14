@@ -189,71 +189,93 @@
                                 Delivery
                             </h3>
                             <div action="#" class="form-delivery delivery_address">
-                                <div class="row ">
-                                    <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <select class="form-control" style="border-color: rgb(147, 30, 205);"
-                                                wire:model="delivery_place">
-                                                <option value="">Select delivery location</option>
-                                                <option value="inside">Inside Valley</option>
-                                                <option value="outside">Outside Valley</option>
+                                                wire:model="region_id">
+                                                <option value="">Select Region</option>
+                                                @foreach ($regions as $region)
+                                                <option value="{{ $region->id }}">{{ $region->name }}</option>
+                                                @endforeach
                                             </select>
-                                            @error('delivery_place')
+                                            @error('region_id')
                                             <span class="text-danger mt-1" role="alert">{{ $message }}
                                         </div>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="readonly" class="form-control"
-                                            style="border-color: rgb(147, 30, 205);" wire:model="delivery_date">
-                                        @error('delivery_date')
+                                        <select class="form-control" style="border-color: rgb(147, 30, 205);"
+                                            wire:model="city_id">
+                                            <option value="">Select City</option>
+                                            @foreach ($cities as $city)
+                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('city_id')
                                         <span class="text-danger mt-1" role="alert">{{ $message }}
                                     </div>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <input class="form-control" name="firstname" type="text" placeholder="First Name"
-                                        style="border-color: rgb(147, 30, 205);" wire:model="first_name">
-                                    @error('first_name')
+                                    <select class="form-control" style="border-color: rgb(147, 30, 205);"
+                                        wire:model="area_id" wire:change="setAmountForCheckout">
+                                        <option value="">Select Area</option>
+                                        @foreach ($areas as $area)
+                                        <option value="{{ $area->id }}">{{ $area->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('area_id')
                                     <span class="text-danger mt-1" role="alert">{{ $message }}
                                 </div>
                                 @enderror
                             </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input class="form-control" name="lastname" type="text" placeholder="Last Name"
-                            style="border-color: rgb(147, 30, 205);" wire:model="last_name">
-                        @error('first_name')
-                        <span class="text-danger mt-1" role="alert">{{ $message }}
-                    </div>
-                    @enderror
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="form-group">
-                    <input class="form-control address" name="address1" value="" type="text"
-                        placeholder="Address Line 1" style="border-color: rgb(147, 30, 205);" required
-                        wire:model="line1">
-                    @error('line1')
-                    <span class="text-danger mt-1" role="alert">{{ $message }}
-                </div>
-                @enderror
             </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
-                <input class="form-control address" name="address2" value="" type="text" placeholder="Address Line 2"
-                    required wire:model="line2">
-                @error('line2')
+                <input class="form-control" name="first_name" type="text" placeholder="First Name"
+                    style="border-color: rgb(147, 30, 205);" wire:model="first_name">
+                @error('first_name')
                 <span class="text-danger mt-1" role="alert">{{ $message }}
             </div>
             @enderror
         </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <input class="form-control" name="lastname" type="text" placeholder="Last Name"
+            style="border-color: rgb(147, 30, 205);" wire:model="last_name">
+        @error('last_name')
+        <span class="text-danger mt-1" role="alert">{{ $message }}
+    </div>
+    @enderror
+</div>
+</div>
+<div class="col-md-12">
+    <div class="form-group">
+        <input class="form-control address" name="address1" value="" type="text" placeholder="Address Line 1"
+            style="border-color: rgb(147, 30, 205);" required wire:model="line1">
+        @error('line1')
+        <span class="text-danger mt-1" role="alert">{{ $message }}
+    </div>
+    @enderror
+</div>
+</div>
+<div class="col-md-12">
+    <div class="form-group">
+        <input class="form-control address" name="address2" value="" type="text" placeholder="Address Line 2" required
+            wire:model="line2">
+        @error('line2')
+        <span class="text-danger mt-1" role="alert">{{ $message }}
+    </div>
+    @enderror
+</div>
 </div>
 
 <div class="col-md-4">

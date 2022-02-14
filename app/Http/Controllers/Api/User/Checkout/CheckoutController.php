@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Api\User\Checkout;
 
 use Carbon\Carbon;
+use App\Models\Area;
 use App\Models\Order;
 use App\Models\Coupon;
 use App\Models\Payment;
+use App\Classes\Checkout;
 use App\Classes\StockStatus;
 use Illuminate\Http\Request;
 use App\Classes\CalculateDiscount;
-use App\Classes\Checkout;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -62,12 +63,13 @@ class CheckoutController extends Controller
         ]);
     }
 
-    public function getCheckoutAmount()
+    public function getCheckoutAmount(Request $request)
     {
         if (CalculateDiscount::getCartStatus() != true) {
             return response()->json(['message' => 'No items in cart']);
         }
-        CalculateDiscount::calculateDiscounts();
+        $area = Area::findOrFail($request->area_id);
+        CalculateDiscount::calculateDiscounts($area->shipping_cost);
         try {
             $checkout = session()->get('checkout');
         } catch (\Exception $e) {
@@ -91,8 +93,9 @@ class CheckoutController extends Controller
             'line1' => 'required|string',
             'line2' => 'required|string',
             'zip' => 'required|numeric',
-            'delivery_place' => 'required|string',
-            'delivery_date' => 'required|string',
+            'region_id' => 'required|integer|exists:regions,id',
+            'city_id' => 'required|integer|exists:cities,id',
+            'area_id' => 'required|integer|exists:areas,id',
             'payment_mode_id' => 'required|integer|exists:payments,id'
         ]);
 
@@ -119,8 +122,9 @@ class CheckoutController extends Controller
                 $order->line1 =  $request->line1;
                 $order->line2 =  $request->line2;
                 $order->zip =  $request->zip;
-                $order->delivery_place =  $request->delivery_place;
-                $order->delivery_date =  $request->delivery_date;
+                $order->region_id = $request->region_id;
+                $order->city_id = $request->city_id;
+                $order->area_id = $request->area_id;
                 $order->status = 'ordered';
                 $order->save();
             } else {

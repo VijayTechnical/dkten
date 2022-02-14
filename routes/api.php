@@ -86,6 +86,11 @@ Route::get('payment-methods',[FrontendController::class,'getPaymentMethod']);
 
 Route::get('sliders',[FrontendController::class,'getSlider']);
 
+//Shipping routes
+Route::get('shipping/regions',[FrontendController::class,'getRegion']);
+Route::get('shipping/cities/{region_id}',[FrontendController::class,'getCity']);
+Route::get('shipping/areas/{region_id}/{city_id}',[FrontendController::class,'getArea']);
+
 
 
 
@@ -154,7 +159,7 @@ Route::prefix('user')->group(function () {
         Route::post('apply-coupon',[CheckoutController::class,'applyCouponCode']);
 
         //Checkout session amount
-        Route::get('checkout-amount',[CheckoutController::class,'getCheckoutAmount']);
+        Route::post('checkout-amount',[CheckoutController::class,'getCheckoutAmount']);
         Route::post('proceed-to-checkout',[CheckoutController::class,'proceedToCheckout']);
 
         Route::get('proceed-to-checkout/esewa-verify',[CheckoutController::class,'verifyEsewaRequest']);

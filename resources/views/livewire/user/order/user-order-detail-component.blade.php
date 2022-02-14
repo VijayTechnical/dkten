@@ -70,6 +70,18 @@
                                             Phone : {{ $order->mobile }} <br>
                                             E-mail : <a href="">{{ $order->email }}</a>
                                         </p>
+                                        <p>
+                                            <b>Delivery Region :</b>
+                                            {{ $order->Region->name }}
+                                        </p>
+                                        <p>
+                                            <b>Delivery City :</b>
+                                            {{ $order->City->name }}
+                                        </p>
+                                        <p>
+                                            <b>Delivery Area :</b>
+                                            {{ $order->Area->name }}
+                                        </p>
                                     </address>
                                 </div>
                             </div>

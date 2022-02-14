@@ -15,7 +15,7 @@ class UserOrderController extends Controller
     public function getOrder()
     {
         try {
-            $orders = Order::with('OrderItem', 'Transaction')->where('user_id', auth()->user()->id)->latest()->get();
+            $orders = Order::with('OrderItem', 'Transaction','Region','City','Area')->where('user_id', auth()->user()->id)->latest()->get();
         } catch (\Exception $e) {
             return response()->json([
                 'message' => $e->getMessage()
@@ -30,7 +30,7 @@ class UserOrderController extends Controller
     public function getOrderDetail($sale_code)
     {
         try {
-            $order = Order::with('OrderItem', 'Transaction')->where(['sale_code' => $sale_code, 'user_id' => auth()->user()->id])->latest()->get();
+            $order = Order::with('OrderItem', 'Transaction','Region','City','Area')->where(['sale_code' => $sale_code, 'user_id' => auth()->user()->id])->latest()->get();
         } catch (\Exception $e) {
             return response()->json([
                 'message' => $e->getMessage()

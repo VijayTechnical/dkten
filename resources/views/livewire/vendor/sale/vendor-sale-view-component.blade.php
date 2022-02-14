@@ -85,7 +85,7 @@
                                         @endforeach
                                         <span class="pl-2">{{ $item->product->title }}</span>
                                     </td>
-                                    <td>Rs. {{ $item->price }}</td>
+                                    <td>NPR. {{ $item->price }}</td>
                                     <td>
                                         @if($item->options)
                                         <ul>
@@ -98,7 +98,7 @@
                                         @endif
                                     </td>
                                     <td>{{ $item->quantity }}</td>
-                                    <td>Rs. {{ number_format($item->price * $item->quantity,2)}}</td>
+                                    <td>NPR. {{ number_format($item->price * $item->quantity,2)}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -113,16 +113,24 @@
                                 <tr>
                                     <th>Subtotal</th>
                                     <th>Tax</th>
+                                    <th>Discount</th>
                                     <th>Shipping</th>
                                     <th>Total</th>
+                                    <th>Delivey Region</th>
+                                    <th>Delivery City</th>
+                                    <th>Delivery Area</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Rs. {{ $order->subtotal }}</td>
-                                    <td>Rs. {{ $order->tax }}</td>
-                                    <td>Rs. 50</td>
-                                    <td>Rs. {{ $order->total }}</td>
+                                    <td>NPR. {{ $order->subtotal }}</td>
+                                    <td>NPR. {{ $order->tax }}</td>
+                                    <td>NPR. {{ $order->discount }}</td>
+                                    <td>NPR. {{ $order->shipping_cost }}</td>
+                                    <td>NPR. {{ $order->total }}</td>
+                                    <td>{{ $order->Region->name }}</td>
+                                    <td>{{ $order->City->name }}</td>
+                                    <td>{{ $order->Area->name }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -201,8 +209,6 @@
             </div>
         </div>
     </div>
-
-
     @if($order->Transaction)
     <div class="row ">
         <div class="col-12 grid-margin">
@@ -240,6 +246,6 @@
                 </div>
             </div>
         </div>
-        @endif
     </div>
+    @endif
 </div>

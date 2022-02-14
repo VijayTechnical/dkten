@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\Api\Frontend;
 
+use App\Models\Faq;
+use App\Models\Area;
+use App\Models\City;
 use App\Models\Logo;
 use App\Models\Vtype;
+use App\Models\Region;
+use App\Models\Slider;
 use App\Models\Vendor;
 use App\Models\Contact;
+use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Gsetting;
@@ -13,13 +19,10 @@ use App\Models\Legality;
 use App\Models\Ssetting;
 use App\Models\Vcategory;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\Faq;
-use App\Models\Payment;
-use App\Models\Slider;
 use App\Traits\ProductSearchForApi;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class FrontendController extends Controller
 {
@@ -490,6 +493,54 @@ class FrontendController extends Controller
         return response()->json([
             'message' => 'Sliders found sucessfully!',
             'data' => $sliders
+        ]);
+    }
+    public function getRegion()
+    {
+        try{
+            $regions = Region::latest()->get();
+            
+        }catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Regions found sucessfully!',
+            'data' => $regions
+        ]);
+    }
+    public function getCity($region_id)
+    {
+        try{
+            $cities = City::where('region_id',$region_id)->latest()->get();
+            
+        }catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Cities found sucessfully!',
+            'data' => $cities
+        ]);
+    }
+    public function getArea($region_id,$city_id)
+    {
+        try{
+            $areas = Area::where('region_id',$region_id)->where('city_id',$city_id)->latest()->get();
+            
+        }catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Areas found sucessfully!',
+            'data' => $areas
         ]);
     }
 }

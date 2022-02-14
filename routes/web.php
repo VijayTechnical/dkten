@@ -27,7 +27,9 @@ use App\Http\Controllers\LocalizationController;
 use App\Http\Livewire\LegalInformationComponent;
 use App\Http\Livewire\Admin\Faq\AdminFaqComponent;
 use App\Http\Livewire\User\Auth\UserLoginComponent;
+use App\Http\Livewire\Admin\Area\AdminAreaComponent;
 use App\Http\Livewire\Admin\Blog\AdminBlogComponent;
+use App\Http\Livewire\Admin\City\AdminCityComponent;
 use App\Http\Livewire\Admin\Logo\AdminLogoComponent;
 use App\Http\Livewire\Admin\Role\AdminRoleComponent;
 use App\Http\Livewire\Admin\Sale\AdminSaleComponent;
@@ -45,13 +47,18 @@ use App\Http\Livewire\User\Auth\UserRegisterComponent;
 use App\Http\Livewire\User\Coupon\UserCouponComponent;
 use App\Http\Livewire\User\Review\UserReviewComponent;
 use App\Http\Livewire\Vendor\Sale\VendorSaleComponent;
+use App\Http\Livewire\Admin\Area\AdminAddAreaComponent;
 use App\Http\Livewire\Admin\Blog\AdminAddBlogComponent;
+use App\Http\Livewire\Admin\City\AdminAddCityComponent;
 use App\Http\Livewire\Admin\Role\AdminAddRoleComponent;
 use App\Http\Livewire\Admin\Type\AdminAddTypeComponent;
 use App\Http\Livewire\Vendor\Auth\VendorLoginComponent;
 use App\Http\Controllers\User\UserSocialLoginController;
+use App\Http\Livewire\Admin\Area\AdminEditAreaComponent;
 use App\Http\Livewire\Admin\Blog\AdminEditBlogComponent;
+use App\Http\Livewire\Admin\City\AdminEditCityComponent;
 use App\Http\Livewire\Admin\Coupon\AdminCouponComponent;
+use App\Http\Livewire\Admin\Region\AdminRegionComponent;
 use App\Http\Livewire\Admin\Report\AdminReportComponent;
 use App\Http\Livewire\Admin\Role\AdminEditRoleComponent;
 use App\Http\Livewire\Admin\Sale\AdminViewSaleComponent;
@@ -82,6 +89,7 @@ use App\Http\Livewire\Vendor\Sale\VendorSaleViewComponent;
 use App\Http\Livewire\Vendor\Slider\VendorSliderComponent;
 use App\Http\Livewire\Vendor\Ticket\VendorTicketComponent;
 use App\Http\Livewire\Admin\Coupon\AdminAddCouponComponent;
+use App\Http\Livewire\Admin\Region\AdminAddRegionComponent;
 use App\Http\Livewire\Admin\Slider\AdminAddSliderComponent;
 use App\Http\Livewire\Admin\Vendor\AdminPayVendorComponent;
 use App\Http\Livewire\User\Wallet\UserWalletEsewaComponent;
@@ -91,6 +99,7 @@ use App\Http\Livewire\Admin\Coupon\AdminEditCouponComponent;
 use App\Http\Livewire\Admin\Customer\AdminCustomerComponent;
 use App\Http\Livewire\Admin\Language\AdminLanguageComponent;
 use App\Http\Livewire\Admin\Legality\AdminLegalityComponent;
+use App\Http\Livewire\Admin\Region\AdminEditRegionComponent;
 use App\Http\Livewire\Admin\Slider\AdminEditSliderComponent;
 use App\Http\Livewire\Admin\Ticket\AdminViewTicketComponent;
 use App\Http\Livewire\User\Dashboard\UserDashboardComponent;
@@ -422,5 +431,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         //Language Route
         Route::get('/language',AdminLanguageComponent::class)->name('language');
         Route::get('/language/edit/{field}/{id}',AdminEditLanguageComponent::class)->name('language.edit');
+
+        //Shipping routes
+        Route::get('/shipping/region',AdminRegionComponent::class)->name('shipping.region');
+        Route::get('/shipping/region/add',AdminAddRegionComponent::class)->name('shipping.region.add');
+        Route::get('/shipping/region/edit/{region_id}',AdminEditRegionComponent::class)->name('shipping.region.edit');
+
+        Route::get('/shipping/city',AdminCityComponent::class)->name('shipping.city');
+        Route::get('/shipping/city/add',AdminAddCityComponent::class)->name('shipping.city.add');
+        Route::get('/shipping/city/edit/{city_id}',AdminEditCityComponent::class)->name('shipping.city.edit');
+
+        Route::get('/shipping/area',AdminAreaComponent::class)->name('shipping.area');
+        Route::get('/shipping/area/add',AdminAddAreaComponent::class)->name('shipping.area.add');
+        Route::get('/shipping/area/edit/{area_id}',AdminEditAreaComponent::class)->name('shipping.area.edit');
     });
 });

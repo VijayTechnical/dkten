@@ -4,10 +4,13 @@ namespace App\Http\Livewire;
 
 use PDF;
 use Carbon\Carbon;
+use App\Models\Area;
+use App\Models\City;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Stock;
 use App\Models\Coupon;
+use App\Models\Region;
 use App\Models\Payment;
 use App\Models\Product;
 use Livewire\Component;
@@ -44,9 +47,10 @@ class CheckoutComponent extends Component
     public $line1;
     public $line2;
     public $zip;
-    public $delivery_place;
-    public $delivery_date;
     public $sale_code;
+    public $region_id;
+    public $city_id;
+    public $area_id;
 
     public function mount()
     {
@@ -75,9 +79,10 @@ class CheckoutComponent extends Component
             'line1' => 'required',
             'line2' => 'required',
             'zip' => 'required',
-            'delivery_place' => 'required',
-            'delivery_date' => 'required',
-            'payment_mode_id' => 'required'
+            'region_id' => 'required|integer|exists:regions,id',
+            'city_id' => 'required|integer|exists:cities,id',
+            'area_id' => 'required|integer|exists:areas,id',
+            'payment_mode_id' => 'required|integer|exists:payments,id'
         ]);
     }
 
@@ -91,9 +96,10 @@ class CheckoutComponent extends Component
             'line1' => 'required',
             'line2' => 'required',
             'zip' => 'required',
-            'delivery_place' => 'required',
-            'delivery_date' => 'required',
-            'payment_mode_id' => 'required'
+            'region_id' => 'required|integer|exists:regions,id',
+            'city_id' => 'required|integer|exists:cities,id',
+            'area_id' => 'required|integer|exists:areas,id',
+            'payment_mode_id' => 'required|integer|exists:payments,id'
         ]);
 
         $pre_status = $this->checkStatus();
@@ -115,8 +121,9 @@ class CheckoutComponent extends Component
             $order->line1 =  $this->line1;
             $order->line2 =  $this->line2;
             $order->zip =  $this->zip;
-            $order->delivery_place =  $this->delivery_place;
-            $order->delivery_date =  $this->delivery_date;
+            $order->region_id = $this->region_id;
+            $order->city_id = $this->city_id;
+            $order->area_id = $this->area_id;
             $order->status = 'ordered';
             $order->save();
 
@@ -379,7 +386,7 @@ class CheckoutComponent extends Component
             }
             $this->subtotalAfterDiscount = str_replace(',', '', Cart::instance('cart')->subtotal()) - $this->discount;
             $this->taxAfterDiscount = ($this->subtotalAfterDiscount * config('cart.tax')) / 100;
-            $this->totalAfterDiscount = $this->subtotalAfterDiscount + $this->taxAfterDiscount + $this->shipping;
+            $this->totalAfterDiscount = $this->subtotalAfterDiscount + $this->taxAfterDiscount;
         }
     }
 
@@ -403,20 +410,27 @@ class CheckoutComponent extends Component
             session()->forget('checkout');
             return;
         }
+
+        $area = Area::find($this->area_id);
+        if($area)
+        {
+            $this->shipping = $area->shipping_cost;
+        }
+
         if (session()->has('coupon')) {
 
             session()->put('checkout', [
                 'discount' => $this->discount,
                 'subtotal' => $this->subtotalAfterDiscount,
                 'tax' => $this->taxAfterDiscount,
-                'total' => $this->totalAfterDiscount
+                'total' => str_replace(',', '',$this->totalAfterDiscount) + str_replace(',', '', $this->shipping)
             ]);
         } else {
             session()->put('checkout', [
                 'discount' => 0,
                 'subtotal' => Cart::instance('cart')->subtotal(),
                 'tax' => Cart::instance('cart')->tax(),
-                'total' => Cart::instance('cart')->total()
+                'total' => str_replace(',', '',Cart::instance('cart')->total()) + str_replace(',', '', $this->shipping)
             ]);
         }
     }
@@ -461,11 +475,9 @@ class CheckoutComponent extends Component
 
         $this->verifyForCheckout();
         $payment_methods = Payment::orderBy('created_at', 'DESC')->get();
-        if ($this->delivery_place == 'inside') {
-            $this->delivery_date = '2-3';
-        } else {
-            $this->delivery_date = '3-5';
-        }
-        return view('livewire.checkout-component', ['payment_methods' => $payment_methods])->layout('layouts.base');
+        $regions = Region::latest()->get();
+        $cities = City::where('region_id',$this->region_id)->latest()->get();
+        $areas = Area::where('region_id',$this->region_id)->where('city_id',$this->city_id)->latest()->get();
+        return view('livewire.checkout-component', ['payment_methods' => $payment_methods,'regions'=>$regions,'cities'=>$cities,'areas'=>$areas])->layout('layouts.base');
     }
 }
