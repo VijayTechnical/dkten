@@ -213,8 +213,8 @@ Route::prefix('user')->name('user.')->group(function () {
         Route::get('/login', UserLoginComponent::class)->name('login');
         Route::get('/register', UserRegisterComponent::class)->name('register');
         //social Login
-        Route::get('/login/{provider}', [UserSocialLoginController::class, 'redirectToProvider'])->name('socialLogin.redirect');
-        Route::get('/login/{provider}/callback', [UserSocialLoginController::class, 'handleProviderCallback'])->name('socialLogin.callback');
+        Route::get('/login/{provider}', [UserSocialLoginController::class, 'Redirect']);
+        Route::get('/login/{provider}/callback', [UserSocialLoginController::class, 'Callback']);
 
         //Forget password
         Route::get('verify-email', ForgetPasswordEmailComponent::class)->name('verify.email');

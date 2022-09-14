@@ -10,13 +10,13 @@ use Laravel\Socialite\Facades\Socialite;
 
 class UserSocialLoginController extends Controller
 {
-   
+
     /**
      * Redirect the user to the social authentication page.
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider($provider)
+    public function Redirect($provider)
     {
         return Socialite::driver($provider)->redirect();
     }
@@ -26,38 +26,22 @@ class UserSocialLoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback(Request $request, $provider)
+    public function Callback($provider)
     {
-        
-        $user = Socialite::driver($provider)->user();
-
-        $auth_user = $this->findOrCreateUser($user, $provider);
-
-        Auth::guard('web')->login($auth_user, true);
-    }
-
-    /**
-     * get or create user.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function findOrCreateUser($user, $provider)
-    {
-        $authUser = User::where('email', $user->email)->first();
-
-        if ($authUser) {
-            return $authUser;
+        $userSocial =   Socialite::driver($provider)->stateless()->user();
+        $users = User::where(['email' => $userSocial->getEmail()])->first();
+        if ($users) {
+            Auth::login($users);
+            return redirect()->route('user.dashboard');
+        } else {
+            $user = User::create([
+                'first_name'    => $userSocial->getName(),
+                'email'         => $userSocial->getEmail(),
+                'image'         => $userSocial->getAvatar(),
+                'provider_id'   => $userSocial->getId(),
+                'provider'      => $provider,
+            ]);
+            return redirect()->route('user.dashboard');
         }
-
-        $name = explode(' ', $user->name);
-
-        return User::create([
-            'first_name' => $name[0],
-            'last_name' => isset($name[1]) ? $name[1] : '',
-            'email' => $user->email,
-            'provider' => $provider,
-            'provider_id' => $user->id,
-            'image' => $user->avatar
-        ]);
     }
 }

@@ -76,7 +76,7 @@
                                                 <span class="buttons">
                                                     <div class="quantity product-quantity" style="width:150px;">
                                                         <button type="button"
-                                                            wire:click.prevent="decreaseQuantity('{{ $item->rowId }}')"
+                                                            wire:click.prevent="decreaseQuantity({{ $item->rowId }})"
                                                             class="btn in_xs quantity-button minus" value="minus">
                                                             <i class="fa fa-minus"></i>
                                                         </button>
@@ -85,7 +85,7 @@
                                                             data-rowid="a49e9411d64ff53eccfdd09ad10a15b3"
                                                             data-limit="no" min="1" value="{{ $item->qty }}" id="qty1">
                                                         <button type="button"
-                                                            wire:click.prevent="increaseQuantity('{{ $item->rowId }}')"
+                                                            wire:click.prevent="increaseQuantity({{ $item->rowId }})"
                                                             class="btn in_xs quantity-button plus" value="plus">
                                                             <i class="fa fa-plus"></i>
                                                         </button>

@@ -1,0 +1,4307 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/general-setting
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"message":"No query results for model [App\\Models\\Gsetting] 1"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6ImNkQjgyck94SlIzUkMxMkNQU3IyblE9PSIsInZhbHVlIjoiZXA4ZWlGcTBLYmdtM1BqeDh5dlErbmlWcUY4QTVqRmxFRk4wSzVyMlo1TjB6ZXRBVTFIbmt1cHJwbFhNa2ZkNUdXTEU1NmFVSWRpUEhUSmxDRGVZSDJBcTJzM1J2TGF3dk1XRm9jKzZIZ0pwZUlLV2svc3RWdTlMTE5IS1h1SFciLCJtYWMiOiJiYjliMTg2MzQxMmI1YzE0N2UzMGVmNzdjMGI2MmZmN2RhOTAxNThjOGFjMjc1NTE4NmQ4ZTU5ZGI4YWZhMzUwIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:33 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/social-setting
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"message":"No query results for model [App\\Models\\Ssetting] 1"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '58'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6ImRJS2FCUlEyMkJHWjRWKzJJQ1FMSkE9PSIsInZhbHVlIjoiM00rVDlVNXhmV2JjU1NjYXJlMXJvdGtXRE0wOGk3YUpPVEppbUtoY0FaOXR6dmtrUzdiQk92QkFXbE5xaGlTdFNyM1JwbmdoRnNzcVhqamZacU45SHNIUzN4Y0t6cmh5ZGd3djcraW51MUF6dnoxL2lLQUlSbWFNbHFqRE1CVUMiLCJtYWMiOiJiYTM1MGUxNTJlZWNiYTZiNDQ5Yjg0YWFiZGE5ZGFlMzBmNjgzODQ0OWNmNDAxZDNiNjkzOTE5NzM2ODI0ZjNlIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:33 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/logos
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"message":"No query results for model [App\\Models\\Logo] 1"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '57'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IkFmZCt3VUJLWVZWZjJ0SSt4NXAya3c9PSIsInZhbHVlIjoiNHRyV1NXREZYZDl3UEJZeGVubDYrNFFHSmp6YUoyTkd1ZjNkOHJMd2xmY2pjZ014QmVaSk1iUWpmQ1RHYzgyYThlamtYeDRncE9hME1TYlNvMWZZTjhEUEpGQXhMdUxiR3FKTkoyK1o0emcybDZlREQ5OTFPMHdaM0RPYUJ5Q2siLCJtYWMiOiIzNGZhOTdjN2IzMTQ4Yzg5ZjAwMmVmMjY2NzM4NmZmODAxZWMwOTA4N2JhMmIxM2FjYjQ1MDY0MmYwNjY1NzVhIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:33 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/hot-deal-products
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Hot deal products found successfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '56'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6InlrQXNmeGIrOVpWNjZJNWlDWDVCR1E9PSIsInZhbHVlIjoiNE5ZcTAxZjNyZHBXRnByakYvN3ZOZUIyUnA0Q3NlRml1Z3NYN3B2Y2dhZEwwUGNub1BzYTMrYXQ1THJlSGdTajFWU0RITnozQ1FOcWlZOWl1THZVR0Jmem9DNWxPcUsxK2htWlVhK053dk1YRm1BNGpBbDJXWks3SWdCMkRaa0IiLCJtYWMiOiI2NzVmOGI3MDYwODYwODlkZDA2NWQ4NzllZTgxMjhiYmYzNWEyMmUzYzhlNzE3YzhjNDVkMWU1YjQ2NDk3NzUzIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:33 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/featured-products
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Featured products found successfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '55'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IkQ5ZWlsN0NKa2dWN2E2NVFjcDJUTEE9PSIsInZhbHVlIjoiRlFncjdvdnpSMUVaaEt0SFBhZGg1MXdWa05VYmhETG92alRQcWk2R1lSQkY3MVozZXU5elB4OUVCTU5sUTcvWXEzTFBEbGdDemJoYjU3Nm0yRkkvKzZiSkVDL0NqTFUvTm0zaVpwQ3J1QW1icERPWmVLN290MjdLYzJ3QWNReTIiLCJtYWMiOiJjZWE4OGEyNTBjMTc4M2RhMzg3ZmFjODllYTkxMDY3ODU3OGM3NWM3MWQ5M2U0OTJjNmJmNzFmMWFjYjhhNzdiIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:33 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/latest-products
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Latest products found successfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '54'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IjMrRWMxSjRUZWJPWmkrNnVBUDVZV3c9PSIsInZhbHVlIjoiYXg4bUhrdjI4b2dRZTcvdnhnajFmL2VURnV0c05sajFmT3JISE1VU2psNUpUbkVOSjUzcENER0IvQkM5REt2Qnhsd1o0aHZzT2VZOStxQVZOYzhkaE5lN3dYRzVpR1Y3OXlSR29od3B5SlRBcDZXZU9pN1ZNaGQ4MXdGUHgzcWIiLCJtYWMiOiI5ODUwNmQ3ZTlmZTJhYzY4MzIxOGFiMGNiNTA4MGFhMGQxMDlkYmJmM2RkYTFlN2ZjZDIxNjc0MzM0OGMxMjY0IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:33 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/popular-products
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Popular products found successfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '53'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6InlxZkJzMHloUERnWDBudGVYS3BHQkE9PSIsInZhbHVlIjoiOXNUdWYrYTBaL3M0YzUwUzZ3dHNOVlVlTWFHZGoyL2Q1dlVpYlEyWm1HVXgvOXljQmFLT05hL0t1L0VCVkk5VkYvSlRPWWxjZ0tMalU5Y1JWZkdRaTk3b0g4TUk4NFVoK1JhTTFVdjBwd1huQ0YxQ3FGNGdaVGtLSzBoMTlqTG4iLCJtYWMiOiI2MDdiNmViNTQ5ODU2N2NhZjQxY2I1MGIwODFkNjU5OWU4YWMxNzIxOTlkMWRmY2QxM2RhNGNlNGY3ZDliMzg5IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:33 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/mens-collection-products
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Mens collection products found successfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '52'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IjJaOTZXb2pBYjhvRy9Qb1BUQmpHYkE9PSIsInZhbHVlIjoiSC9GQjZIZUZPMHUvVlp5bUEyV25GNzNqSDloMzJoNUtZNW9HV0RERUg1ZWFJVTV3SzBXYUJCeEtURVJjc3Q2ak50ZjZTYVlkNy8xZGk2ajdMSFM1Z25hWnptYnlRd0xHelNCcitKY1BzQTVyeWtQSmFoZGVvSHExc09EZ200SGkiLCJtYWMiOiI3NzQxMTM0MmJkYWQzNTU5OGVjYzhmMWNlYjk0YjcxNjcyNmUwYTdiMmMwNzJkZWFjMGNhNWIxZDBiMmNjODMzIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:33 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/womens-collection-products
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Womens collection products found successfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '51'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6ImhIVDZWRDZoak4vOTgzZWZDbVRnZHc9PSIsInZhbHVlIjoicGpEdnFGUFI1SWpBbGdFRHhtN2NFVVJxN1hQTjhzMU1MVitwTEdFcHdXTnUvRHRJTFlwTUM1MHNQcmx1MU1OVVdId20yQzl1YnRWa0hXc0JoZFBYVmdRRy8wZ1ExcTlmc3RUSWs0VGFjMm5uc2c3RHhyQXBtTlN1Y1dnNkRsR3kiLCJtYWMiOiIzNzEzZGUwOWQzMzhjZGQ4YmYzMjBjNzBlZmNkMzY4OWVkMjk5NzAyNzY2MDE1MTM3NGVkOWQ4NDYwNDI3NDFlIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:33 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/bags-and-laugages-products
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Bags and laugages products found successfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '50'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IlNBQWR3ckFnUElmNytWMm13WlErOXc9PSIsInZhbHVlIjoiOUU0bmUxTGxyVGVKZU55Smo2YVVzVW9yUDN3ZzFDdGpQWDZDOTBQMjFXUGxDbVIwUkVha00zVU53M2FjUW42aWl3QndSa2pjeXpPUVk4MlhRK1h0QnR0Mnh5Uy9USy9TU3lCU0dIaW9BT0x4QkZGVDhxNStlQ2NIU1NaMEVJYTAiLCJtYWMiOiIyZDJmMmJhYmYyMWI3OGQ5NzA5OTk1MGQxNGQ2YmVkOTBjNGZmYWZkMGU3MTAyOWY3MGM5MjYyNTIwODNhMjU2IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:33 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/recently-viewed-products
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Recently Viewed Products found successfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '49'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IlhUSlF2UGtieWJhZzdaTUhlTng3NUE9PSIsInZhbHVlIjoiZFN0UkUxRkJUUkpZaG9ERTM4aFhpUEZqRzhtN0NDd3JESzNzU1BCditERCs4TVpyb0E5cEdIbU9qREI3dG5rKzJvemZEMkg1QVRCRkgwOHdVTEttTlZKaWhVeVFCRk1GbWMxVi9SUmVEd2dyVGd5MU5qYmZYeXRqV0lick1Vb0UiLCJtYWMiOiI4OTJkYjlhYmIxZTE4OGZhZTg0YTk1MzMwNTI5YjgzZjJjYWI5YTA0ZmM5YTk4NGQ1ZmViMWE0OGY2ZGIzYzRiIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:33 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/search/products/{category_id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category_id:
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: 6
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      sorting:
+        name: sorting
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      min_price:
+        name: min_price
+        description: ''
+        required: true
+        example: 894547.3911799
+        type: number
+        custom: []
+      max_price:
+        name: max_price
+        description: ''
+        required: true
+        example: 5.27428
+        type: number
+        custom: []
+      searchTerm:
+        name: searchTerm
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/products/{product_slug}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      product_slug:
+        name: product_slug
+        description: 'The slug of the product.'
+        required: true
+        example: 10
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"message":"Attempt to read property \"id\" on null"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '48'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IlpnQStmYldhYUdzT2VOcERIYkFFV3c9PSIsInZhbHVlIjoiSVVMQW5vdFU4NE5KWm5aVHA3RjdoczE4Ty9Nd20vRUtzUmZzY1ZPYXdHMitRZXNFRllEaEdMcEt4ekNRREp0aG04VTU2ZjJOZms4M2d1MWxEYjdWT1RkYUVJdWpLa0xrNSt5TS9rc3lIL3VUTUNHb3hVRWhnTmlzQ25ET3JMRUkiLCJtYWMiOiJiZWFkYjJkMWEyZDI5YTAyMjM1Mzg2ZTY0N2IwN2ZkM2E4NWNkNDFmNmMyZjcyNWU3Mjg1M2I0ZjllYzAyNzM3IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:33 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/products/reviews/{product_slug}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      product_slug:
+        name: product_slug
+        description: 'The slug of the product.'
+        required: true
+        example: 9
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Call to a member function OrderItem() on null",
+              "exception": "Error",
+              "file": "C:\\xampp\\htdocs\\dkten-project\\app\\Http\\Controllers\\Api\\Frontend\\FrontendController.php",
+              "line": 263,
+              "trace": [
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php",
+                      "line": 54,
+                      "function": "getProductReview",
+                      "class": "App\\Http\\Controllers\\Api\\Frontend\\FrontendController",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php",
+                      "line": 45,
+                      "function": "callAction",
+                      "class": "Illuminate\\Routing\\Controller",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php",
+                      "line": 262,
+                      "function": "dispatch",
+                      "class": "Illuminate\\Routing\\ControllerDispatcher",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php",
+                      "line": 205,
+                      "function": "runController",
+                      "class": "Illuminate\\Routing\\Route",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php",
+                      "line": 695,
+                      "function": "run",
+                      "class": "Illuminate\\Routing\\Route",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 128,
+                      "function": "Illuminate\\Routing\\{closure}",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php",
+                      "line": 50,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Routing\\Middleware\\SubstituteBindings",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php",
+                      "line": 127,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php",
+                      "line": 103,
+                      "function": "handleRequest",
+                      "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php",
+                      "line": 55,
+                      "function": "handleRequestUsingNamedLimiter",
+                      "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php",
+                      "line": 49,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\View\\Middleware\\ShareErrorsFromSession",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php",
+                      "line": 121,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php",
+                      "line": 64,
+                      "function": "handleStatefulRequest",
+                      "class": "Illuminate\\Session\\Middleware\\StartSession",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Session\\Middleware\\StartSession",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\sanctum\\src\\Http\\Middleware\\EnsureFrontendRequestsAreStateful.php",
+                      "line": 33,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 128,
+                      "function": "Laravel\\Sanctum\\Http\\Middleware\\{closure}",
+                      "class": "Laravel\\Sanctum\\Http\\Middleware\\EnsureFrontendRequestsAreStateful",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 103,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\sanctum\\src\\Http\\Middleware\\EnsureFrontendRequestsAreStateful.php",
+                      "line": 34,
+                      "function": "then",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Laravel\\Sanctum\\Http\\Middleware\\EnsureFrontendRequestsAreStateful",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php",
+                      "line": 37,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php",
+                      "line": 67,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Cookie\\Middleware\\EncryptCookies",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 103,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php",
+                      "line": 697,
+                      "function": "then",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php",
+                      "line": 672,
+                      "function": "runRouteWithinStack",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php",
+                      "line": 636,
+                      "function": "runRoute",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php",
+                      "line": 625,
+                      "function": "dispatchToRoute",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php",
+                      "line": 167,
+                      "function": "dispatch",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 128,
+                      "function": "Illuminate\\Foundation\\Http\\{closure}",
+                      "class": "Illuminate\\Foundation\\Http\\Kernel",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\livewire\\livewire\\src\\DisableBrowserCache.php",
+                      "line": 19,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Livewire\\DisableBrowserCache",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php",
+                      "line": 21,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php",
+                      "line": 31,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php",
+                      "line": 21,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php",
+                      "line": 40,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php",
+                      "line": 27,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php",
+                      "line": 86,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php",
+                      "line": 52,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Fruitcake\\Cors\\HandleCors",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php",
+                      "line": 39,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Http\\Middleware\\TrustProxies",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php",
+                      "line": 103,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php",
+                      "line": 142,
+                      "function": "then",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php",
+                      "line": 111,
+                      "function": "sendRequestThroughRouter",
+                      "class": "Illuminate\\Foundation\\Http\\Kernel",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php",
+                      "line": 299,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Kernel",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php",
+                      "line": 287,
+                      "function": "callLaravelOrLumenRoute",
+                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php",
+                      "line": 89,
+                      "function": "makeApiCall",
+                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php",
+                      "line": 45,
+                      "function": "makeResponseCall",
+                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php",
+                      "line": 35,
+                      "function": "makeResponseCallIfConditionsPass",
+                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php",
+                      "line": 222,
+                      "function": "__invoke",
+                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php",
+                      "line": 179,
+                      "function": "iterateThroughStrategies",
+                      "class": "Knuckles\\Scribe\\Extracting\\Extractor",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php",
+                      "line": 116,
+                      "function": "fetchResponses",
+                      "class": "Knuckles\\Scribe\\Extracting\\Extractor",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php",
+                      "line": 123,
+                      "function": "processRoute",
+                      "class": "Knuckles\\Scribe\\Extracting\\Extractor",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php",
+                      "line": 80,
+                      "function": "extractEndpointsInfoFromLaravelApp",
+                      "class": "Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php",
+                      "line": 56,
+                      "function": "extractEndpointsInfoAndWriteToDisk",
+                      "class": "Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\knuckleswtf\\scribe\\src\\Commands\\GenerateDocumentation.php",
+                      "line": 55,
+                      "function": "get",
+                      "class": "Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php",
+                      "line": 36,
+                      "function": "handle",
+                      "class": "Knuckles\\Scribe\\Commands\\GenerateDocumentation",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php",
+                      "line": 40,
+                      "function": "Illuminate\\Container\\{closure}",
+                      "class": "Illuminate\\Container\\BoundMethod",
+                      "type": "::"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php",
+                      "line": 93,
+                      "function": "unwrapIfClosure",
+                      "class": "Illuminate\\Container\\Util",
+                      "type": "::"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php",
+                      "line": 37,
+                      "function": "callBoundMethod",
+                      "class": "Illuminate\\Container\\BoundMethod",
+                      "type": "::"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php",
+                      "line": 653,
+                      "function": "call",
+                      "class": "Illuminate\\Container\\BoundMethod",
+                      "type": "::"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php",
+                      "line": 136,
+                      "function": "call",
+                      "class": "Illuminate\\Container\\Container",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\symfony\\console\\Command\\Command.php",
+                      "line": 298,
+                      "function": "execute",
+                      "class": "Illuminate\\Console\\Command",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php",
+                      "line": 121,
+                      "function": "run",
+                      "class": "Symfony\\Component\\Console\\Command\\Command",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\symfony\\console\\Application.php",
+                      "line": 1005,
+                      "function": "run",
+                      "class": "Illuminate\\Console\\Command",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\symfony\\console\\Application.php",
+                      "line": 299,
+                      "function": "doRunCommand",
+                      "class": "Symfony\\Component\\Console\\Application",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\symfony\\console\\Application.php",
+                      "line": 171,
+                      "function": "doRun",
+                      "class": "Symfony\\Component\\Console\\Application",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php",
+                      "line": 94,
+                      "function": "run",
+                      "class": "Symfony\\Component\\Console\\Application",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php",
+                      "line": 129,
+                      "function": "run",
+                      "class": "Illuminate\\Console\\Application",
+                      "type": "->"
+                  },
+                  {
+                      "file": "C:\\xampp\\htdocs\\dkten-project\\artisan",
+                      "line": 37,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Console\\Kernel",
+                      "type": "->"
+                  }
+              ]
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '47'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IkgvckZzRUFBVmh2SlJDTzBwMEZ4eXc9PSIsInZhbHVlIjoibW9PcVEzcVlxcVp2am40Y3hrMVFLRk8xa2MvQXBsc2JEa0hpREJ2dVhLZGlQTU50N2h1b0hFdE5FREE0d0tCRkRqRzZiWlJYc3hXWWF5UXlTMnZXbjB0VzQrOHpZQVpjL25XOXBFQVpzUlR2UFd4RVpFRk92TjVFZHlQVW5tdnkiLCJtYWMiOiI1MWU4ZDVmNGY2YjA2Yjg1NTQwNWFhZjE1ODE1ZTJlYTAxMjM4NmNiOWRmMjZhZGU5N2U0MWU5NDAxNzJlMDg5IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/products/stock-status/{product_slug}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      product_slug:
+        name: product_slug
+        description: 'The slug of the product.'
+        required: true
+        example: omnis
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"message":"Attempt to read property \"id\" on null"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '46'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IloxV0ZKZkJjL2pJRjM4MkVBTmJDVGc9PSIsInZhbHVlIjoiMFpXY2o3OE8vM1NZRzZFU0xCRHZWYk9KTkdzL2JEYlYwTk9KVjAwR3JNQUxSbjc0M0pXa3l2MmtqWkJNeFlvOWp1RWZqd3F3amxPOENhRVVLU29SbXRwd0J1czRzb1E1cU1VRkM2WitjdHBFbGRJaVcwazgvZFczTjZNNlk0OUUiLCJtYWMiOiI0MWE4NDAxM2VmY2M2Nzc2MjVjNmRjMTg4NThiZjVhZTgxOTA1ZTJmNWVlMjU2MjUwOGJkYzUzYWJmNzM3NTdjIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/vendor-categories
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Vendor categories found sucessfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '45'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6Ild4RDJhQmREaG5RZEJuMWMreFZveUE9PSIsInZhbHVlIjoiUXhqd2dKT0N2bFRkblROU0JmaExjRmFJdGhERkNpQnlOVGh0RkRjemo3bzNxSHZIaVhuRkdWWUxiUTZ5aWQrcHpvdlc4ZnZZU2U1OTdLMFNIa0FnVGs3ZDNKY3VkK1BQelY5dTNMUXN0UUlyZU5lb0JoczUyR0I2bWZMYWtLV0EiLCJtYWMiOiJiMWI3ZmU3YWI1NDg5OWE3MzdjN2RjNmIyZDUzODMwMmU5NjEwZjkwMzBlYWQ5ZWViM2E3Njk0Y2E3MDFhOGM4IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/vendor-categories/{category_id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category_id:
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: praesentium
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Vendor types found sucessfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '44'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IlNlOVkrdFdGYVJIWU0wOHhlZDIvamc9PSIsInZhbHVlIjoieVluKzB6U2h3VVNwQ2dudkg0NEYwOTJqOStmcEtLSjEyR2VOamRGMHI3cFliZHdwUyttOTRRc1RoSkRhYjh3M21rWmUrbTY3YWpvTzJQMDExb2cyRVJpWUMyTUU5VVAwZ2I2SE9xaU1mSkVBa2NzMDZiZWhoMWdEMXhMNXY2QU0iLCJtYWMiOiJlMTU1N2QwOGZkY2RkYjY0ZTI0Yjk2M2UyNmRiNzUzZDA2MDc1NDUyNjYzYTQyNjRhZmY1NGJmOWU1ZGNhODhlIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/vendor-categories/{category_id}/{type_id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category_id:
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: facere
+        type: string
+        custom: []
+      type_id:
+        name: type_id
+        description: 'The ID of the type.'
+        required: true
+        example: et
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Vendors found Sucessfully","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '43'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6Im4yY1RwUlhCUmI5ZURTdWpZbHo1RUE9PSIsInZhbHVlIjoicm1NUVJkT0V1ZFdpVHhuTFVNWS9pU2Y4eCszemFkZWNmTk5rdklRUVljdGd3dXZOaWptYWU3d3V1TWs0RnlPSGs5RlNCU1ZyNi9Hcnh1QlNmSXFsaDJ3eWFwSVdhYmRCWVJvNlgzYXJyZzVnaVFQVGVuYStGcW8wMEx3UlpRSUciLCJtYWMiOiJkNTc0ZWZjN2Q2ZDA3NjU0YzU0N2Q3MTBmYzM1NmUwYTRiYTkyMDViYzBkNTQ0M2I1MjQyMDY2N2E0YmE4NjM5IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/vendors
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Vendors found sucessfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '42'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IkJQK2h3OS80M3I3cWxsK0l0SWVYWFE9PSIsInZhbHVlIjoiMUdWeGRxQ004eGRUOENRL1FuRDhLb1VOa2RaYVlNTXVKWkJNdi9QRnI2MVhKNnVxbDNXS1JoWHQ5WktNRm1oRU1JTzIxSEhBZjdmckplOUtocC9xQ3VwNjdQdjBoRDkzZW5KQWxWOHpDdmFZUFJUSEQyYm1lSjRaYzg4TERPNmYiLCJtYWMiOiI1ZmZmNGUyM2UyZWQzYjdmODA1MGUzNWUwOGUzODM3NjFhZDY1N2U0MmVkNTJhZGNiNzg5NmIyNzllNWYzMmExIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/vendors/{display_name}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      display_name:
+        name: display_name
+        description: ''
+        required: true
+        example: 16
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Vendor detail found sucessfully!","data":null}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '41'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IldMcHdBek1tYlQrdUhnWnN0YkV1OWc9PSIsInZhbHVlIjoiRlZnV2RPWHppa1F4dEd4Q05tRFc3Q0Q2SlZMQmFtVGFsV2x5aStyMC94MTB5RVhMamFuL0dzQnEzUFZjQURjYmloTkYveE4xTHhuQmU2WllhY2pwM1BiWHdQSFVrejRmc0hMTFI1eWNaa3RCTzd4Tk9zdHdVVDNXUUp0SUxTaGQiLCJtYWMiOiIzYjEyYjUyMzhlODI3MzhiMzJhMDY5ZGFmMDA5Zjc5N2UzM2I0ZWM3M2MwOTE3ZTVkOTE1NzU2NjZiM2U3NWU0IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/categories
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Categories found sucessfully","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '40'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IjF1SFRmNDZGUTlMTVlBWUNnK1hQR0E9PSIsInZhbHVlIjoiRFoyMW1DeUpqc1RYcEtMcFZ4TmsvY0c3NmdsUkF6V0Urbjk3ZlZKY2NlUEFNWndFQ0ZRQlA3eVpJOFY3NisyZjU2WVU0UGZoZ3BzU3IveWxFa1pzTjZxTDM4U1h6dHRvWXdKUDEzWDNhRkF0WWg3OWRWbFJtTHF0RmNXOTA1NkkiLCJtYWMiOiI2MjdmYTI4ZjQ0ZjQwYzZlMDczZjM4OTdiNTQwOWJiYTAzYzVlODk3ZWY0OTBjMTZmY2UxMTA4ZGJmNDc1NzE2IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/women-categories
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Categories found sucessfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '39'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6Ik9BNWVSQVhma2ZxVGNoRjB3U0pza0E9PSIsInZhbHVlIjoiZkdlT203R2Nna2ZQWGNUd0RYQnZ4bkttVmV1TzZoNXp2aUxlSEcyZ3BCUUNwUW9CYnRra05pa1FMYjB0bm8vTE1pRVZOR2gwSGJObXVER3lvL25zbWYzcjBTUUFlS2ZNRTFRQWdJUDlRZ09jOTVKS2l1QitsWEhNNTRrOXZNZisiLCJtYWMiOiIyOTc2MTlkMWNiN2ExODU0ZTJmMTJkZGE0NTllNjkxNjIwNWYwOGEyNWFiMzM1MzAwMTQzMWYxYTZhYzdjYTJkIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/legalities
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"message":"No query results for model [App\\Models\\Legality] 1"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '38'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IkcyZml0Z3NIcXNLVTZ2dktOeGcwd0E9PSIsInZhbHVlIjoiQVZ3b0Fqb0RybS9IVG5KcUMrdCtWWExCMGhRdUQ3Rlk2UkVtamZJM2JLcm5XeGN6OHlvSWRsdGJEbFk3b1c4VlFHSHAya2VLcFJFQlJnakYzd0pKOWxtSTg5Snp4VEhkVUJuT1lINkdsdmNFblllT0NySmpBdkJqT3hpQ25xY1ciLCJtYWMiOiI2OTVjYjM4NzUxMGE1YzUyYjcxNWM0ODU3NzFhNTcwYTUwZTg0ZWQ2OGE4ZTQ3MWY4ZDBhYmJkNzE3MTA1YmU1IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/contact
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: earum
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: paula.bartoletti@example.net
+        type: string
+        custom: []
+      subject:
+        name: subject
+        description: ''
+        required: true
+        example: eveniet
+        type: string
+        custom: []
+      message:
+        name: message
+        description: ''
+        required: true
+        example: saepe
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/faqs
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Faqs found sucessfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '37'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IkI1U2FxOUh0akYyZTZFeEVUci9FNmc9PSIsInZhbHVlIjoiMC90NTl0bjVvUmxXSitSNGRUOGRPYWlYZTRZV2R5ejN4S2xLNUpRVkhPT2E0enhuRDhOcTZZWE1kWmtJRXJTclJ2U2NJZ0FHcmJWRkxvN0hKUUZtamtaWVlvdU9qM1U4SmE1OGZ1bFNjSUtFZ2JHZTBzdjBDa2lrRVo0NTJOOGkiLCJtYWMiOiJhNzlhYWFlZTVmYTExOTA3YTAxOWNjOWQzNDM2MDJkMTg1MWI4NmMzZmMyYzQ4N2U2MGY2NGJmNDE1YjNiYmUxIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/payment-methods
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Payment methods found sucessfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '36'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IlJYMFpGNGJvQk53Z000d0VsR2F6V0E9PSIsInZhbHVlIjoiWkgzVjRxYmZSYkFMMU5OTmFJWERIZVhoaFVMT3BUMDNsOHpvQ2RQc0pNaUdhdEEyNEtRYjJlVkJvdmRDSXZtMVB0UzJoOHc2YVo1a1FwYTdVQzZOWFJ6bjNOTXRkaEh2Z00yMUJiSEpaMSsrSEgveit5aThRVDJaS0xVUTdQaTIiLCJtYWMiOiI1MGFhYzg5MGEwZjU0ZDE3Y2NhZWU1MmVkOGJlZjM2MWNlMzhhMDgyMzE3ZjRlMDViZjA2NTA2ZTFlN2E0Yzg2IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/sliders
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Sliders found sucessfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '35'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6ImFCWWtaRFdJMlA5T2ticXkwTytpS2c9PSIsInZhbHVlIjoicHE5RFlNZHdrRzY3a2FvcEhXM2dWMy9NOTY4UWQ2NUlBeWcxRE82K05FMzRiM0JibkN3dnh6ZDFYeWtOd3FjNmlGbnR5VG1ML0tMbHh0UEN3ZzZuMjM3OGxvYmRIeDhMR3hNT1ZOdDk4WG4rMHVrQ3BJODNPRTJHSEt2QWZ4TVEiLCJtYWMiOiJiYjdiODFlMmM4NzU4NjAyNjQ2ZjZiMzI0ZDcyOTk2N2UyZjk1ODk3YjY5MmYwY2I4ZGQ3NjMwZDVjM2ZlN2NmIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/shipping/regions
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Regions found sucessfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '34'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6ImFTQWxPTWFjUEc0NUp4Z2RydnhJVWc9PSIsInZhbHVlIjoiQVhEZ3hZR1ZYK2VPREpTMi81Z1hqT1ZBM3owb2FvQ0NBb24yZ2U5OVBRZy9jOGRFNDlMK3pvNHZRSXg5YTcveGxDaVRmRHRMQmVtZVVTWXhvY21oVUNjRGQvZ1ZHanVXc1NjOFdGTWNEaDBkeTFLTk9tVWlVK29XZ2pBb1M3QUIiLCJtYWMiOiI0NzdhZjMyZWU3NTY3NTliYmMyNTc4ZDI4MGRlZGQxMDdiN2E1MzkxNTM3MGQzMmRmY2IyZTdhNmQxODUyNjMwIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/shipping/cities/{region_id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      region_id:
+        name: region_id
+        description: 'The ID of the region.'
+        required: true
+        example: 19
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Cities found sucessfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '33'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IkFDTnppSVh3dDFIcUdpRnRjeFV5UGc9PSIsInZhbHVlIjoiTFFwSlVMcG4xSWRDV2FiMXdlVnBUS2dTTVg3ZUt6azZwUHJHNHdta0JXcFZrUGxtT05vNTFad1Y5dy9ySEg3Vkh2ZXJLMGQxR2ttb1FRK1BMZGZZdWRIS25oVlJlbTVCSEN5clJMYTdJd3N6ZHJVSEdCZUZ0MWthUkwwUzUxNVgiLCJtYWMiOiJlNDg3N2VlZGFjZmMxZTI2YTZlOWNlMzkwYzMzOGNhYWMyNTQwZTkxYTRiOGE1ZDgzMTZmMjA2ZTZhMDliNzhmIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/shipping/areas/{region_id}/{city_id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      region_id:
+        name: region_id
+        description: 'The ID of the region.'
+        required: true
+        example: 16
+        type: integer
+        custom: []
+      city_id:
+        name: city_id
+        description: 'The ID of the city.'
+        required: true
+        example: velit
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Areas found sucessfully!","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '32'
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6ImhzOVgxZkNXYzdERWlRY0VGbko0c3c9PSIsInZhbHVlIjoiMGdZUnFRVG5Fd3htQnE5cU9VNnE0S2poWHlHdzczbFRVa0hFVitDd3BYT21ZbW9ZVVM4VCtBK0xDUnpFaWk4UnJYcFp3ZmNvVm56UmMzbjRvN0dEQTZVQUFUTFF3SlB2aEZ2Z3lYUllnZXZub0xScEdsSE1DdEkvM0tzY2xmRi8iLCJtYWMiOiI4ZmE0Mzk0YWE4NGEzYjE1NDc4ZDA1NWQyZDJhMDQxZGI5ZmM1NTk2ZGFkMzM3NzdiZjIzYzUwYTMzZjc5YTQ1IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/login
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: ortiz.jevon@example.net
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 5 characters.'
+        required: true
+        example: em
+        type: string
+        custom: []
+      remember_me:
+        name: remember_me
+        description: ''
+        required: true
+        example: true
+        type: boolean
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/register
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      first_name:
+        name: first_name
+        description: ''
+        required: true
+        example: explicabo
+        type: string
+        custom: []
+      last_name:
+        name: last_name
+        description: ''
+        required: true
+        example: nisi
+        type: string
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: true
+        example: et
+        type: string
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: ''
+        required: true
+        example: dolorum
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 8 characters.'
+        required: true
+        example: kzbihf
+        type: string
+        custom: []
+      line1:
+        name: line1
+        description: ''
+        required: true
+        example: possimus
+        type: string
+        custom: []
+      line2:
+        name: line2
+        description: ''
+        required: true
+        example: quisquam
+        type: string
+        custom: []
+      city:
+        name: city
+        description: ''
+        required: true
+        example: voluptas
+        type: string
+        custom: []
+      state:
+        name: state
+        description: ''
+        required: true
+        example: iure
+        type: string
+        custom: []
+      country:
+        name: country
+        description: ''
+        required: true
+        example: neque
+        type: string
+        custom: []
+      zip:
+        name: zip
+        description: ''
+        required: true
+        example: minus
+        type: string
+        custom: []
+      phone:
+        name: phone
+        description: ''
+        required: true
+        example: 1.5
+        type: number
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/forget-password/confirm-email
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: yweimann@example.net
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/forget-password/set-password
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: hweissnat@example.net
+        type: string
+        custom: []
+      token:
+        name: token
+        description: ''
+        required: true
+        example: quia
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 6 characters. Must not be greater than 20 characters.'
+        required: true
+        example: d
+        type: string
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: ''
+        required: true
+        example: magni
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/logout
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user/profile
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IlNpVVFoakRHZm1rNVlxVERLWDVGcWc9PSIsInZhbHVlIjoiTVNjRGpkM1R2Yjh4ZzBBc1Fra2VTRDdjZSs1Wjl3RDBtSFJhOEZEWGlnK2RPbTM4NDA4cUVkT1VNN1IyVmFvNzBlbFA5SUxXNkpqRTQ3dkZNS3dNNVRrYnYvcVBjT1hXM21qamt4VGdlS2FvbHZ1MjlRdEFlUTEyK3NaOCsxVUciLCJtYWMiOiIxYTA0MmZlZmRlMWIzZGY4YmY1NWQ2ZmZiMzIyYWZjMGZjOTQ1OTRmNmE1MzAyYWEyNTVkNmVlZTQyMTk2ZWI0IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/profile/update
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      first_name:
+        name: first_name
+        description: ''
+        required: true
+        example: eum
+        type: string
+        custom: []
+      last_name:
+        name: last_name
+        description: ''
+        required: true
+        example: totam
+        type: string
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      phone:
+        name: phone
+        description: ''
+        required: true
+        example: 2.356624361
+        type: number
+        custom: []
+      line1:
+        name: line1
+        description: ''
+        required: true
+        example: quo
+        type: string
+        custom: []
+      line2:
+        name: line2
+        description: ''
+        required: true
+        example: magni
+        type: string
+        custom: []
+      city:
+        name: city
+        description: ''
+        required: true
+        example: eligendi
+        type: string
+        custom: []
+      state:
+        name: state
+        description: ''
+        required: true
+        example: expedita
+        type: string
+        custom: []
+      country:
+        name: country
+        description: ''
+        required: true
+        example: consequatur
+        type: string
+        custom: []
+      zip:
+        name: zip
+        description: ''
+        required: true
+        example: 2.0
+        type: number
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/password/update
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      current_password:
+        name: current_password
+        description: ''
+        required: true
+        example: quis
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'The value and <code>current_password</code> must be different. Must be at least 8 characters.'
+        required: true
+        example: mb
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/image/update
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      image:
+        name: image
+        description: ''
+        required: true
+        example: dolor
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/store-to-cart
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      product_id:
+        name: product_id
+        description: ''
+        required: true
+        example: 11
+        type: integer
+        custom: []
+      product_title:
+        name: product_title
+        description: ''
+        required: true
+        example: repudiandae
+        type: string
+        custom: []
+      quantity:
+        name: quantity
+        description: 'Must be at least 1 characters.'
+        required: true
+        example: k
+        type: string
+        custom: []
+      product_price:
+        name: product_price
+        description: ''
+        required: true
+        example: 17159.96
+        type: number
+        custom: []
+      product_attributes:
+        name: product_attributes
+        description: ''
+        required: true
+        example:
+          - voluptatem
+        type: 'string[]'
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/store-to-wishlist
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      product_id:
+        name: product_id
+        description: ''
+        required: true
+        example: 1
+        type: integer
+        custom: []
+      product_title:
+        name: product_title
+        description: ''
+        required: true
+        example: quisquam
+        type: string
+        custom: []
+      product_price:
+        name: product_price
+        description: ''
+        required: true
+        example: 17.38884327
+        type: number
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/store-to-compare
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      product_id:
+        name: product_id
+        description: ''
+        required: true
+        example: 8
+        type: integer
+        custom: []
+      product_title:
+        name: product_title
+        description: ''
+        required: true
+        example: repudiandae
+        type: string
+        custom: []
+      product_price:
+        name: product_price
+        description: ''
+        required: true
+        example: 3333344.54
+        type: number
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user/cart
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6ImlIRHdRNFoyNlg0TUh0dHlrU282K0E9PSIsInZhbHVlIjoib1JhMEhJY1FVMklpMTdVU0IvaUJHVUlMVzlSY2JGYkNrT202bytMTUd5VHZzUzdiUzFUL01HUUlSYU41VnV6N0dURWpQZ0dTeWVYbmpVaU5jZDdRWE5uOEpudVhWTUJobUt1NkljM1V4QTV0WGVoTHA1L3BSSXZobFVGaHZUUnEiLCJtYWMiOiJkYjA3MzllMTIxMzA4YWM0MWJjNGJmMWE5MDU1NWM0MmEzYTJkNGUwYTVkNzJjZDc3ZDVkY2Y0YTFiMjI4MDkxIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user/wishlist
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IjdkZjZ5aGg4OW1pdk1qUG5zYnF4aVE9PSIsInZhbHVlIjoiVkYrbVdmOU44eEhmUDRxTXQ5UC9TYzd6Wnp0anN0Y3FMWTliN1IwL2dsdjVmMVVid3VwbXA0RFBCTDg1NHpHVnpYVnpUTUQrZU5GV0x4NHdnTmJIMWRBUnBpUURoVm9qYURZU3B0aU1DWGd0M29JMVI2R095Q3RrQlZHWTZ3UGIiLCJtYWMiOiIyMTllYWNiNWMwODY5MjM0NjNjY2I0Y2I2ZDhkMDQ3OWQ4NTFmYzExZjVhYWM4YjllZmU0MDU4ZTQzZTBkZmQzIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user/compare
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IkJxQ0dMcnR3Z3VhN2JGamg3R2NwVWc9PSIsInZhbHVlIjoiQ2R0akFUcllaSU5rZFJNR3B5QzlnTFBxOVY2RDR0VSs1TmdTWXBqL0RpbHZJQzVBa0E1aVYrcDdhT1YrbmdIZE5WelJ3SG16aXlySDlGU01udTlTeFZsdGpjQ2ZzdTFPWE9xczRuWFBqME9sWFNDMVpYV0xIaUd3TDlGWjUrUHUiLCJtYWMiOiIxOGFkMTdhNmJkN2E3NTAyOTVlNzRlNmQ5ZGRjNzZjM2YxMWE0YWQ5M2QyOGZmNzU2NThkNDliZGUyNjk4MGRkIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/cart/increase-quantity
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      item_id:
+        name: item_id
+        description: ''
+        required: true
+        example: sunt
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/cart/decrease-quantity
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      item_id:
+        name: item_id
+        description: ''
+        required: true
+        example: voluptates
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/cart/remove
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      item_id:
+        name: item_id
+        description: ''
+        required: true
+        example: delectus
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/wishlist/remove
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      item_id:
+        name: item_id
+        description: ''
+        required: true
+        example: explicabo
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/compare/remove
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      item_id:
+        name: item_id
+        description: ''
+        required: true
+        example: dolor
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user/admin-tickets
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IlQyUlcwQzk0dUIraFMxY015ZDJTVWc9PSIsInZhbHVlIjoiL24yMXVjMklDaVBEWTJ3UW1CaXlEREJQaEJXMUh6WlJ5cFFLcTJMWFF5UU1qQXBJWXgwNjU0TlFpREZRZ05nL3Z6ZkVES0lhZUdJNkFQcERqMDVxSG5HbGdCNWFNZHMvNVZka1VhVkhpWHNLNDNDVXFCajU1dzRNWmw0cjZ3OGsiLCJtYWMiOiI5N2M1MDYwNzYzNzE5ODM4ZDU3YTc2NjVhNzVhNWMwZTZkMGE5NjhiM2ExNDJhYzMzZDMyNDFlNzJlYjM1NjM4IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/admin-tickets/store
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      subject:
+        name: subject
+        description: ''
+        required: true
+        example: sunt
+        type: string
+        custom: []
+      message:
+        name: message
+        description: ''
+        required: true
+        example: inventore
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/user/admin-tickets/{ticket_id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ticket_id:
+        name: ticket_id
+        description: 'The ID of the ticket.'
+        required: true
+        example: cumque
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IjQ2akVjb1F3emJJZnMxRk9ZbFdoUEE9PSIsInZhbHVlIjoiaGFPOXFub1hZOCtxWnE3dE9YdXVRUk1XNjZvUm1QYnJzdUdsT2crcUZJcSthNkJzRGF4WVBsTFZqMXQvTlRHQ3JOZHk5VEFQWTZUaTRSMTIwY0Z6OXNCSmhYSnZnQncrMkhMZmRMTzduOFpJQSsrc2lGN0pLOXV3azYxWGNHZS8iLCJtYWMiOiIwNzQzYmJhNTU5OWQ2OTc1MDg1YmE3MGY4Zjg3MzViYzQyNTU1ZjBmYmJlNzU3MGFjZDkxNzM0YjAxNTA3NTNhIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/user/admin-tickets/{ticket_id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ticket_id:
+        name: ticket_id
+        description: 'The ID of the ticket.'
+        required: true
+        example: veritatis
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      message:
+        name: message
+        description: ''
+        required: true
+        example: in
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user/vendor-tickets
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IjRjNThDeFlvbUVMLzlORUx0UFF5N2c9PSIsInZhbHVlIjoic0kvWm1ZTWZGMjNuRzJIUmRnYWV3SHpzazdHTDN0QWJoNEZxeHZRRi9xZjBsc2JLNDlybElaMWlrd1lKZDcyTUM0cGVpNE1uVXY3VFF6VmZ1UlpoV1ZFbFBWYW9Ha25xcHRaOEZoRXhMVkZhWVlCclRRZkJEaXllMlpDdTR6ZTUiLCJtYWMiOiJhYjRmMWQ2MDM1OTYwN2Y0MzJjZGE5MTEzNzJhY2RmODdkMmMwZjI0M2FiNzljMDlmNjllZmNjOTk4YzQxZjM5IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/vendor-tickets/store
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      vendor_id:
+        name: vendor_id
+        description: ''
+        required: true
+        example: 15
+        type: integer
+        custom: []
+      subject:
+        name: subject
+        description: ''
+        required: true
+        example: et
+        type: string
+        custom: []
+      message:
+        name: message
+        description: ''
+        required: true
+        example: accusamus
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/user/vendor-tickets/{ticket_id}/{vendor_id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ticket_id:
+        name: ticket_id
+        description: 'The ID of the ticket.'
+        required: true
+        example: dignissimos
+        type: string
+        custom: []
+      vendor_id:
+        name: vendor_id
+        description: 'The ID of the vendor.'
+        required: true
+        example: sunt
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6InlTc3JZdEtmOXpOSnZaOWoxUTdKOUE9PSIsInZhbHVlIjoiR2E0MHluOW1HMm9tR3JOU2QxOVJxam9yUmpmTS9ROXdtZzJoRnpuL013TUxGaVVGUi9FbDZhMnZiUzdOdC9ERCtVNUpSK0pvd0pxUUJYZkNWQ09SVGhMSG5Ca3QweUgxOVdrRnZXcFBtNDlsM2FjUFREbjBJZlhIVzZVck93cnciLCJtYWMiOiIxYWI1MDljOTE5ZjM4ZTAxZjAxMWY4NTljNzI3NTAxODEyZmI0NzYxMGQ1Zjg5Mzg5Nzc1YjU5NjBiYTJhYzc4IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/user/vendor-tickets/{ticket_id}/{vendor_id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ticket_id:
+        name: ticket_id
+        description: 'The ID of the ticket.'
+        required: true
+        example: dolor
+        type: string
+        custom: []
+      vendor_id:
+        name: vendor_id
+        description: 'The ID of the vendor.'
+        required: true
+        example: repellat
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      message:
+        name: message
+        description: ''
+        required: true
+        example: accusamus
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user/orders
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IlpRdXhNTkJwK0QzOGNGSXd5Nlk3dlE9PSIsInZhbHVlIjoidFEzNmFjWHFOdFhqTkxZcGE0TFBSeHo4TEc5U0p0eTVNZ0V4MksvWW03azJMOGRpbnl0T0twV0VxVkNobVdWcTZtL2llaEQvMldtNEVxOXlPbTA1VlZzM2FjM0Z2WUFIOXpUaDNPUGlVOFp5Kzg5Zm4xZGFXUEMxUG50a0JKM3AiLCJtYWMiOiJjMDc4MGI3MTVmODdhNTQzYTI4MzFlOTU5NmFkYTMyY2UzNGQ4ZTUyMDJlOWEwNDcwY2EwZmU0MTY1Nzk2MzgxIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/user/orders/{sale_code}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      sale_code:
+        name: sale_code
+        description: ''
+        required: true
+        example: 8
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6Ik1YbHFtdHo5R3hlTnVCOVpMcVhLL3c9PSIsInZhbHVlIjoiRHQ2Z0NEM1paQnRCWnlHdERLbjlBZWRpZ28vWU4xd09BZzg4QVN4a3JhWFcyTnpQNUZBNnFucGZWcHNjMWhpWnJNZEJEZzUrVVJ6eklRRURaR1ZXSWFCM0hOZUw2TWE2YnlpUWlJRFFRSkVEajNwSlE5Z0hXa29vS1hxWkJ0V0siLCJtYWMiOiI0MmY0NzNjY2YzNzk0OGJhNDZlMjNkY2E0ODEzYjk5ZTBhOGNjNGM2NWIwOGMxOWJkZGY1YmUwNDcyMTQ1NGRlIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/orders/cancel-order
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      sale_code:
+        name: sale_code
+        description: ''
+        required: true
+        example: 55376.8576
+        type: number
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/user/orders/payment/{sale_code}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      sale_code:
+        name: sale_code
+        description: ''
+        required: true
+        example: 13
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IlVrbkFhQ1BkZWc1TGxWWm9oNFNySGc9PSIsInZhbHVlIjoiZUJLbU9lYkdrcWJkZDUrNHM3K2pyN1pLQmFuSjRzSHRxNG9uRGV0aUlhK1E3V2lSajdhMmJqRFowdFB5REdjKzVMQm5PbTgwN3hQU3V1L0lFM2pSbVZ4RnRmbFF5TnJGcVB1WFBJbWU4MlgwWkZXNTRJMWh6Z3hJMWpXeEQxejIiLCJtYWMiOiI5YmEwZjc1OWNkY2U3ODRjNWYxMTA3NjcyMzk3Y2JkMDNhNGNkODcxMTQyMTJkMWE4ZWM3Mzg5NGI5MjM3OTkyIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/orders/review
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      order_item_id:
+        name: order_item_id
+        description: ''
+        required: true
+        example: 879.0
+        type: number
+        custom: []
+      rating:
+        name: rating
+        description: ''
+        required: true
+        example: 2554.5
+        type: number
+        custom: []
+      comment:
+        name: comment
+        description: ''
+        required: true
+        example: labore
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/reffer
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: freeman06@example.org
+        type: string
+        custom: []
+      code:
+        name: code
+        description: ''
+        required: true
+        example: illo
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/load-wallet/verify-email
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      amount:
+        name: amount
+        description: ''
+        required: true
+        example: 713.5409169
+        type: number
+        custom: []
+      method:
+        name: method
+        description: ''
+        required: true
+        example: dicta
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/load-wallet/verify-otp
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      otp:
+        name: otp
+        description: 'Must be 6 digits.'
+        required: true
+        example: 3
+        type: integer
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/apply-coupon
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      coupon_code:
+        name: coupon_code
+        description: ''
+        required: true
+        example: est
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/checkout-amount
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/proceed-to-checkout
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      first_name:
+        name: first_name
+        description: ''
+        required: true
+        example: in
+        type: string
+        custom: []
+      last_name:
+        name: last_name
+        description: ''
+        required: true
+        example: sapiente
+        type: string
+        custom: []
+      phone:
+        name: phone
+        description: ''
+        required: true
+        example: 1235.853
+        type: number
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: johnston.carmelo@example.org
+        type: string
+        custom: []
+      line1:
+        name: line1
+        description: ''
+        required: true
+        example: cumque
+        type: string
+        custom: []
+      line2:
+        name: line2
+        description: ''
+        required: true
+        example: molestiae
+        type: string
+        custom: []
+      zip:
+        name: zip
+        description: ''
+        required: true
+        example: 8.7645505
+        type: number
+        custom: []
+      region_id:
+        name: region_id
+        description: ''
+        required: true
+        example: 15
+        type: integer
+        custom: []
+      city_id:
+        name: city_id
+        description: ''
+        required: true
+        example: 9
+        type: integer
+        custom: []
+      area_id:
+        name: area_id
+        description: ''
+        required: true
+        example: 1
+        type: integer
+        custom: []
+      payment_mode_id:
+        name: payment_mode_id
+        description: ''
+        required: true
+        example: 19
+        type: integer
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user/proceed-to-checkout/esewa-verify
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6ImlWSHJPRlN2OGNYcVdZbVZ1MlQvRUE9PSIsInZhbHVlIjoiRmNDNG9JNVdIUUVYSTBzTVJkVGlYWHlkOXhoSFFvT1RNaUp5ZlZJSXhHUTIvbENsekJoN3hSMW1jNGw2emZWVHI0b2c5WnhnU0JlSTdqSmpia056QkloZVQ4NDlYNHZHbis5YmpYOGVoa0Z2Ymo4U0VLaGpKWkVaTzcvaXlpMEkiLCJtYWMiOiJiMzE3ZGZkY2Q1N2Y0MGU0NzQyMDhmYjI3NjQ4MTAxZTZhMjhhMTRlYzhjZjAzNmQ0MDdhNDkyNWVjNzdhNzhmIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/login
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: cade26@example.net
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 5 characters.'
+        required: true
+        example: uh
+        type: string
+        custom: []
+      remember_me:
+        name: remember_me
+        description: ''
+        required: true
+        example: false
+        type: boolean
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/register
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      vcategory_id:
+        name: vcategory_id
+        description: ''
+        required: true
+        example: 18
+        type: integer
+        custom: []
+      vtype_id:
+        name: vtype_id
+        description: ''
+        required: true
+        example: 16
+        type: integer
+        custom: []
+      name:
+        name: name
+        description: ''
+        required: true
+        example: quisquam
+        type: string
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: true
+        example: eum
+        type: string
+        custom: []
+      display_name:
+        name: display_name
+        description: ''
+        required: true
+        example: quia
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 8 characters.'
+        required: true
+        example: uqor
+        type: string
+        custom: []
+      line1:
+        name: line1
+        description: ''
+        required: true
+        example: aut
+        type: string
+        custom: []
+      line2:
+        name: line2
+        description: ''
+        required: true
+        example: modi
+        type: string
+        custom: []
+      city:
+        name: city
+        description: ''
+        required: true
+        example: quia
+        type: string
+        custom: []
+      state:
+        name: state
+        description: ''
+        required: true
+        example: aliquam
+        type: string
+        custom: []
+      country:
+        name: country
+        description: ''
+        required: true
+        example: similique
+        type: string
+        custom: []
+      zip:
+        name: zip
+        description: ''
+        required: true
+        example: excepturi
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/forget-password/confirm-email
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: mohr.edd@example.org
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/forget-password/set-password
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: eusebio67@example.com
+        type: string
+        custom: []
+      token:
+        name: token
+        description: ''
+        required: true
+        example: eaque
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 6 characters. Must not be greater than 20 characters.'
+        required: true
+        example: crsudeepgcyvrlr
+        type: string
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: ''
+        required: true
+        example: vero
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/logout
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/vendor/profile
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IjNjeGxnZkExTEFvQWkzUUJwMTRsQlE9PSIsInZhbHVlIjoick53RTRNZUhlMWt1RVJoUFYvUWNKdkpEUUxQMHBLaDAyRUdhaVBQYU1YZExiUWcvREJoRVNVY2tCdHVuMFlSMnUrQTQ5R1JXTkJtdExSMlI2ZUd1V2NkTWRhbTI1YkE0SGRwVU85RnF2N25maEt3Q0k1NjF0Yko1WHlPdERrZm0iLCJtYWMiOiJhMDg1OTM4OGJkY2E0ZTI2NDczOWJhYWYxMzcyYmFmN2I1MWQzZWQzYTM5NTJhMzdhY2Y0NWUxM2Y5YTZjODM4IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/profile-update
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: molestiae
+        type: string
+        custom: []
+      display_name:
+        name: display_name
+        description: ''
+        required: true
+        example: omnis
+        type: string
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      line1:
+        name: line1
+        description: ''
+        required: true
+        example: quam
+        type: string
+        custom: []
+      line2:
+        name: line2
+        description: ''
+        required: true
+        example: repellat
+        type: string
+        custom: []
+      city:
+        name: city
+        description: ''
+        required: true
+        example: quo
+        type: string
+        custom: []
+      state:
+        name: state
+        description: ''
+        required: true
+        example: maxime
+        type: string
+        custom: []
+      country:
+        name: country
+        description: ''
+        required: true
+        example: numquam
+        type: string
+        custom: []
+      zip:
+        name: zip
+        description: ''
+        required: true
+        example: aut
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/password-update
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      current_password:
+        name: current_password
+        description: ''
+        required: true
+        example: accusantium
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'The value and <code>current_password</code> must be different. Must be at least 8 characters.'
+        required: true
+        example: pbjg
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/seo-setting-update
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      keywords:
+        name: keywords
+        description: ''
+        required: true
+        example: exercitationem
+        type: string
+        custom: []
+      seo_title:
+        name: seo_title
+        description: ''
+        required: true
+        example: error
+        type: string
+        custom: []
+      seo_description:
+        name: seo_description
+        description: ''
+        required: true
+        example: et
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/social-setting-update
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      facebook:
+        name: facebook
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      instagram:
+        name: instagram
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      twitter:
+        name: twitter
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      google:
+        name: google
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      youtube:
+        name: youtube
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      whatsapp:
+        name: whatsapp
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/image-setting-update
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/merchant-update
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      merchant_id:
+        name: merchant_id
+        description: ''
+        required: true
+        example: perferendis
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/vendor/sliders
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IjQrNXpsRFF1Uk9hdDJIZ01nNEk1T0E9PSIsInZhbHVlIjoiYm1QZ1VzaG54aU0xQktvK2FHQm4xcE5SSldGak9tcUlyck5QblR5empNNmNuK1Y0QVd0dHpwZG1GTjIvbWQ3VmNGYU5ZQUNaM1JpMEJUM081R2hmMjZ3dzhadUdWNHFldTU0NGozajVyMXEyU2daakhhc25LU0o5MlFZWThldngiLCJtYWMiOiJiODk2NjA4M2JhYzVhZjcxNzNkZTE4OTY4M2EwOTUxYzhjNTQ3NGUxMjIwMWZjZDQ2ZDJiNDBiZWQxYTE2MWI2IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/sliders/store
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      banner_image:
+        name: banner_image
+        description: ''
+        required: true
+        example: impedit
+        type: string
+        custom: []
+      text:
+        name: text
+        description: ''
+        required: true
+        example: harum
+        type: string
+        custom: []
+      link:
+        name: link
+        description: ''
+        required: true
+        example: ipsam
+        type: string
+        custom: []
+      button_color:
+        name: button_color
+        description: ''
+        required: true
+        example: aut
+        type: string
+        custom: []
+      text_color:
+        name: text_color
+        description: ''
+        required: true
+        example: qui
+        type: string
+        custom: []
+      status:
+        name: status
+        description: ''
+        required: true
+        example: true
+        type: boolean
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/vendor/sliders/update/{slider_id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      slider_id:
+        name: slider_id
+        description: 'The ID of the slider.'
+        required: true
+        example: saepe
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      text:
+        name: text
+        description: ''
+        required: true
+        example: nihil
+        type: string
+        custom: []
+      link:
+        name: link
+        description: ''
+        required: true
+        example: quia
+        type: string
+        custom: []
+      button_color:
+        name: button_color
+        description: ''
+        required: true
+        example: dolorem
+        type: string
+        custom: []
+      text_color:
+        name: text_color
+        description: ''
+        required: true
+        example: autem
+        type: string
+        custom: []
+      status:
+        name: status
+        description: ''
+        required: true
+        example: true
+        type: boolean
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/sliders/update-status
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      slider_id:
+        name: slider_id
+        description: ''
+        required: true
+        example: 8
+        type: integer
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/sliders/delete
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      slider_id:
+        name: slider_id
+        description: ''
+        required: true
+        example: 18
+        type: integer
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/vendor/tickets
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6Ik1PYVRnRG1mZmx2VzJ6Smw1VkFSM3c9PSIsInZhbHVlIjoiRWRnMWdxNkc3d3ZsNUJnS3dGcWtwWFJVakRSTG9iRTc2WmlRSmVVTXZFWHJzR2VBN01mSTdBSVdLdDM2ektBQjZzeit0cEFaZHl6ZFdjMkNVN0MwaHBUYW1OM2V0K2Y5Q2NJYzRZQ2lHZmpMYUN3cGM3YktJYWZxUWl2L0NkWTIiLCJtYWMiOiIzZGJkMzBmYjA5NzExZmMwZGNiZDBiZWNiMmRkNTU4Yjc2NTQ1YzZhMzUwZTI3N2MzZGNhN2QyMTU2MjQ3NGFlIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:35 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/vendor/tickets/{ticket_id}/{user_id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ticket_id:
+        name: ticket_id
+        description: 'The ID of the ticket.'
+        required: true
+        example: quod
+        type: string
+        custom: []
+      user_id:
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: exercitationem
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6Ik1EZ2c2MTdFUGJqMERuUWROakc0b2c9PSIsInZhbHVlIjoiS2RiV1ZwbGxvRU1pMU1DQXVFZU84SDJmQkM4b0hIK3J3K1B5blJrUE45VkVkZ01UY2N6SlJQYnRMWEY1Znpqc1RHM25hejZxa0xQN0dGSEU3NVJkUndLTnBrT0FkT21IeTVIL21RZ2hyZzlHQStaUEtqT013a2RYcTlDN0hnMkoiLCJtYWMiOiIzY2MzOWQxODJlYTlhNTVjZjFkMmM5OTExYmUyMTU4YmRlOWMwOGRiZDE4ZmEzNDRiYzViMGU0Y2Y1YTgxYjQ5IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:35 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/vendor/tickets/{ticket_id}/{user_id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ticket_id:
+        name: ticket_id
+        description: 'The ID of the ticket.'
+        required: true
+        example: optio
+        type: string
+        custom: []
+      user_id:
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: accusantium
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      message:
+        name: message
+        description: ''
+        required: true
+        example: velit
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/tickets/delete
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      ticket_id:
+        name: ticket_id
+        description: ''
+        required: true
+        example: 15
+        type: integer
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/vendor/products
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IlY1eExzVkpqcHpkZWEzVTRBZEw4b1E9PSIsInZhbHVlIjoiTXgwRzVXWElJVkFocXE3UHJOa1psOE9ieml3QjdrSndBMkwxRjN0YW5LdjNJNTV6eXJjSmVCU1Fhbk0xOU9FOU1NU0tGTUpxTkN4eitnZFNlUmg4aXZPMUduRGZuWWxZc3dFU1VvMncwYmNaVTJKNmZiVi9odVZQN1I3Tkt0cloiLCJtYWMiOiI4MjlhNzM0YThiNjQ2NDk2N2ZlMzRmZGMzOTU0YjUxNDkzNTc1Y2FkMTg4NmUxY2JhODkwMmVjY2FhM2FhMmIwIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:35 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/products/add
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: ''
+        required: true
+        example: ea
+        type: string
+        custom: []
+      slug:
+        name: slug
+        description: ''
+        required: true
+        example: ipsum
+        type: string
+        custom: []
+      category_id:
+        name: category_id
+        description: ''
+        required: true
+        example: 13
+        type: integer
+        custom: []
+      sub_category_id:
+        name: sub_category_id
+        description: ''
+        required: true
+        example: 19
+        type: integer
+        custom: []
+      type_id:
+        name: type_id
+        description: ''
+        required: true
+        example: 19
+        type: integer
+        custom: []
+      unit:
+        name: unit
+        description: ''
+        required: true
+        example: dolores
+        type: string
+        custom: []
+      tags:
+        name: tags
+        description: ''
+        required: true
+        example: autem
+        type: string
+        custom: []
+      images:
+        name: images
+        description: ''
+        required: true
+        example: ratione
+        type: string
+        custom: []
+      description:
+        name: description
+        description: ''
+        required: true
+        example: nemo
+        type: string
+        custom: []
+      seo_title:
+        name: seo_title
+        description: ''
+        required: true
+        example: eligendi
+        type: string
+        custom: []
+      seo_description:
+        name: seo_description
+        description: ''
+        required: true
+        example: vel
+        type: string
+        custom: []
+      sale_price:
+        name: sale_price
+        description: ''
+        required: true
+        example: 22364.9919825
+        type: number
+        custom: []
+      purchase_price:
+        name: purchase_price
+        description: ''
+        required: true
+        example: 17686224.2
+        type: number
+        custom: []
+      shipping_cost:
+        name: shipping_cost
+        description: ''
+        required: true
+        example: 196343030.09209
+        type: number
+        custom: []
+      tax:
+        name: tax
+        description: ''
+        required: true
+        example: 584.7953579
+        type: number
+        custom: []
+      discount:
+        name: discount
+        description: ''
+        required: true
+        example: 3464.957781
+        type: number
+        custom: []
+      brand_id:
+        name: brand_id
+        description: ''
+        required: true
+        example: 9
+        type: integer
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/vendor/products/edit/{product_id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      product_id:
+        name: product_id
+        description: 'The ID of the product.'
+        required: true
+        example: quis
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: ''
+        required: true
+        example: vel
+        type: string
+        custom: []
+      slug:
+        name: slug
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      category_id:
+        name: category_id
+        description: ''
+        required: true
+        example: 7
+        type: integer
+        custom: []
+      sub_category_id:
+        name: sub_category_id
+        description: ''
+        required: true
+        example: 16
+        type: integer
+        custom: []
+      type_id:
+        name: type_id
+        description: ''
+        required: true
+        example: 19
+        type: integer
+        custom: []
+      unit:
+        name: unit
+        description: ''
+        required: true
+        example: accusantium
+        type: string
+        custom: []
+      tags:
+        name: tags
+        description: ''
+        required: true
+        example: consequuntur
+        type: string
+        custom: []
+      description:
+        name: description
+        description: ''
+        required: true
+        example: facere
+        type: string
+        custom: []
+      seo_title:
+        name: seo_title
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      seo_description:
+        name: seo_description
+        description: ''
+        required: true
+        example: atque
+        type: string
+        custom: []
+      sale_price:
+        name: sale_price
+        description: ''
+        required: true
+        example: 92501.7
+        type: number
+        custom: []
+      purchase_price:
+        name: purchase_price
+        description: ''
+        required: true
+        example: 4568938.0
+        type: number
+        custom: []
+      shipping_cost:
+        name: shipping_cost
+        description: ''
+        required: true
+        example: 165815.51950982
+        type: number
+        custom: []
+      tax:
+        name: tax
+        description: ''
+        required: true
+        example: 5.24116291
+        type: number
+        custom: []
+      discount:
+        name: discount
+        description: ''
+        required: true
+        example: 688.91773765
+        type: number
+        custom: []
+      brand_id:
+        name: brand_id
+        description: ''
+        required: true
+        example: 6
+        type: integer
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/products/update-featured
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      product_id:
+        name: product_id
+        description: ''
+        required: true
+        example: 4
+        type: integer
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/products/update-status
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      product_id:
+        name: product_id
+        description: ''
+        required: true
+        example: 3
+        type: integer
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/products/delete
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      product_id:
+        name: product_id
+        description: ''
+        required: true
+        example: 12
+        type: integer
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/vendor/product-stocks
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6InlkK3JoQnJ4V3VjMXpXV04raUFzU2c9PSIsInZhbHVlIjoiS216QVA2a3ZrOHFNNzBJYm5ETUVjdDZqSVdzSEJ3M2ZkeU82N3JQbkh0bDFBV05waFNocVJuK2UrTmJTV2VoRFJHYmQ5cWl3cWJXTlBBVmNGUWk4YUwvSndkRzZ6Tk9YQitma3pJQjZrbSs0YU9OZXBnKzhON3BuM2Y2ZW83b0IiLCJtYWMiOiI3NTJmZWRlNzAxOGI0ZDllMjU1MTNmOGEyZDc4YjhiOGQ0NmJkZDkyMDIyYjA5YzgxNGE3MDMzZGU2Y2U2MjAwIiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:35 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/product-stocks/create
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      category_id:
+        name: category_id
+        description: ''
+        required: true
+        example: 6
+        type: integer
+        custom: []
+      product_id:
+        name: product_id
+        description: ''
+        required: true
+        example: 1
+        type: integer
+        custom: []
+      sub_category_id:
+        name: sub_category_id
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        custom: []
+      quantity:
+        name: quantity
+        description: ''
+        required: true
+        example: 20
+        type: integer
+        custom: []
+      rate:
+        name: rate
+        description: ''
+        required: true
+        example: 2
+        type: integer
+        custom: []
+      total:
+        name: total
+        description: ''
+        required: true
+        example: 15
+        type: integer
+        custom: []
+      entry_note:
+        name: entry_note
+        description: ''
+        required: true
+        example: et
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/product-stocks/destroy
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      category_id:
+        name: category_id
+        description: ''
+        required: true
+        example: 20
+        type: integer
+        custom: []
+      product_id:
+        name: product_id
+        description: ''
+        required: true
+        example: 15
+        type: integer
+        custom: []
+      sub_category_id:
+        name: sub_category_id
+        description: ''
+        required: true
+        example: 7
+        type: integer
+        custom: []
+      quantity:
+        name: quantity
+        description: ''
+        required: true
+        example: 3
+        type: integer
+        custom: []
+      monetary_loss:
+        name: monetary_loss
+        description: ''
+        required: true
+        example: 4
+        type: integer
+        custom: []
+      reason_note:
+        name: reason_note
+        description: ''
+        required: true
+        example: nesciunt
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/product-stocks/delete
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      stock_id:
+        name: stock_id
+        description: ''
+        required: true
+        example: 9
+        type: integer
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/vendor/admin-payments
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          set-cookie: 'laravel_session=eyJpdiI6IkhhVVJpYnorWks0Tk9XY2xrT3E1c0E9PSIsInZhbHVlIjoiWUVzVGNZaURzSUpBdTVoRDMwZTNYY1FlZmJSdDQwU2xuclJJNHc3bnFFWUJsbjd2Lzg3bU9ZeG1ZUXVnTDBlVTRlVVZBcDU2ZE0zbFVUN1lFMXhQNHc5Yi90VTR5KzF0V3h0TnN5UEhKQXlBWENsTHZkajMrQng0NVJlRHZnODUiLCJtYWMiOiJiYzgyMmEzNjE5ZTVhYzk4OTJlOWQzZWQyNzFmZjVlZmY4NmQ1NDhhNzYzOWNlOTI5MTI5NTQ5MmZkNjdhYTM2IiwidGFnIjoiIn0%3D; expires=Thu, 08-Sep-2022 16:22:35 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vendor/admin-payments/delete
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      payment_id:
+        name: payment_id
+        description: ''
+        required: true
+        example: 9
+        type: integer
+        custom: []
+    responses: []
+    responseFields: []

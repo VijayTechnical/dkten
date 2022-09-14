@@ -33,15 +33,15 @@
                         <p>Change Language</p>
                         <div class="form-check">
                             <a class="set_langs">
-                                <input class="form-check-input Langchange" type="radio" name="exampleRadios" id="exampleRadios1"
-                                    value="en" wire:model="locale">
+                                <input class="form-check-input Langchange" type="radio" name="exampleRadios"
+                                    id="exampleRadios1" value="en" wire:model="locale">
                                 <label class="form-check-label" for="exampleRadios1">English</label>
                             </a>
                         </div>
                         <div class="form-check">
                             <a class="set_langs">
-                                <input class="form-check-input Langchange" type="radio" name="exampleRadios" id="exampleRadios"
-                                    value="ne" wire:model="locale">
+                                <input class="form-check-input Langchange" type="radio" name="exampleRadios"
+                                    id="exampleRadios" value="ne" wire:model="locale">
                                 <label class="form-check-label" for="exampleRadios">Nepali</label>
                             </a>
                         </div>
@@ -114,6 +114,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 <script type="text/javascript">
+    $(document).ready(function(){
     var route = "{{ url('autocomplete-search') }}";
     $('#searchQueryInput').typeahead({
         source: function (query, process) {
@@ -125,5 +126,6 @@
             });
         }
     });
-</script> 
+});
+</script>
 @endpush

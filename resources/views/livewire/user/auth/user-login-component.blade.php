@@ -58,10 +58,10 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="d-flex">
-                                    <button class="btn btn-facebook mr-2 col">
-                                        <i class="mdi mdi-facebook"></i> Facebook </button>
-                                    <button class="btn btn-google col">
-                                        <i class="mdi mdi-google-plus"></i> Google plus </button>
+                                    <a href="{{ url('user/login/facebook') }}" class="btn btn-facebook mr-2 col">
+                                        <i class="mdi mdi-facebook"></i> Facebook </a>
+                                    <a href="{{ url('user/login/google') }}" class="btn btn-google col">
+                                        <i class="mdi mdi-google-plus"></i> Google plus </a>
                                 </div>
                                 <p class="sign-up">Don't have an Account?<a href="{{ route('user.register') }}"> Sign Up</a></p>
                             </div>
